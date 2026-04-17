@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-earth-900: #1a1612;
+  --color-earth-800: #2d2519;
+  --color-earth-700: #4a3f2f;
+  --color-earth-500: #8b7355;
+  --color-earth-300: #c4a882;
+  --color-earth-200: #ddd0bc;
+  --color-earth-100: #f0ebe3;
+  --color-earth-50:  #f8f5f0;
+  --color-sage-600:  #5a7247;
+  --color-sage-400:  #8fa47a;
+  --color-cloud:     rgba(255, 255, 255, 0.85);
+}
+
+html {
+  background-color: var(--color-earth-50);
+  color: var(--color-earth-900);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.drop-cap::first-letter {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  float: left;
+  font-size: 5.5rem;
+  line-height: 0.9;
+  padding: 0.35rem 0.75rem 0 0;
+  color: var(--color-earth-800);
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.char {
+  display: inline-block;
+  overflow: hidden;
+  line-height: inherit;
+}
+
+.char .char-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background-color: var(--color-earth-300);
+  color: var(--color-earth-900);
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-sage-600);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
