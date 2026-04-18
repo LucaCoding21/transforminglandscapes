@@ -46,7 +46,7 @@ export default function Nav() {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 md:pt-6"
     >
-      <nav className="flex w-full max-w-content items-center justify-between gap-4 rounded-2xl bg-white px-4 py-2 shadow-lg shadow-earth-900/5 md:px-3 md:py-2">
+      <nav className="flex w-full max-w-content items-center justify-between gap-4 rounded-2xl bg-white px-5 py-3 shadow-lg shadow-earth-900/5 md:px-5 md:py-3">
         <Link
           href="/"
           className="flex items-center rounded-full px-4 py-2 text-earth-900 transition hover:bg-earth-100"

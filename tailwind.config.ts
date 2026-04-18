@@ -34,7 +34,7 @@ const config: Config = {
         "display-md": ["clamp(2rem, 3.5vw, 3rem)", { lineHeight: "1.05", letterSpacing: "-0.01em" }],
       },
       maxWidth: {
-        content: "1200px",
+        content: "1250px",
       },
       transitionTimingFunction: {
         "editorial": "cubic-bezier(0.22, 1, 0.36, 1)",

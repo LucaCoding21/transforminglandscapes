@@ -163,8 +163,8 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-earth-900/55 via-earth-900/10 to-earth-900/55" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-content flex-col px-6 pb-10 pt-28 md:px-10 md:pb-14 md:pt-32">
-        <div className="grid h-full flex-1 grid-cols-1 gap-10 md:grid-cols-[1fr_28rem] md:gap-10">
-          <div className="flex min-w-0 flex-col justify-end md:mb-[6vh] md:-translate-x-20">
+        <div className="relative flex h-full flex-1 flex-col justify-end">
+          <div className="lg:mb-[6vh] lg:-translate-x-20">
             <h1
               style={{
                 fontSize: "clamp(3.1rem, 9.5vw, 10rem)",
@@ -195,32 +195,30 @@ export default function Hero() {
             </h1>
           </div>
 
-          <div className="flex flex-col justify-end md:translate-x-32 md:justify-end md:pb-32">
-            <div className="md:w-full">
-              <p
-                data-animate="fade"
-                className="font-heading text-xl font-semibold leading-[1.15] tracking-tight text-white md:text-2xl lg:text-[1.75rem]"
-              >
-                The Future,
-                <br />
-                Challenges &amp; Opportunities
-              </p>
+          <div className="mt-6 lg:absolute lg:bottom-32 lg:right-0 lg:mt-0 lg:max-w-md lg:translate-x-32">
+            <p
+              data-animate="fade"
+              className="font-heading text-xl font-semibold leading-[1.15] tracking-tight text-white md:text-2xl lg:text-[1.75rem]"
+            >
+              The Future,
+              <br />
+              Challenges &amp; Opportunities
+            </p>
 
-              <p
-                data-animate="fade"
-                className="mt-5 text-base leading-relaxed text-white/85 md:text-base"
-              >
-                Understanding First Nations-led real estate development in British
-                Columbia, the territories and relationships grounding it, and the
-                leaders defining what comes next.
-              </p>
-            </div>
+            <p
+              data-animate="fade"
+              className="mt-5 text-base leading-relaxed text-white/85 md:text-base"
+            >
+              Understanding First Nations-led real estate development in British
+              Columbia, the territories and relationships grounding it, and the
+              leaders defining what comes next.
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-8 z-10 md:bottom-24">
-        <div className="pointer-events-auto mx-auto flex max-w-content justify-end px-6 md:px-10 md:translate-x-32">
+      <div className="pointer-events-none absolute inset-x-0 bottom-8 z-10 lg:bottom-24">
+        <div className="pointer-events-auto mx-auto flex max-w-content justify-end px-6 md:px-10 lg:translate-x-32">
           <ul className="grid w-full max-w-md grid-cols-1 gap-2 sm:grid-cols-3 md:gap-2.5">
           {infoCards.map((card) => (
             <li
