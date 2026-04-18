@@ -150,7 +150,7 @@ export default function Hero() {
     >
       <div className="absolute inset-0">
         <Image
-          src="/images/hero.png"
+          src="/images/hero.webp"
           alt="Mountain sunset landscape in British Columbia"
           fill
           priority

@@ -17,7 +17,7 @@ export const libraryItems: LibraryItem[] = [
     description:
       "A landmark ruling reshaping how rights, land, and development intersect across British Columbia.",
     type: "Case Study",
-    image: "/images/nathan-rose-sbvzdXqnG4k-unsplash.jpg",
+    image: "/images/nathan-rose-sbvzdXqnG4k-unsplash.webp",
     readingTime: "12 min read",
     author: "Transforming Landscapes Research Team",
     date: "March 2026",
@@ -53,7 +53,7 @@ export const libraryItems: LibraryItem[] = [
     description:
       "A quantitative look at capital flows, ground-lease activity, and long-horizon structures across BC.",
     type: "Economic Analysis",
-    image: "/images/kyle-thacker-6ifWgyH5tuc-unsplash.jpg",
+    image: "/images/kyle-thacker-6ifWgyH5tuc-unsplash.webp",
     readingTime: "18 min read",
     author: "Transforming Landscapes Research Team",
     date: "January 2026",
@@ -71,7 +71,7 @@ export const libraryItems: LibraryItem[] = [
     description:
       "How modern ground-lease structures are being rethought for century-scale stewardship.",
     type: "Case Study",
-    image: "/images/guy_dugas-mount-burgess-4882987.jpg",
+    image: "/images/guy_dugas-mount-burgess-4882987.webp",
     readingTime: "15 min read",
     author: "Transforming Landscapes Research Team",
     date: "December 2025",
@@ -89,7 +89,7 @@ export const libraryItems: LibraryItem[] = [
     description:
       "Three case studies on how emerging governance models change the real estate balance sheet.",
     type: "Economic Analysis",
-    image: "/images/micah-mckerlich-gaZBqZQWSng-unsplash.jpg",
+    image: "/images/micah-mckerlich-gaZBqZQWSng-unsplash.webp",
     readingTime: "20 min read",
     author: "Transforming Landscapes Research Team",
     date: "November 2025",
@@ -107,7 +107,7 @@ export const libraryItems: LibraryItem[] = [
     description:
       "A leadership conversation on how 100-year thinking is reshaping deal structure in BC.",
     type: "Interview",
-    image: "/images/jess-barnett-NwqvG6lb2jU-unsplash.jpg",
+    image: "/images/jess-barnett-NwqvG6lb2jU-unsplash.webp",
     readingTime: "28 min read",
     author: "Transforming Landscapes Research Team",
     date: "October 2025",

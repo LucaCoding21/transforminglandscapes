@@ -17,28 +17,28 @@ const pillars: Pillar[] = [
     label: "Indigenous Land & Development",
     description:
       "This section highlights existing resources that map and explain Indigenous territories and Indigenous-owned business designations. We encourage you to explore these materials for deeper context and understanding, and you\u2019ll find links throughout this report to help guide your learning.",
-    image: "/images/jess-barnett-NwqvG6lb2jU-unsplash.jpg",
+    image: "/images/jess-barnett-NwqvG6lb2jU-unsplash.webp",
   },
   {
     number: "02",
     label: "Governance Models",
     description:
       "We explore how traditional models and models from other parts of the world are implemented and the differences, challenges, and opportunities they present.",
-    image: "/images/kyle-thacker-6ifWgyH5tuc-unsplash.jpg",
+    image: "/images/kyle-thacker-6ifWgyH5tuc-unsplash.webp",
   },
   {
     number: "03",
     label: "The Data",
     description:
       "Economic and market data is important in understanding impact, establishing policy and integrating communities in both the built environment and from a perspective of sustainability.",
-    image: "/images/nathan-rose-sbvzdXqnG4k-unsplash.jpg",
+    image: "/images/nathan-rose-sbvzdXqnG4k-unsplash.webp",
   },
   {
     number: "04",
     label: "The Future",
     description:
       "What challenges, opportunities and areas of innovation do we consider in the near- and distant future? What can we learn from the past, from tradition and culture?",
-    image: "/images/dylan-gillis-KdeqA3aTnBY-unsplash (1).jpg",
+    image: "/images/dylan-gillis-KdeqA3aTnBY-unsplash (1).webp",
   },
 ];
 

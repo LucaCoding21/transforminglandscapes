@@ -30,12 +30,11 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <main>
       {/* Hero image — sticky behind content */}
-      <div className="sticky top-0 z-0 h-[50vh] min-h-[400px] w-full overflow-hidden">
+      <div className="sticky top-0 z-0 h-[50vh] min-h-[400px] w-full overflow-hidden bg-earth-200">
         <Image
           src={item.image}
           alt={item.title}
           fill
-          unoptimized
           priority
           sizes="100vw"
           className="object-cover"

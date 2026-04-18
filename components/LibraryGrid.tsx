@@ -59,7 +59,7 @@ export default function LibraryGrid() {
         className="grid gap-6 sm:grid-cols-2"
       >
         <AnimatePresence mode="popLayout">
-          {items.map((item) => (
+          {items.map((item, i) => (
             <motion.article
               key={item.slug}
               layout
@@ -75,8 +75,8 @@ export default function LibraryGrid() {
                   src={item.image}
                   alt=""
                   fill
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority={i < 4}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 540px"
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
               </div>

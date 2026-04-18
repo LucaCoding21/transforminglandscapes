@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "@/components/TransitionLink";
 
-const FOOTER_IMAGE = "/images/jess-barnett-NwqvG6lb2jU-unsplash.jpg";
+const FOOTER_IMAGE = "/images/jess-barnett-NwqvG6lb2jU-unsplash.webp";
 
 
 const exploreLinks = [

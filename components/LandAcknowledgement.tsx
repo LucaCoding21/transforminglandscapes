@@ -9,14 +9,14 @@ export default function LandAcknowledgement() {
       <div className="relative px-6 pb-24 pt-24 md:px-10 md:pb-32 md:pt-32 lg:px-16 xl:px-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
             className="relative aspect-[4/5] overflow-hidden bg-sage-400/40"
           >
             <Image
-              src="/images/kyle-thacker-6ifWgyH5tuc-unsplash.jpg"
+              src="/images/kyle-thacker-6ifWgyH5tuc-unsplash.webp"
               alt=""
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
@@ -25,8 +25,8 @@ export default function LandAcknowledgement() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{
               duration: 0.95,

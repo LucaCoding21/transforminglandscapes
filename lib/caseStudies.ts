@@ -22,7 +22,7 @@ export const caseStudies: CaseStudy[] = [
     title: "A Long View of Leasehold Tenure",
     teaser:
       "How modern ground-lease structures are being rethought for century-scale stewardship.",
-    image: "/images/micah-mckerlich-gaZBqZQWSng-unsplash.jpg",
+    image: "/images/micah-mckerlich-gaZBqZQWSng-unsplash.webp",
     tags: ["Case Study", "Tenure"],
     date: "February 12, 2026",
   },
