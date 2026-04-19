@@ -51,9 +51,16 @@ export default function PageTransition({
   );
 
   useEffect(() => {
-    if (phase !== "covering" || !pendingRef.current) return;
+    if ((phase !== "covering" && phase !== "idle") || !pendingRef.current) {
+      if (phase === "covering" && !pendingRef.current) {
+        setPhase("uncovering");
+      }
+      return;
+    }
+    if (phase !== "covering") return;
     const [targetPath] = pendingRef.current.split("#");
-    if (pathname === targetPath) {
+    const normalizedTarget = targetPath || "/";
+    if (pathname === normalizedTarget) {
       pendingRef.current = null;
       const id = requestAnimationFrame(() => {
         requestAnimationFrame(() => setPhase("uncovering"));
@@ -61,6 +68,19 @@ export default function PageTransition({
       return () => cancelAnimationFrame(id);
     }
   }, [pathname, phase]);
+
+  // Safety: if stuck in covering for too long, force uncover
+  useEffect(() => {
+    if (phase !== "covering") return;
+    const timeout = setTimeout(() => {
+      if (pendingRef.current) {
+        router.push(pendingRef.current);
+        pendingRef.current = null;
+      }
+      setPhase("uncovering");
+    }, 2000);
+    return () => clearTimeout(timeout);
+  }, [phase, router]);
 
   const handleAnimationComplete = () => {
     if (phase === "covering") {

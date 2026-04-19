@@ -8,13 +8,7 @@ export default function LandAcknowledgement() {
     <section className="relative bg-sage-600 text-earth-50">
       <div className="relative px-6 pb-24 pt-24 md:px-10 md:pb-32 md:pt-32 lg:px-16 xl:px-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-[4/5] overflow-hidden bg-sage-400/40"
-          >
+          <div className="relative aspect-[4/5] overflow-hidden">
             <Image
               src="/images/kyle-thacker-6ifWgyH5tuc-unsplash.webp"
               alt=""
@@ -22,7 +16,14 @@ export default function LandAcknowledgement() {
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"
             />
-          </motion.div>
+            <motion.div
+              initial={{ y: 0 }}
+              whileInView={{ y: "-100%" }}
+              viewport={{ once: true, margin: "-15%" }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 bg-sage-600"
+            />
+          </div>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -36,8 +37,8 @@ export default function LandAcknowledgement() {
             className="flex flex-col"
           >
             <h2
-              className="font-heading font-semibold leading-[0.95] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
+              className="font-heading font-semibold uppercase leading-[0.95]"
+              style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)" }}
             >
               Acknowledgement
             </h2>

@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { libraryItems, type LibraryItem } from "@/lib/libraryItems";
 import { cn } from "@/lib/cn";
 
@@ -11,16 +11,115 @@ type Filter = "All" | LibraryItem["type"];
 
 const filters: Filter[] = ["All", "Case Study", "Interview", "Economic Analysis", "Resource"];
 
+function getItems(filter: Filter) {
+  if (filter === "All") return libraryItems;
+  return libraryItems.filter((item) => item.type === filter);
+}
+
 export default function LibraryGrid() {
   const [active, setActive] = useState<Filter>("All");
+  const gridRef = useRef<HTMLDivElement>(null);
+  const animating = useRef(false);
+  const [stickyVisible, setStickyVisible] = useState(false);
+  const gridInView = useRef(false);
 
-  const items = useMemo(() => {
-    if (active === "All") return libraryItems;
-    return libraryItems.filter((item) => item.type === active);
+  useEffect(() => {
+    if (window.innerWidth >= 768) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => { gridInView.current = entry.isIntersecting; },
+      { threshold: 0 },
+    );
+    if (gridRef.current) observer.observe(gridRef.current);
+
+    const onScroll = () => {
+      setStickyVisible(window.scrollY > 150 && !gridInView.current);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  const items = getItems(active);
+
+  const handleFilter = useCallback((filter: Filter) => {
+    if (filter === active || animating.current || !gridRef.current) return;
+    animating.current = true;
+
+    const cards = gridRef.current.querySelectorAll("[data-card]");
+
+    // Fade out current cards
+    gsap.to(cards, {
+      opacity: 0,
+      y: -12,
+      duration: 0.25,
+      stagger: 0.03,
+      ease: "power2.in",
+      onComplete: () => {
+        // Swap filter
+        setActive(filter);
+
+        // Wait a frame for React to render the new cards
+        requestAnimationFrame(() => {
+          if (!gridRef.current) return;
+          const newCards = gridRef.current.querySelectorAll("[data-card]");
+
+          gsap.fromTo(
+            newCards,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              stagger: 0.06,
+              ease: "power3.out",
+              onComplete: () => {
+                animating.current = false;
+              },
+            },
+          );
+        });
+      },
+    });
   }, [active]);
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[28rem_1fr] lg:gap-16">
+    <>
+      {/* Mobile sticky header — shows on scroll up */}
+      <div
+        className={cn(
+          "fixed inset-x-0 top-0 z-40 bg-earth-50 px-6 pb-4 pt-24 transition-transform duration-300 md:hidden",
+          stickyVisible ? "translate-y-0" : "-translate-y-full",
+        )}
+      >
+        <h2 className="font-heading text-lg font-semibold text-earth-900">
+          The Library
+        </h2>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {filters.map((filter) => {
+            const isActive = active === filter;
+            return (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => handleFilter(filter)}
+                className={cn(
+                  "rounded-full border px-3 py-1.5 text-xs transition",
+                  isActive
+                    ? "border-earth-900 bg-earth-900 text-white"
+                    : "border-earth-300 bg-earth-50 text-earth-800 hover:border-earth-500",
+                )}
+              >
+                {filter}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="grid gap-12 lg:grid-cols-[28rem_1fr] lg:gap-16">
       {/* Left column — sticky sidebar */}
       <div className="lg:sticky lg:top-32 lg:self-start">
         <h1 className="font-heading text-display-lg text-earth-900">
@@ -38,9 +137,9 @@ export default function LibraryGrid() {
               <button
                 key={filter}
                 type="button"
-                onClick={() => setActive(filter)}
+                onClick={() => handleFilter(filter)}
                 className={cn(
-                  "rounded-full border px-4 py-2 text-sm transition",
+                  "rounded-full border px-5 py-2.5 text-sm transition md:px-4 md:py-2",
                   isActive
                     ? "border-earth-900 bg-earth-900 text-white"
                     : "border-earth-300 bg-earth-50 text-earth-800 hover:border-earth-500",
@@ -53,59 +152,93 @@ export default function LibraryGrid() {
         </div>
       </div>
 
-      {/* Right column — 2-col article grid */}
-      <motion.div
-        layout
-        className="grid gap-6 sm:grid-cols-2"
-      >
-        <AnimatePresence mode="popLayout">
+      {/* Right column — article grid */}
+      <div ref={gridRef}>
+        {/* Mobile: list layout */}
+        <div className="flex flex-col divide-y divide-earth-200 md:hidden">
           {items.map((item, i) => (
-            <motion.article
+            <article key={item.slug} data-card className="group py-8 first:pt-0">
+              <Link href={`/library/${item.slug}`} className="block">
+                <p className="text-[0.65rem] font-medium uppercase tracking-[0.08em] text-earth-500">
+                  {item.type}
+                </p>
+                <div className="mt-2 flex gap-4">
+                  <div className="flex-1">
+                    <h3 className="font-heading text-lg font-semibold leading-snug text-earth-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-earth-600">
+                      {item.description}
+                    </p>
+                    <p className="mt-2 text-[0.65rem] text-earth-400">
+                      {item.readingTime}
+                    </p>
+                  </div>
+                  <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded bg-earth-200">
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      priority={i < 4}
+                      sizes="96px"
+                      placeholder="blur"
+                      blurDataURL={item.blurDataURL}
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
+
+        {/* Desktop: 2-col grid */}
+        <div className="hidden gap-6 sm:grid-cols-2 md:grid">
+          {items.map((item, i) => (
+            <article
               key={item.slug}
-              layout
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              data-card
               className="group overflow-hidden rounded-lg border border-earth-200 bg-earth-50 transition hover:border-earth-300"
             >
-            <Link href={`/library/${item.slug}`} className="block">
-              <div className="relative aspect-[5/3] overflow-hidden bg-earth-200">
-                <Image
-                  src={item.image}
-                  alt=""
-                  fill
-                  priority={i < 4}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 540px"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-col justify-between p-6">
-                <div>
-                  <p className="text-[0.65rem] uppercase tracking-[0.06em] text-earth-500">
-                    {item.readingTime}
-                  </p>
-                  <h3 className="mt-2 font-heading text-xl leading-tight text-earth-900">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-earth-700">
-                    {item.description}
-                  </p>
+              <Link href={`/library/${item.slug}`} className="block">
+                <div className="relative aspect-[5/3] overflow-hidden bg-earth-200">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    priority={i < 4}
+                    sizes="(max-width: 1024px) 50vw, 540px"
+                    placeholder="blur"
+                    blurDataURL={item.blurDataURL}
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
                 </div>
-                <div className="mt-8 flex justify-end">
-                  <span className="inline-flex items-center gap-1 text-[0.7rem] font-medium uppercase text-earth-900">
-                    <span className="group-hover:underline group-hover:underline-offset-4">Read Now</span>
-                    <span className="inline-block -translate-x-2 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                      →
+                <div className="flex flex-col justify-between p-6">
+                  <div>
+                    <p className="text-[0.65rem] uppercase tracking-[0.06em] text-earth-500">
+                      {item.readingTime}
+                    </p>
+                    <h3 className="mt-2 font-heading text-xl leading-tight text-earth-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-earth-700">
+                      {item.description}
+                    </p>
+                  </div>
+                  <div className="mt-8 flex justify-end">
+                    <span className="inline-flex items-center gap-1 text-[0.7rem] font-medium uppercase text-earth-900">
+                      <span className="group-hover:underline group-hover:underline-offset-4">Read Now</span>
+                      <span className="inline-block -translate-x-2 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                        →
+                      </span>
                     </span>
-                  </span>
+                  </div>
                 </div>
-              </div>
-            </Link>
-            </motion.article>
+              </Link>
+            </article>
           ))}
-        </AnimatePresence>
-      </motion.div>
+        </div>
+      </div>
 
       {items.length === 0 && (
         <p className="mt-16 text-center text-earth-700 lg:col-start-2">
@@ -113,5 +246,6 @@ export default function LibraryGrid() {
         </p>
       )}
     </div>
+    </>
   );
 }

@@ -13,7 +13,7 @@ export const caseStudies: CaseStudy[] = [
     title: "The Cowichan Decision",
     teaser:
       "A landmark ruling reshaping how rights, land, and development intersect in British Columbia.",
-    image: "/images/vancouver.jpg",
+    image: "/images/vancouver.webp",
     tags: ["Case Study", "Land & Rights"],
     date: "March 4, 2026",
   },
@@ -31,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Capital, Governance, Place",
     teaser:
       "Three case studies on how emerging governance models are changing the real estate balance sheet.",
-    image: "/images/photo123.jpg",
+    image: "/images/photo123.webp",
     tags: ["Analysis", "Governance"],
     date: "January 20, 2026",
   },
@@ -40,7 +40,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Infrastructure & the 100-Year Horizon",
     teaser:
       "What enduring infrastructure decisions look like when planning spans generations, not quarters.",
-    image: "/images/88d981ca690449c6259d98c72767878a.jpg",
+    image: "/images/nathan-rose-sbvzdXqnG4k-unsplash.webp",
     tags: ["Research", "Infrastructure"],
     date: "December 8, 2025",
   },

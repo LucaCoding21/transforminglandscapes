@@ -85,7 +85,7 @@ export default function Nav() {
         <button
           type="button"
           onClick={() => setMobileOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-earth-100 text-earth-900 md:hidden"
+          className="flex h-10 w-10 items-center justify-center text-earth-900 md:hidden"
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
         >

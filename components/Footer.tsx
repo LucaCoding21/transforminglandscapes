@@ -115,9 +115,19 @@ export default function Footer() {
           clipId="footer-clip-transforming"
         />
 
-        {/* Row 2 — link columns on left, Landscapes pushed right (creates diagonal) */}
-        <div className="mt-4 flex items-end gap-6 md:mt-6 md:gap-10 lg:gap-14">
-          <div className="flex shrink-0 gap-8 pb-3 text-sm md:gap-12 md:pb-5">
+        {/* Row 2 — Landscapes full width on mobile */}
+        <div className="md:hidden">
+          <Wordmark
+            text="Landscapes"
+            viewBoxWidth={620}
+            imageSrc={FOOTER_IMAGE}
+            clipId="footer-clip-landscapes-mobile"
+          />
+        </div>
+
+        {/* Desktop: links + Landscapes side by side */}
+        <div className="mt-4 hidden md:mt-6 md:flex md:items-end md:gap-10 lg:gap-14">
+          <div className="flex shrink-0 gap-12 pb-5 text-sm">
             <ul className="space-y-2">
               {exploreLinks.map((link) => (
                 <li key={link.href}>
@@ -153,6 +163,36 @@ export default function Footer() {
               clipId="footer-clip-landscapes"
             />
           </div>
+        </div>
+
+        {/* Mobile: links below */}
+        <div className="mt-6 flex flex-wrap gap-6 text-sm md:hidden">
+          <ul className="space-y-2">
+            {exploreLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-earth-900/60 transition-colors hover:text-earth-900"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <ul className="space-y-2">
+            {producedBy.map((p) => (
+              <li key={p.label}>
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-earth-900/60 transition-colors hover:text-earth-900"
+                >
+                  {p.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <h1 className="sr-only">Transforming Landscapes</h1>

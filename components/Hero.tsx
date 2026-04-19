@@ -26,34 +26,6 @@ const infoCards: CardDef[] = [
     ),
   },
   {
-    label: "Research Scope",
-    href: "/#scope",
-    renderIcon: (hovered) => (
-      <>
-        <circle
-          cx="12"
-          cy="12"
-          r="8"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          fill="none"
-          className="transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-box:fill-box] [transform-origin:center]"
-          style={{
-            transform: hovered ? "scale(0.88)" : "scale(1)",
-          }}
-        />
-        <MorphIcon
-          pathA="M11 7 L13 7 L13 11 L17 11 L17 13 L13 13 L13 17 L11 17 L11 13 L7 13 L7 11 L11 11 Z"
-          pathB="M10.6 12 L7.1 8.5 L8.5 7.1 L12 10.6 L15.5 7.1 L16.9 8.5 L13.4 12 L16.9 15.5 L15.5 16.9 L12 13.4 L8.5 16.9 L7.1 15.5 Z"
-          hovered={hovered}
-          fill="currentColor"
-          stroke="none"
-          strokeWidth={0}
-        />
-      </>
-    ),
-  },
-  {
     label: "Discussion Paper",
     href: "/library",
     renderIcon: (hovered) => (
@@ -146,7 +118,7 @@ export default function Hero() {
   return (
     <section
       ref={rootRef}
-      className="relative h-[100svh] min-h-[720px] w-full overflow-hidden bg-earth-900 text-white"
+      className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-earth-900 text-white md:min-h-[720px]"
     >
       <div className="absolute inset-0">
         <Image
@@ -163,15 +135,15 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-earth-900/55 via-earth-900/10 to-earth-900/55" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-content flex-col px-6 pb-10 pt-28 md:px-10 md:pb-14 md:pt-32">
-        <div className="relative flex h-full flex-1 flex-col justify-end">
+        <div className="relative flex h-full flex-1 flex-col justify-center md:justify-end">
           <div className="lg:mb-[6vh] lg:-translate-x-20">
             <h1
               style={{
-                fontSize: "clamp(3.1rem, 9.5vw, 10rem)",
+                fontSize: "clamp(4rem, 12vw, 10rem)",
                 lineHeight: 0.95,
                 letterSpacing: "-0.04em",
               }}
-              className="whitespace-nowrap font-heading font-semibold text-white"
+              className="font-heading font-semibold text-white md:whitespace-nowrap"
             >
               {headlineLines.map((line, i) => (
                 <span
@@ -195,14 +167,12 @@ export default function Hero() {
             </h1>
           </div>
 
-          <div className="mt-6 lg:absolute lg:bottom-32 lg:right-0 lg:mt-0 lg:max-w-md lg:translate-x-32">
+          <div className="mt-6 max-w-sm md:max-w-none lg:absolute lg:bottom-32 lg:right-0 lg:mt-0 lg:max-w-md lg:translate-x-32">
             <p
               data-animate="fade"
               className="font-heading text-xl font-semibold leading-[1.15] tracking-tight text-white md:text-2xl lg:text-[1.75rem]"
             >
-              The Future,
-              <br />
-              Challenges &amp; Opportunities
+              The Future, Challenges &amp; Opportunities
             </p>
 
             <p
@@ -217,9 +187,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-8 z-10 lg:bottom-24">
-        <div className="pointer-events-auto mx-auto flex max-w-content justify-end px-6 md:px-10 lg:translate-x-32">
-          <ul className="grid w-full max-w-md grid-cols-1 gap-2 sm:grid-cols-3 md:gap-2.5">
+      <div className="pointer-events-none absolute inset-x-0 bottom-24 z-10 md:bottom-8 lg:bottom-24">
+        <div className="pointer-events-auto mx-auto flex max-w-content justify-center px-6 md:justify-end md:px-10 lg:translate-x-32">
+          <ul className="grid w-full max-w-md grid-cols-2 gap-3 sm:gap-3 md:gap-2.5">
           {infoCards.map((card) => (
             <li
               key={card.label}

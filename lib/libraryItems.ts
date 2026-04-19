@@ -1,13 +1,16 @@
+export type BodyBlock = string | { figure: string };
+
 export type LibraryItem = {
   slug: string;
   title: string;
   description: string;
   type: "Case Study" | "Interview" | "Economic Analysis" | "Resource";
   image: string;
+  blurDataURL: string;
   readingTime: string;
   author?: string;
   date?: string;
-  body?: string[];
+  body?: BodyBlock[];
 };
 
 export const libraryItems: LibraryItem[] = [
@@ -18,6 +21,7 @@ export const libraryItems: LibraryItem[] = [
       "A landmark ruling reshaping how rights, land, and development intersect across British Columbia.",
     type: "Case Study",
     image: "/images/nathan-rose-sbvzdXqnG4k-unsplash.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A+btH16x0P4e6Vpr2DXe/bA1s5by1lL+VIg3jO8MzMwAIDE5yDXzdda3o9rcy20Xhy0ZIXZFLkM5CnALHAyfU4GfQVq6VqF+nwy1SZLmVXiRJUYOwKyFlUuDnhivGeuOOleQRgMis3JIBJNfk+CyiLnU953v5r8mjvq4pxS0P/9k=",
     readingTime: "12 min read",
     author: "Transforming Landscapes Research Team",
     date: "March 2026",
@@ -35,7 +39,8 @@ export const libraryItems: LibraryItem[] = [
     description:
       "A conversation on how long-horizon governance is changing the way deals are structured.",
     type: "Interview",
-    image: "/images/vancouver.jpg",
+    image: "/images/vancouver.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A9I+Lfxo+KXgWwjXSNPSbULsHywHWeOIDktMQAqAdcdTXxNL+2Z+0GZXI1AICT8qaepUewOw5A7HNfRdj/p2muL3/AEjBYfvPn4/HNecyafYeY3+jR9T/AACuuo5t7r7j5V0k/tP7/wDgH//Z",
     readingTime: "24 min read",
     author: "Transforming Landscapes Research Team",
     date: "February 2026",
@@ -54,6 +59,7 @@ export const libraryItems: LibraryItem[] = [
       "A quantitative look at capital flows, ground-lease activity, and long-horizon structures across BC.",
     type: "Economic Analysis",
     image: "/images/kyle-thacker-6ifWgyH5tuc-unsplash.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A2/2Uf28Pj5r02nr8R9Q0vVdLvrhhNLeQGG4jjVQCYHgCIRkdHU8k89h+mq/tQeEyoPn2nP8Atmv5YvB1zc28c32eV4trDG1iuPpivWE1nV9i/wCnT9B/y1b/ABpYSm+W7dzgxGIalaJ//9k=",
     readingTime: "18 min read",
     author: "Transforming Landscapes Research Team",
     date: "January 2026",
@@ -72,6 +78,7 @@ export const libraryItems: LibraryItem[] = [
       "How modern ground-lease structures are being rethought for century-scale stewardship.",
     type: "Case Study",
     image: "/images/guy_dugas-mount-burgess-4882987.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A86+J/wAaP2vPCvi+31jSfEdnFqsMQjjXSAkdu0Ue7BNlsBZmJOWfcSFUdBXFp+3d/wAFBI0WNNV3qoABbQkZiB3J8rk+pr508Uahfxa7rN1HcypMl5LtcOwYZnnU4OcjIAH0AFebwaxq5hjJvpySo/5at6fWpy6pUxPNzyfuu3Q+VzbG1MPW5Kex/9k=",
     readingTime: "15 min read",
     author: "Transforming Landscapes Research Team",
     date: "December 2025",
@@ -90,6 +97,7 @@ export const libraryItems: LibraryItem[] = [
       "Three case studies on how emerging governance models change the real estate balance sheet.",
     type: "Economic Analysis",
     image: "/images/micah-mckerlich-gaZBqZQWSng-unsplash.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8AxR+03+y/p9qyw6bqMiwoBhLdAGbpgbmBx15qn/w1N+yoeW8M6uSev7iDr/39r8j9Okkk0+cyMWKBduTnGfSqRllyfnb869yGPnJXufJSyejF7H//2Q=",
     readingTime: "20 min read",
     author: "Transforming Landscapes Research Team",
     date: "November 2025",
@@ -108,6 +116,7 @@ export const libraryItems: LibraryItem[] = [
       "A leadership conversation on how 100-year thinking is reshaping deal structure in BC.",
     type: "Interview",
     image: "/images/jess-barnett-NwqvG6lb2jU-unsplash.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8ApXeu/skSadJql9aXhnUZW2h8p7iZj0CxoxyTXOw67+xzcQpP/Zuqp5ihtpgGRkZwcNivzt8IyyLdJMrkSLuIYH5gQp5Bpbq7u1uZgJnADtxuPrXRmfH+MhNKCVjwcFwPhnG9Rtvy0/zP/9k=",
     readingTime: "28 min read",
     author: "Transforming Landscapes Research Team",
     date: "October 2025",
@@ -125,7 +134,8 @@ export const libraryItems: LibraryItem[] = [
     description:
       "A curated collection of public frameworks, policy briefs, and reference material for practitioners.",
     type: "Resource",
-    image: "/images/photo123.jpg",
+    image: "/images/photo123.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8Atat4k/bLcQ6FpI063R40aSeBIVQ4xnczlo9wz90AeoFedzeDP2xTK5HiW6ILHpeWwHXsMcV9uW9zci3VRK4BxxuPoaw5ry7EzgTyABj/ABH1r2fqbf22vn/wD572qT+Ffj/mf//Z",
     readingTime: "Library",
     author: "Transforming Landscapes Research Team",
     date: "Ongoing",
@@ -138,12 +148,44 @@ export const libraryItems: LibraryItem[] = [
     ],
   },
   {
+    slug: "nations-housing-affordability",
+    title: "Could Nations Help Unlock Greater Housing Affordability?",
+    description:
+      "Examining how Nations could play a pivotal role in unlocking greater affordability in the Lower Mainland through leasehold land arrangements.",
+    type: "Economic Analysis",
+    image: "/images/hero-alt.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A+ftH16x0P4e6Vpr2DXe/bA1s5by1lL+VIg3jO8MzMwAIDE5yDXzdda3o9rcy20Xhy0ZIXZFLkM5CnALHAyfU4GfQVq6VqF+nwy1SZLmVXiRJUYOwKyFlUuDnhivGeuOOleQRgMis3JIBJNfk+CyiLnU953v5r8mjvq4pxS0P/9k=",
+    readingTime: "10 min read",
+    author: "Transforming Landscapes Research Team",
+    date: "April 2026",
+    body: [
+      "It's no secret that housing affordability remains a major concern across Canada, and more acutely, in regions like the Lower Mainland. Politicians regularly promise fixes to the issue, media sensationalize the issue, and it remains a perennial talking point among the housing industry and related stakeholders. But while talk of the issue remains plentiful, solutions remain elusive. The result is that many hopeful homebuyers are left feeling increasingly hopeless, as few near-term solutions appear in sight.",
+      "In this short research note, we'll examine a few key factors influencing the cost of delivering new housing in the region in simple terms, to develop a clear understanding of the challenges facing the delivery of new housing. We'll then examine how Nations could increasingly play a pivotal role in unlocking greater affordability in the region, providing a tangible near-term solution.",
+      "While there are many factors that influence the price of housing, and particularly new housing, one of the primary factors in high-cost regions is the price of the land to build upon. As demand for housing increases in a given area, the value of the land increases by virtue of the fact the same parcel occupied by a low-density dwelling could potentially be used to house many more people in a multi-family dwelling.",
+      "At a certain point, when the demand becomes high enough, the cost to develop the land into a higher density format can make economic sense, provided the prices people are willing to pay for new multi-family units are sufficient to cover the costs of development, including the land cost, along with a reasonable profit for the developer. In industry jargon, it is said that new housing development must \"pencil\", meaning that the revenue generated from the sale of the new units must be sufficient to cover the costs of development, including a profit.",
+      "In the simplest terms, the cost of new housing is a function of the land cost and other development costs. Typically, these other development costs can be broadly categorized into what are commonly referred to as \"soft costs\" and \"hard costs\". Soft costs are generally associated with the administrative and regulatory requirements of building a new dwelling, such as the cost of obtaining building permits, engineering and design fees, and other similar costs. Hard costs are generally associated with the actual construction of the building, such as the cost of materials, labor, and other related costs.",
+      "When looking at the problem of delivering more affordable housing, it's important to focus on the areas where control can be exerted, and which are likely to yield the greatest impact. It's difficult to reduce hard costs, since they are often determined by various macroeconomic factors, and are largely outside of the control of any individual or developer. Similarly, soft costs can also be difficult to reduce, since many are also set by market forces. It's worth noting there are some soft costs which could be improved through better policy decisions, such as faster permitting processes and reduced development charges, but even so, there are limits to how much can be done in this regard.",
+      "While the relative proportions of these costs will vary across development projects, the plot below provides an illustrative example of the relative significance of each cost component in the overall creation cost of a new housing development.",
+      { figure: "cost-breakdown" },
+      "As the plot illustrates, the land cost is typically the largest component of the overall cost of creating a new dwelling, followed by hard costs. The question that naturally arises is whether anything can be done to reduce the land cost component?",
+      "Title to land remains a sensitive issue in BC and in Canada, and a fulsome discussion of this issue is beyond the scope of this research note. Our goal here isn't to dismiss the historical context of land claims and title to land in the region, but rather to focus on the potential for Nations to play an impactful role in unlocking greater affordability in the region.",
+      "Where title to land enters the equation in the context of generating greater housing affordability is in differentiating between freehold and leasehold titles. On many Nations lands in the region, homeowners who purchased homes on these lands do not actually own the land beneath their homes, but rather, lease it from the Nations. These leasehold arrangements are typically set for a predetermined period of time, usually 99 years, but there are many different possible arrangements. The key distinguishing factor is that the ownership of the land itself remains with the Nation, and not the homeowner.",
+      "An interesting feature of these leasehold arrangements is that the homes sitting on these lands have historically sold for a discount relative to similar homes on freehold land.",
+      { figure: "price-trend" },
+      "If leasehold land can be purchased for development at a discounted price relative to freehold land, with a lease term well beyond the useful life of a typical building, significant cost savings could be passed along to end-users in the form of greater affordability. Even assuming a modest discount on the purchase of leasehold land of 20%, the potential cost savings passed along to end-users could be significant.",
+      { figure: "price-comparison" },
+      "Many Nations own lands adjacent to some of the most desirable neighborhoods in the region, and in many cases, the leasehold agreements in place on these lands are nearing their expiration date, which partially explains the discount in price trends shown previously. Since Nations may determine the land use, density, and thus the marketable value of their land by their own accord, a significant opportunity exists to unlock tremendous value for the Nations, and potentially improve housing affordability in the region at the same time.",
+      "Recent years have seen numerous well-executed examples of such opportunities, with developments like Sen\u0301a\u0301\u1E35w at the foot of the Burrard Bridge in Vancouver now rising from the ground, as well as developments by the Tsawwassen Nation, to name just a few. Though it remains true that this potential solution may not represent a panacea for housing affordability in the region, it could mark a significant step towards unlocking a more affordable future.",
+    ],
+  },
+  {
     slug: "research-methodology",
     title: "Research Methodology",
     description:
       "Our approach to primary research, interview protocols, and data sources for this platform.",
     type: "Resource",
-    image: "/images/88d981ca690449c6259d98c72767878a.jpg",
+    image: "/images/88d981ca690449c6259d98c72767878a.webp",
+    blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A9U8P/tL3c8e/UoNFdVy22O4AYquQApWVl5OBnoDwa82uf2/vBUFxLC/hS33RsynOoEHIOOQLc/zP1r85fBNlZ3Gn+FIriCOVJr+8R1ZQwdVtVYBgeoDcgHvzXrlz4Z8NpcyoulWgVXYACCMAAH6Vz4jPsS5tRm193+TPNwfDeGlH3ld/15n/2Q=",
     readingTime: "8 min read",
     author: "Transforming Landscapes Research Team",
     date: "September 2025",

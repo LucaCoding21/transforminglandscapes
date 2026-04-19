@@ -146,7 +146,7 @@ function Field({
     <div>
       <label
         htmlFor={id}
-        className="mb-2 flex items-center gap-1 text-[0.7rem] uppercase tracking-[0.2em] text-earth-700"
+        className="mb-2 flex items-center gap-1 text-[0.75rem] uppercase tracking-[0.2em] text-earth-700"
       >
         {label}
         {required && <span className="text-sage-600" aria-hidden>·</span>}

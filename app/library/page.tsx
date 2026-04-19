@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function LibraryPage() {
   return (
-    <main className="pt-32 md:pt-40">
+    <main className="pt-32 md:pt-32 lg:pt-40">
       <section className="mx-auto max-w-[1550px] px-6 pb-32 md:px-10 md:pb-48">
         <LibraryGrid />
       </section>

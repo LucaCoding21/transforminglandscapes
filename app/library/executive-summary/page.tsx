@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ExecutiveSummaryPage() {
   return (
-    <main className="pt-32 md:pt-40">
+    <main className="pt-24 md:pt-32 lg:pt-40">
       <section className="mx-auto max-w-content px-6 pb-24 md:px-10 md:pb-32">
         <div className="max-w-3xl">
           <Link

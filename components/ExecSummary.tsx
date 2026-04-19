@@ -2,15 +2,23 @@
 
 import Image from "next/image";
 import Link from "@/components/TransitionLink";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function ExecSummary() {
+  const imgRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: imgRef,
+    offset: ["start end", "end start"],
+  });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
+
   return (
     <section id="summary" className="relative bg-earth-50 py-24 md:py-32">
       <div className="mx-auto max-w-content px-6 md:px-10">
         <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="relative z-10 flex flex-col">
-            <h2 className="whitespace-nowrap pb-32 font-heading text-[clamp(2rem,5.5vw,5rem)] font-semibold uppercase leading-[0.95] tracking-[-0.04em] text-earth-900">
+            <h2 className="pb-16 font-heading text-[2.5rem] font-semibold uppercase leading-[0.95] text-earth-900 md:whitespace-nowrap md:pb-32 md:text-[4rem]">
               <span className="block w-max overflow-hidden pb-[0.12em] -mb-[0.12em]">
                 <motion.span
                   className="block"
@@ -77,21 +85,24 @@ export default function ExecSummary() {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20%" }}
-            transition={{ duration: 0.95, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-square overflow-hidden bg-earth-100"
-          >
-            <Image
-              src="/images/88d981ca690449c6259d98c72767878a.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
+          <div ref={imgRef} className="relative aspect-[4/3] overflow-hidden bg-earth-100 md:aspect-square">
+            <motion.div className="absolute inset-0 scale-[1.3]" style={{ y: imgY }}>
+              <Image
+                src="/images/88d981ca690449c6259d98c72767878a.webp"
+                alt=""
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ y: 0 }}
+              whileInView={{ y: "-100%" }}
+              viewport={{ once: true, margin: "-15%" }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 bg-earth-50"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
