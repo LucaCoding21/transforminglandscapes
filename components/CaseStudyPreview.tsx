@@ -59,7 +59,7 @@ export default function CaseStudyPreview() {
               className="font-heading font-semibold uppercase leading-[0.95] text-earth-900"
               style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
             >
-              Case Studies.
+              Case Studies
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 16 }}

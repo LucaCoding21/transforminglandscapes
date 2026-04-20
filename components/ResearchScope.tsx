@@ -150,7 +150,7 @@ export default function ResearchScope() {
           >
             Research
             <br />
-            Scope.
+            Scope
           </motion.h2>
 
           <div className="mt-16 flex flex-col gap-20">
@@ -239,7 +239,7 @@ export default function ResearchScope() {
           >
             Research
             <br />
-            Scope.
+            Scope
           </motion.h2>
         </div>
 
