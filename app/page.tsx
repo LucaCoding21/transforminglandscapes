@@ -1,9 +1,13 @@
 import Hero from "@/components/Hero";
-import ExecSummary from "@/components/ExecSummary";
-import ResearchScope from "@/components/ResearchScope";
-import CaseStudyPreview from "@/components/CaseStudyPreview";
-import LandAcknowledgement from "@/components/LandAcknowledgement";
 import SectionDivider from "@/components/ui/SectionDivider";
+import dynamic from "next/dynamic";
+
+const ExecSummary = dynamic(() => import("@/components/ExecSummary"));
+const ResearchScope = dynamic(() => import("@/components/ResearchScope"));
+const CaseStudyPreview = dynamic(() => import("@/components/CaseStudyPreview"));
+const LandAcknowledgement = dynamic(
+  () => import("@/components/LandAcknowledgement"),
+);
 
 export default function HomePage() {
   return (
