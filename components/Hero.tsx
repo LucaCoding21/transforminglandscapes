@@ -3,9 +3,11 @@
 import Image from "next/image";
 import HeroInfoCard from "@/components/HeroInfoCard";
 import MorphIcon from "@/components/MorphIcon";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { gsap } from "@/lib/gsap";
+
+const HERO_BLUR =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAACwAAAAD/wAARCAALABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9sAQwACAgICAgIDAgIDBQMDAwUGBQUFBQYIBgYGBgYICggICAgICAoKCgoKCgoKDAwMDAwMDg4ODg4PDw8PDw8PDw8P/9sAQwECAgIEBAQHBAQHEAsJCxAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ/90ABAAC/9oADAMBAAIRAxEAPwDDuv2q/wBlWAtnwlqCDGE3tEOnTgNxk+tMsf2s/wBn+OMrB4XMVwhIILCQDHTJ+Xr9K/MWWNJ4fJmUMj7CQRxkpk/me1R6RpWnLqbWK26eS8IlIxk7x3DdR9AcV69DMsVVqKlUr1Nf77PFdDC0I+0p4anp3gmfpZeftf8Aw2kmJbQ2jwMAJGhXHbBJ9Kq/8Nd/DX/oDSf9+o/8a/L2wiScXBmy2yaRByeFB4FaH2O3/ufqf8ar62v55/8AgbO/6zL/AJ80v/AEf//Z";
 
 type CardDef = {
   label: string;
@@ -26,7 +28,7 @@ const infoCards: CardDef[] = [
     ),
   },
   {
-    label: "Discussion Paper",
+    label: "The Library",
     href: "/library",
     renderIcon: (hovered) => (
       <>
@@ -66,60 +68,18 @@ const infoCards: CardDef[] = [
 ];
 
 const headlineLines = ["Transforming", "Landscapes"];
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
-  const rootRef = useRef<HTMLElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    if (!rootRef.current) return;
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const ctx = gsap.context(() => {
-      if (reduceMotion) {
-        gsap.set(["[data-animate='fade']", "[data-animate='card']"], {
-          opacity: 1,
-          y: 0,
-          x: 0,
-          yPercent: 0,
-        });
-        return;
-      }
-
-      const tl = gsap.timeline({
-        defaults: { ease: "power3.out" },
-        delay: 0.35,
-      });
-
-      tl.from(
-        "[data-animate='fade']",
-        {
-          opacity: 0,
-          y: 20,
-          duration: 1,
-          stagger: 0.12,
-        },
-        0.45,
-      ).from(
-        "[data-animate='card']",
-        {
-          yPercent: 110,
-          duration: 0.9,
-          stagger: 0.14,
-          ease: "power4.out",
-        },
-        0.7,
-      );
-    }, rootRef);
-
-    return () => ctx.revert();
+    const safety = setTimeout(() => setImageLoaded(true), 2500);
+    return () => clearTimeout(safety);
   }, []);
 
   return (
-    <section
-      ref={rootRef}
-      className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-earth-900 text-white md:min-h-[720px]"
-    >
+    <section className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-earth-900 text-white md:min-h-[720px]">
       <div className="absolute inset-0">
         <Image
           src="/images/make_this_landscape_202604151519.webp"
@@ -127,6 +87,9 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL={HERO_BLUR}
+          onLoad={() => setImageLoaded(true)}
           className="object-cover"
         />
       </div>
@@ -153,12 +116,8 @@ export default function Hero() {
                   <motion.span
                     className="block"
                     initial={{ y: "110%" }}
-                    animate={{ y: "0%" }}
-                    transition={{
-                      duration: 0.9,
-                      delay: 0.1 + i * 0.12,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
+                    animate={imageLoaded ? { y: "0%" } : { y: "110%" }}
+                    transition={{ duration: 0.9, delay: i * 0.12, ease: EASE }}
                   >
                     {line}
                   </motion.span>
@@ -168,21 +127,25 @@ export default function Hero() {
           </div>
 
           <div className="mt-6 max-w-sm md:max-w-none lg:absolute lg:bottom-32 lg:right-0 lg:mt-0 lg:max-w-md lg:translate-x-32">
-            <p
-              data-animate="fade"
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 1, delay: 0.35, ease: EASE }}
               className="font-heading text-xl font-semibold leading-[1.15] tracking-tight text-white md:text-2xl lg:text-[1.75rem]"
             >
               The Future, Challenges &amp; Opportunities
-            </p>
+            </motion.p>
 
-            <p
-              data-animate="fade"
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 1, delay: 0.47, ease: EASE }}
               className="mt-5 text-base leading-relaxed text-white/85 md:text-base"
             >
               Understanding First Nations-led real estate development in British
               Columbia, the territories and relationships grounding it, and the
               leaders defining what comes next.
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
@@ -190,20 +153,29 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-x-0 bottom-24 z-10 md:bottom-8 lg:bottom-24">
         <div className="pointer-events-auto mx-auto flex max-w-content justify-center px-6 md:justify-end md:px-10 lg:translate-x-32">
           <ul className="grid w-full max-w-md grid-cols-2 gap-3 sm:gap-3 md:gap-2.5">
-          {infoCards.map((card) => (
-            <li
-              key={card.label}
-              className="overflow-hidden rounded-2xl"
-            >
-              <div data-animate="card" className="h-full">
-                <HeroInfoCard
-                  label={card.label}
-                  href={card.href}
-                  renderIcon={card.renderIcon}
-                />
-              </div>
-            </li>
-          ))}
+            {infoCards.map((card, i) => (
+              <li
+                key={card.label}
+                className="overflow-hidden rounded-2xl"
+              >
+                <motion.div
+                  initial={{ y: "110%" }}
+                  animate={imageLoaded ? { y: "0%" } : { y: "110%" }}
+                  transition={{
+                    duration: 0.9,
+                    delay: 0.6 + i * 0.14,
+                    ease: EASE,
+                  }}
+                  className="h-full"
+                >
+                  <HeroInfoCard
+                    label={card.label}
+                    href={card.href}
+                    renderIcon={card.renderIcon}
+                  />
+                </motion.div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

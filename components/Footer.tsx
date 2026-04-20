@@ -16,7 +16,7 @@ const exploreLinks = [
 ];
 
 const producedBy = [
-  { label: "REIBC", href: "https://reibc.org" },
+  { label: "REIBC", href: "https://www.reibc.org/" },
   { label: "Greater Vancouver REALTORS®", href: "https://gvrealtors.ca" },
 ];
 
@@ -200,7 +200,7 @@ export default function Footer() {
         <div className="mt-8 border-t border-earth-900/15 pt-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-8">
-              <a href="https://reibc.org" target="_blank" rel="noreferrer">
+              <a href="https://www.reibc.org/" target="_blank" rel="noreferrer">
                 <img src="/images/reibc-logo.png" alt="Real Estate Institute of British Columbia" className="h-10 w-auto opacity-70 transition hover:opacity-100" />
               </a>
               <a href="https://gvrealtors.ca" target="_blank" rel="noreferrer">

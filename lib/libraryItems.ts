@@ -1,4 +1,9 @@
-export type BodyBlock = string | { figure: string } | { heading: string };
+export type InlineText = string | { text: string; href: string };
+export type BodyBlock =
+  | string
+  | { figure: string }
+  | { heading: string }
+  | { content: InlineText[] };
 
 export type LibraryItem = {
   slug: string;
@@ -25,7 +30,7 @@ export const libraryItems: LibraryItem[] = [
     type: "Economic Analysis",
     image: "/images/aditya-chinchure-m7CZ2o_3YQA-unsplash.webp",
     blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A+ftH16x0P4e6Vpr2DXe/bA1s5by1lL+VIg3jO8MzMwAIDE5yDXzdda3o9rcy20Xhy0ZIXZFLkM5CnALHAyfU4GfQVq6VqF+nwy1SZLmVXiRJUYOwKyFlUuDnhivGeuOOleQRgMis3JIBJNfk+CyiLnU953v5r8mjvq4pxS0P/9k=",
-    readingTime: "10 min read",
+    readingTime: "5 min read",
     author: "Real Estate Institute of British Columbia",
     authorAvatar: "/images/reibclogo.jpeg",
     date: "April 2026",
@@ -53,6 +58,52 @@ export const libraryItems: LibraryItem[] = [
       { figure: "price-comparison" },
       "Many Nations own lands adjacent to some of the most desirable neighborhoods in the region, and in many cases, the leasehold agreements in place on these lands are nearing their expiration date, which (partially) explains the discount in price trends shown previously. Since Nations may determine the land use, density, and thus, the marketable value of their land by their own accord, a significant opportunity exists to unlock tremendous value for the Nations, and potentially improve housing affordability in the region at the same time.",
       "Recent years have seen numerous well-executed examples of such opportunities, with developments like Sen\u0313áḵw at the foot of the Burrard Bridge in Vancouver now rising from the ground, as well as developments by the Tsawwassen Nation, to name just a few. Though it remains true that this potential solution may not represent a panacea for housing affordability in the region, it could mark a significant step towards unlocking a more affordable future.",
+    ],
+  },
+  {
+    slug: "cowichan-decision",
+    title:
+      "The Cowichan Decision: What It Means for Property Owners and the Real Estate Sector",
+    description:
+      "The case, which spanned more than 11 years, is one of the most complex and lengthy trials in Canadian history.",
+    type: "Case Study",
+    image: "/images/vancouver.webp",
+    blurDataURL:
+      "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A+ftH16x0P4e6Vpr2DXe/bA1s5by1lL+VIg3jO8MzMwAIDE5yDXzdda3o9rcy20Xhy0ZIXZFLkM5CnALHAyfU4GfQVq6VqF+nwy1SZLmVXiRJUYOwKyFlUuDnhivGeuOOleQRgMis3JIBJNfk+CyiLnU953v5r8mjvq4pxS0P/9k=",
+    readingTime: "2 min read",
+    author: "Real Estate Institute of British Columbia",
+    authorAvatar: "/images/reibclogo.jpeg",
+    date: "April 2026",
+    body: [
+      "On August 7, 2025, the British Columbia Supreme Court issued its decision in Cowichan Tribes v. Canada (Attorney General), 2025 BCSC 1490, recognizing the Cowichan Nation\u2019s Aboriginal title to the historic village site of Tl\u2019uqtinus and affirming its constitutional right to fish in the south arm of the Fraser River for food.",
+      "The case, which spanned more than 11 years, is one of the most complex and lengthy trials in Canadian history. The approximately 1,800 acres recognized in the decision overlap with privately owned lands held by third parties who were not part of the proceedings. While the Cowichan asserted Aboriginal title over these lands, they did not seek to invalidate existing private titles.",
+      {
+        content: [
+          "For property owners and the real estate sector, the key takeaway is that the decision does not change fee simple ownership. Private property rights remain intact, and landowners can continue to buy, sell, and hold property as before. A recent ",
+          {
+            text: "analysis from UBC",
+            href: "https://news.ubc.ca/2026/02/cowichan-decision-wont-affect-private-landowners/",
+          },
+          " supports this interpretation, noting that the ruling is grounded in established legal principles and does not threaten private landowners anywhere in British Columbia.",
+        ],
+      },
+      "For real estate professionals, the decision underscores the importance of understanding the evolving legal and policy landscape surrounding Indigenous rights and land use in British Columbia. While the ruling does not alter private property ownership, it may influence future conversations around land governance, collaboration with Indigenous Nations, development considerations, and public understanding of Aboriginal title. Being informed about these issues can help professionals respond to questions and navigate discussions about land, ownership, and reconciliation with clarity and confidence.",
+      "As with many landmark decisions, the broader implications, particularly around land governance and relationships with Indigenous Nations, will continue to evolve over time.",
+      {
+        content: [
+          "For those seeking more information, resources include the official ",
+          {
+            text: "BC Supreme Court judgment",
+            href: "https://www.bccourts.ca/jdb-txt/sc/25/14/2025BCSC1490.htm",
+          },
+          ", the ",
+          {
+            text: "City of Richmond\u2019s information page",
+            href: "https://www.richmond.ca/city-hall/news/2025/meetingforcowichan20251019.htm",
+          },
+          " on the decision, and analyses from legal firms specializing in Indigenous law.",
+        ],
+      },
     ],
   },
   {

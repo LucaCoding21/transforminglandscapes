@@ -30,7 +30,7 @@ export default function ContactPage() {
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-10">
             <a
-              href="https://reibc.org"
+              href="https://www.reibc.org/"
               target="_blank"
               rel="noreferrer"
               className="block"

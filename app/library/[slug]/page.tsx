@@ -156,36 +156,58 @@ export default async function ArticlePage({ params }: Props) {
         {item.body && (
           <div className="mt-10 space-y-6">
             {(() => {
-              const firstStringIdx = item.body.findIndex(
-                (b) => typeof b === "string"
-              );
+              const isParagraph = (b: BodyBlock) =>
+                typeof b === "string" ||
+                (typeof b === "object" && "content" in b);
+              const firstParaIdx = item.body.findIndex(isParagraph);
+              const paraClass = (i: number) =>
+                `text-base leading-[1.8] text-earth-800 ${i === firstParaIdx ? "first-letter:float-left first-letter:mr-2 first-letter:font-heading first-letter:text-5xl first-letter:font-semibold first-letter:leading-[0.85] first-letter:text-earth-900" : ""}`;
+
               return item.body.map((block: BodyBlock, i: number) => {
-                if (typeof block !== "string") {
-                  if ("heading" in block) {
-                    return (
-                      <h2
-                        key={i}
-                        className="mt-10 font-heading text-2xl font-semibold text-earth-900 md:text-3xl"
-                      >
-                        {block.heading}
-                      </h2>
-                    );
-                  }
-                  const Chart = chartComponents[block.figure];
-                  return Chart ? (
-                    <ChartLightbox key={i}>
-                      <Chart />
-                    </ChartLightbox>
-                  ) : null;
+                if (typeof block === "string") {
+                  return (
+                    <p key={i} className={paraClass(i)}>
+                      {block}
+                    </p>
+                  );
                 }
-                return (
-                  <p
-                    key={i}
-                    className={`text-base leading-[1.8] text-earth-800 ${i === firstStringIdx ? "first-letter:float-left first-letter:mr-2 first-letter:font-heading first-letter:text-5xl first-letter:font-semibold first-letter:leading-[0.85] first-letter:text-earth-900" : ""}`}
-                  >
-                    {block}
-                  </p>
-                );
+                if ("heading" in block) {
+                  return (
+                    <h2
+                      key={i}
+                      className="mt-10 font-heading text-2xl font-semibold text-earth-900 md:text-3xl"
+                    >
+                      {block.heading}
+                    </h2>
+                  );
+                }
+                if ("content" in block) {
+                  return (
+                    <p key={i} className={paraClass(i)}>
+                      {block.content.map((seg, j) =>
+                        typeof seg === "string" ? (
+                          <span key={j}>{seg}</span>
+                        ) : (
+                          <a
+                            key={j}
+                            href={seg.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-sage-600 underline underline-offset-4 transition hover:text-earth-900"
+                          >
+                            {seg.text}
+                          </a>
+                        ),
+                      )}
+                    </p>
+                  );
+                }
+                const Chart = chartComponents[block.figure];
+                return Chart ? (
+                  <ChartLightbox key={i}>
+                    <Chart />
+                  </ChartLightbox>
+                ) : null;
               });
             })()}
           </div>
