@@ -111,7 +111,7 @@ export default function Hero() {
               {headlineLines.map((line, i) => (
                 <span
                   key={line}
-                  className="block w-max overflow-hidden pb-[0.12em] -mb-[0.12em]"
+                  className="block overflow-hidden pb-[0.12em] -mb-[0.12em] md:w-max"
                 >
                   <motion.span
                     className="block"
@@ -147,10 +147,38 @@ export default function Hero() {
               leaders defining what comes next.
             </motion.p>
           </div>
+
+          <div className="mt-auto pt-10 md:hidden">
+            <ul className="mx-auto grid w-full max-w-md grid-cols-2 gap-3">
+              {infoCards.map((card, i) => (
+                <li
+                  key={card.label}
+                  className="overflow-hidden rounded-2xl"
+                >
+                  <motion.div
+                    initial={{ y: "110%" }}
+                    animate={imageLoaded ? { y: "0%" } : { y: "110%" }}
+                    transition={{
+                      duration: 0.9,
+                      delay: 0.6 + i * 0.14,
+                      ease: EASE,
+                    }}
+                    className="h-full"
+                  >
+                    <HeroInfoCard
+                      label={card.label}
+                      href={card.href}
+                      renderIcon={card.renderIcon}
+                    />
+                  </motion.div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-24 z-10 md:bottom-8 lg:bottom-24">
+      <div className="pointer-events-none absolute inset-x-0 bottom-24 z-10 hidden md:block md:bottom-8 lg:bottom-24">
         <div className="pointer-events-auto mx-auto flex max-w-content justify-center px-6 md:justify-end md:px-10 lg:translate-x-32">
           <ul className="grid w-full max-w-md grid-cols-2 gap-3 sm:gap-3 md:gap-2.5">
             {infoCards.map((card, i) => (

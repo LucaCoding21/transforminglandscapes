@@ -19,7 +19,7 @@ export default function ExecSummary() {
         <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="relative z-10 flex flex-col">
             <h2 className="pb-16 font-heading text-[2.5rem] font-semibold uppercase leading-[0.95] text-earth-900 md:whitespace-nowrap md:pb-32 md:text-[4rem]">
-              <span className="block w-max overflow-hidden pb-[0.12em] -mb-[0.12em]">
+              <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em] md:w-max">
                 <motion.span
                   className="block"
                   initial={{ y: "110%" }}

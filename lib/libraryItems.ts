@@ -9,7 +9,7 @@ export type LibraryItem = {
   slug: string;
   title: string;
   description: string;
-  type: "Case Study" | "Interview" | "Economic Analysis" | "Resource";
+  type: "Case Study" | "Interview" | "Resource";
   image?: string;
   blurDataURL?: string;
   readingTime: string;
@@ -27,7 +27,7 @@ export const libraryItems: LibraryItem[] = [
     title: "Could Nations help unlock greater housing affordability?",
     description:
       "It's no secret that housing affordability remains a major concern across Canada, and more acutely, in regions like the Lower Mainland.",
-    type: "Economic Analysis",
+    type: "Case Study",
     image: "/images/aditya-chinchure-m7CZ2o_3YQA-unsplash.webp",
     blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgACgAKAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAf/aAAwDAQACEQMRAD8A+ftH16x0P4e6Vpr2DXe/bA1s5by1lL+VIg3jO8MzMwAIDE5yDXzdda3o9rcy20Xhy0ZIXZFLkM5CnALHAyfU4GfQVq6VqF+nwy1SZLmVXiRJUYOwKyFlUuDnhivGeuOOleQRgMis3JIBJNfk+CyiLnU953v5r8mjvq4pxS0P/9k=",
     readingTime: "5 min read",

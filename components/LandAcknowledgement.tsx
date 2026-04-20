@@ -36,10 +36,7 @@ export default function LandAcknowledgement() {
             }}
             className="flex flex-col"
           >
-            <h2
-              className="font-heading font-semibold uppercase leading-[0.95]"
-              style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)" }}
-            >
+            <h2 className="font-heading font-semibold uppercase leading-[0.95] text-[2rem] md:text-[clamp(2.5rem,5.5vw,4rem)]">
               Acknowledgement
             </h2>
 

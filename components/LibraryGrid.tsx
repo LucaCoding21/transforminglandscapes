@@ -2,14 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import { libraryItems, type LibraryItem } from "@/lib/libraryItems";
 import { cn } from "@/lib/cn";
 
 type Filter = "All" | LibraryItem["type"];
 
-const filters: Filter[] = ["All", "Case Study", "Interview", "Economic Analysis", "Resource"];
+const filters: Filter[] = ["All", "Case Study", "Interview", "Resource"];
+
+const counts: Record<Filter, number> = libraryItems.reduce(
+  (acc, item) => {
+    acc[item.type]++;
+    acc.All++;
+    return acc;
+  },
+  {
+    All: 0,
+    "Case Study": 0,
+    Interview: 0,
+    Resource: 0,
+  } as Record<Filter, number>,
+);
 
 function getItems(filter: Filter) {
   if (filter === "All") return libraryItems;
@@ -19,7 +32,6 @@ function getItems(filter: Filter) {
 export default function LibraryGrid() {
   const [active, setActive] = useState<Filter>("All");
   const gridRef = useRef<HTMLDivElement>(null);
-  const animating = useRef(false);
   const [stickyVisible, setStickyVisible] = useState(false);
   const gridInView = useRef(false);
 
@@ -44,46 +56,9 @@ export default function LibraryGrid() {
 
   const items = getItems(active);
 
-  const handleFilter = useCallback((filter: Filter) => {
-    if (filter === active || animating.current || !gridRef.current) return;
-    animating.current = true;
-
-    const cards = gridRef.current.querySelectorAll("[data-card]");
-
-    // Fade out current cards
-    gsap.to(cards, {
-      opacity: 0,
-      y: -12,
-      duration: 0.25,
-      stagger: 0.03,
-      ease: "power2.in",
-      onComplete: () => {
-        // Swap filter
-        setActive(filter);
-
-        // Wait a frame for React to render the new cards
-        requestAnimationFrame(() => {
-          if (!gridRef.current) return;
-          const newCards = gridRef.current.querySelectorAll("[data-card]");
-
-          gsap.fromTo(
-            newCards,
-            { opacity: 0, y: 20 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              stagger: 0.06,
-              ease: "power3.out",
-              onComplete: () => {
-                animating.current = false;
-              },
-            },
-          );
-        });
-      },
-    });
-  }, [active]);
+  const handleFilter = (filter: Filter) => {
+    if (filter !== active) setActive(filter);
+  };
 
   return (
     <>
@@ -106,13 +81,21 @@ export default function LibraryGrid() {
                 type="button"
                 onClick={() => handleFilter(filter)}
                 className={cn(
-                  "rounded-full border px-3 py-1.5 text-xs transition",
+                  "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs transition",
                   isActive
                     ? "border-earth-900 bg-earth-900 text-white"
                     : "border-earth-300 bg-earth-50 text-earth-800 hover:border-earth-500",
                 )}
               >
-                {filter}
+                <span>{filter}</span>
+                <span
+                  className={cn(
+                    "text-[0.65rem] tabular-nums",
+                    isActive ? "text-white/60" : "text-earth-500",
+                  )}
+                >
+                  {counts[filter]}
+                </span>
               </button>
             );
           })}
@@ -126,8 +109,9 @@ export default function LibraryGrid() {
           The Library
         </h1>
         <p className="mt-6 text-base leading-relaxed text-earth-700 md:text-lg">
-          Case studies, leadership interviews, economic analysis, and practitioner resources
-          built as a living collection for the professionals shaping the next era of real estate in British Columbia.
+          Case studies, leadership interviews, and practitioner resources built
+          as a living collection for the professionals shaping the next era of
+          real estate in British Columbia.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-2">
@@ -139,13 +123,21 @@ export default function LibraryGrid() {
                 type="button"
                 onClick={() => handleFilter(filter)}
                 className={cn(
-                  "rounded-full border px-5 py-2.5 text-sm transition md:px-4 md:py-2",
+                  "inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm transition md:px-4 md:py-2",
                   isActive
                     ? "border-earth-900 bg-earth-900 text-white"
                     : "border-earth-300 bg-earth-50 text-earth-800 hover:border-earth-500",
                 )}
               >
-                {filter}
+                <span>{filter}</span>
+                <span
+                  className={cn(
+                    "text-xs tabular-nums",
+                    isActive ? "text-white/60" : "text-earth-500",
+                  )}
+                >
+                  {counts[filter]}
+                </span>
               </button>
             );
           })}
