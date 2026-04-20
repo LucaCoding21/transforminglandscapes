@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { libraryItems, type LibraryItem } from "@/lib/libraryItems";
 import { cn } from "@/lib/cn";
 
@@ -31,28 +31,6 @@ function getItems(filter: Filter) {
 
 export default function LibraryGrid() {
   const [active, setActive] = useState<Filter>("All");
-  const gridRef = useRef<HTMLDivElement>(null);
-  const [stickyVisible, setStickyVisible] = useState(false);
-  const gridInView = useRef(false);
-
-  useEffect(() => {
-    if (window.innerWidth >= 768) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => { gridInView.current = entry.isIntersecting; },
-      { threshold: 0 },
-    );
-    if (gridRef.current) observer.observe(gridRef.current);
-
-    const onScroll = () => {
-      setStickyVisible(window.scrollY > 150 && !gridInView.current);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      observer.disconnect();
-    };
-  }, []);
 
   const items = getItems(active);
 
@@ -61,48 +39,7 @@ export default function LibraryGrid() {
   };
 
   return (
-    <>
-      {/* Mobile sticky header — shows on scroll up */}
-      <div
-        className={cn(
-          "fixed inset-x-0 top-0 z-40 bg-earth-50 px-6 pb-4 pt-24 transition-transform duration-300 md:hidden",
-          stickyVisible ? "translate-y-0" : "-translate-y-full",
-        )}
-      >
-        <h2 className="font-heading text-lg font-semibold text-earth-900">
-          The Library
-        </h2>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {filters.map((filter) => {
-            const isActive = active === filter;
-            return (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => handleFilter(filter)}
-                className={cn(
-                  "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs transition",
-                  isActive
-                    ? "border-earth-900 bg-earth-900 text-white"
-                    : "border-earth-300 bg-earth-50 text-earth-800 hover:border-earth-500",
-                )}
-              >
-                <span>{filter}</span>
-                <span
-                  className={cn(
-                    "text-[0.65rem] tabular-nums",
-                    isActive ? "text-white/60" : "text-earth-500",
-                  )}
-                >
-                  {counts[filter]}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="grid gap-12 lg:grid-cols-[28rem_1fr] lg:gap-16">
+    <div className="grid gap-12 lg:grid-cols-[28rem_1fr] lg:gap-16">
       {/* Left column — sticky sidebar */}
       <div className="lg:sticky lg:top-32 lg:self-start">
         <h1 className="font-heading text-display-lg text-earth-900">
@@ -145,7 +82,7 @@ export default function LibraryGrid() {
       </div>
 
       {/* Right column — article grid */}
-      <div ref={gridRef}>
+      <div>
         {/* Mobile: list layout */}
         <div className="flex flex-col divide-y divide-earth-200 md:hidden">
           {items.map((item, i) => (
@@ -248,6 +185,5 @@ export default function LibraryGrid() {
         </p>
       )}
     </div>
-    </>
   );
 }

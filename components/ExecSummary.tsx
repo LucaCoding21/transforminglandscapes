@@ -24,7 +24,7 @@ export default function ExecSummary() {
                   className="block"
                   initial={{ y: "110%" }}
                   whileInView={{ y: "0%" }}
-                  viewport={{ once: true, margin: "-20%" }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                 >
                   Executive Summary
@@ -36,7 +36,7 @@ export default function ExecSummary() {
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-20%" }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               >
                 There are already many thoughtful, well-researched resources
@@ -48,7 +48,7 @@ export default function ExecSummary() {
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-20%" }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.9, delay: 0.27, ease: [0.22, 1, 0.36, 1] }}
               >
                 This report is a first step in what we hope will be a long-term,
@@ -61,7 +61,7 @@ export default function ExecSummary() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20%" }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="mt-6"
             >
@@ -98,7 +98,7 @@ export default function ExecSummary() {
             <motion.div
               initial={{ y: 0 }}
               whileInView={{ y: "-100%" }}
-              viewport={{ once: true, margin: "-15%" }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 bg-earth-50"
             />
