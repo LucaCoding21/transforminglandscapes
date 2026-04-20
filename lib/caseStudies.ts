@@ -10,7 +10,10 @@ export type CaseStudy = {
 };
 
 export const caseStudies: CaseStudy[] = libraryItems
-  .filter((item) => item.type !== "Interview" && item.type !== "Resource")
+  .filter(
+    (item): item is typeof item & { image: string } =>
+      item.type !== "Interview" && item.type !== "Resource" && !!item.image,
+  )
   .map((item) => ({
     slug: item.slug,
     title: item.title,
