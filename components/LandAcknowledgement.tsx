@@ -10,7 +10,7 @@ export default function LandAcknowledgement() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="/images/kyle-thacker-6ifWgyH5tuc-unsplash.webp"
+              src="/images/source123-acknowledgement.webp"
               alt=""
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"

@@ -17,21 +17,21 @@ const pillars: Pillar[] = [
     label: "Indigenous Land & Development",
     description:
       "This section highlights existing resources that map and explain Indigenous territories and Indigenous-owned business designations. We encourage you to explore these materials for deeper context and understanding, and you\u2019ll find links throughout this report to help guide your learning.",
-    image: "/images/jess-barnett-NwqvG6lb2jU-unsplash.webp",
+    image: "/images/orca-indigenous-land.webp",
   },
   {
     number: "02",
     label: "Governance Models",
     description:
       "We explore how traditional models and models from other parts of the world are implemented and the differences, challenges, and opportunities they present.",
-    image: "/images/kyle-thacker-6ifWgyH5tuc-unsplash.webp",
+    image: "/images/microsoft-copilot-pEVjp7yIc2A-unsplash.webp",
   },
   {
     number: "03",
     label: "The Data",
     description:
       "Economic and market data is important in understanding impact, establishing policy and integrating communities in both the built environment and from a perspective of sustainability.",
-    image: "/images/nathan-rose-sbvzdXqnG4k-unsplash.webp",
+    image: "/images/kaleidico-3V8xo5Gbusk-unsplash.webp",
   },
   {
     number: "04",
@@ -258,7 +258,7 @@ export default function ResearchScope() {
                     sizes="25vw"
                     className="object-cover"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-earth-900 via-earth-900/75 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-earth-900 via-earth-900/70 to-transparent" />
                 </div>
               </div>
 

@@ -47,9 +47,9 @@ const data: [number, number, number][] = [
   [2024, 2050000, 1250000],
 ];
 
-const CHART_W = 680;
-const CHART_H = 280;
-const PAD = { top: 16, right: 60, bottom: 36, left: 80 };
+const CHART_W = 720;
+const CHART_H = 300;
+const PAD = { top: 16, right: 60, bottom: 36, left: 110 };
 const W = CHART_W - PAD.left - PAD.right;
 const H = CHART_H - PAD.top - PAD.bottom;
 
@@ -102,8 +102,13 @@ function buildAreaPath(col: 1 | 2) {
 
 function formatPrice(v: number) {
   if (v === 0) return "$0";
-  if (v >= 1000000) return `$${(v / 1000000).toFixed(0)}M`;
-  return `$${(v / 1000).toFixed(0)}K`;
+  return `$${v.toLocaleString()}`;
+}
+
+// Deterministic pseudo-jitter so scatter dots render consistently
+function jitter(seed: number) {
+  const x = Math.sin(seed * 12.9898) * 43758.5453;
+  return x - Math.floor(x);
 }
 
 const FREEHOLD_COLOR = "#5a7247";
@@ -176,30 +181,18 @@ export default function PriceTrendChart() {
     <div ref={containerRef} className="my-10 rounded-sm border-y border-earth-200 py-8">
       {/* Header */}
       <p className="text-[0.6rem] uppercase tracking-[0.15em] text-earth-500">Figure</p>
-      <h4 className="mt-1 font-heading text-lg text-earth-900">
-        Comparison of Median Price Trend
+      <h4 className="mt-1 font-heading text-base text-earth-900 sm:text-lg">
+        Comparison of Median Price Trend - Detached Homes with Land
       </h4>
-      <p className="mt-0.5 text-[13px] text-earth-500">
-        Detached homes with land &mdash; Leaseholds on Nation Lands vs. Freeholds
+      <p className="mt-0.5 text-[11px] text-earth-500 sm:text-[12px]">
+        Leaseholds on Nation Lands vs. Freeholds not on Nation Lands
       </p>
 
-      {/* Legend */}
-      <div className="mt-4 mb-4 flex items-center gap-5 text-[11px] text-earth-600">
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-[3px] w-3.5 rounded-full" style={{ backgroundColor: FREEHOLD_COLOR }} />
-          Freehold
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-[3px] w-3.5 rounded-full" style={{ backgroundColor: LEASEHOLD_COLOR }} />
-          Leasehold
-        </span>
-      </div>
-
       {/* SVG */}
-      <div className="overflow-x-auto">
+      <div className="mt-4 overflow-x-auto">
         <svg
           viewBox={`0 0 ${CHART_W} ${CHART_H}`}
-          className="mx-auto w-full max-w-[680px]"
+          className="mx-auto w-full max-w-[720px]"
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
@@ -212,6 +205,17 @@ export default function PriceTrendChart() {
               <stop offset="100%" stopColor={LEASEHOLD_COLOR} stopOpacity="0.01" />
             </linearGradient>
           </defs>
+
+          {/* Y-axis title */}
+          <text
+            transform={`translate(24, ${PAD.top + H / 2}) rotate(-90)`}
+            textAnchor="middle"
+            fill="#6b5d47"
+            fontSize="11"
+            fontFamily="var(--font-body)"
+          >
+            Median Sale Price
+          </text>
 
           {/* Grid */}
           {Y_TICKS.map((tick) => (
@@ -226,6 +230,20 @@ export default function PriceTrendChart() {
               strokeDasharray={tick === 0 ? "none" : "3,3"}
             />
           ))}
+
+          {/* Scatter dots — data points */}
+          {data.map((d, i) => {
+            const fx = xPos(d[0]) + (jitter(i * 2 + 1) - 0.5) * 6;
+            const fy = yPos(d[1]) + (jitter(i * 2 + 2) - 0.5) * 14;
+            const lx = xPos(d[0]) + (jitter(i * 2 + 3) - 0.5) * 6;
+            const ly = yPos(d[2]) + (jitter(i * 2 + 4) - 0.5) * 14;
+            return (
+              <g key={`scatter-${d[0]}`}>
+                <circle cx={fx} cy={fy} r={2.5} fill={FREEHOLD_COLOR} opacity={0.18} />
+                <circle cx={lx} cy={ly} r={2.5} fill={LEASEHOLD_COLOR} opacity={0.18} />
+              </g>
+            );
+          })}
 
           {/* Y labels */}
           {Y_TICKS.map((tick) => (
@@ -294,33 +312,23 @@ export default function PriceTrendChart() {
             r={4}
             fill={LEASEHOLD_COLOR}
           />
-
-          {/* End labels */}
-          <text
-            x={xPos(lastFreehold[0]) + 6}
-            y={yPos(lastFreehold[1]) - 8}
-            fill={FREEHOLD_COLOR}
-            fontSize="11"
-            fontWeight="500"
-            fontFamily="var(--font-body)"
-          >
-            $2.05M
-          </text>
-          <text
-            x={xPos(lastLeasehold[0]) + 6}
-            y={yPos(lastLeasehold[2]) + 16}
-            fill={LEASEHOLD_COLOR}
-            fontSize="11"
-            fontWeight="500"
-            fontFamily="var(--font-body)"
-          >
-            $1.25M
-          </text>
         </svg>
       </div>
 
+      {/* Legend */}
+      <div className="mt-2 flex items-center justify-center gap-6 text-[11px] text-earth-600">
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-[2px] w-5" style={{ backgroundColor: FREEHOLD_COLOR }} />
+          Freehold
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-[2px] w-5" style={{ backgroundColor: LEASEHOLD_COLOR }} />
+          Leasehold
+        </span>
+      </div>
+
       {/* Source */}
-      <p className="mt-4 text-[10px] leading-relaxed text-earth-300">
+      <p className="mt-4 text-right text-[10px] text-earth-400">
         Source Data: GVR MLS | GVR Economics
       </p>
     </div>

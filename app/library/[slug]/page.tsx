@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = libraryItems.find((i) => i.slug === slug);
   if (!item) return {};
   return {
-    title: `${item.title} — Transforming Landscapes`,
+    title: `${item.title} | Transforming Landscapes`,
     description: item.description,
   };
 }
@@ -42,17 +42,23 @@ export default async function ArticlePage({ params }: Props) {
     <main>
       {/* Hero image — sticky behind content */}
       <div className="sticky top-0 z-0 h-[35vh] min-h-[280px] w-full overflow-hidden bg-earth-200 md:h-[50vh] md:min-h-[400px]">
-        <Image
-          src={item.image}
-          alt={item.title}
-          fill
-          priority
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={item.blurDataURL}
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent" />
+        {item.image && item.blurDataURL ? (
+          <>
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              priority
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={item.blurDataURL}
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent" />
+          </>
+        ) : (
+          <div className="h-full w-full bg-gradient-to-br from-earth-300 via-earth-200 to-earth-100" />
+        )}
       </div>
 
       {/* Article content — scrolls over the hero */}
@@ -92,42 +98,96 @@ export default async function ArticlePage({ params }: Props) {
           {item.title}
         </h1>
 
-        {/* Description */}
-        <p className="mt-4 text-lg leading-relaxed text-earth-600">
-          {item.description}
-        </p>
-
         {/* Author */}
         {item.author && (
-          <p className="mt-6 text-sm text-earth-500">
-            By {item.author}
-          </p>
+          <div className="mt-6 flex items-center gap-3 text-sm text-earth-500">
+            {item.authorAvatar && (
+              <span className="relative block h-8 w-8 overflow-hidden rounded-full bg-earth-200">
+                <Image
+                  src={item.authorAvatar}
+                  alt={item.author}
+                  fill
+                  sizes="32px"
+                  className="object-cover"
+                />
+              </span>
+            )}
+            <span>By {item.author}</span>
+          </div>
         )}
 
         {/* Divider */}
         <hr className="mt-8 border-earth-200" />
 
+        {/* PDF download */}
+        {item.pdfUrl && (
+          <div className="mt-10">
+            <a
+              href={item.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 rounded-full bg-earth-900 px-6 py-3 text-sm font-medium text-earth-50 transition hover:bg-sage-600"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              <span>Open full thesis (PDF)</span>
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        )}
+
+        {/* YouTube embed */}
+        {item.youtubeId && (
+          <div className="mt-10 aspect-video overflow-hidden rounded-lg bg-earth-900">
+            <iframe
+              src={`https://www.youtube.com/embed/${item.youtubeId}`}
+              title={item.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              className="h-full w-full"
+            />
+          </div>
+        )}
+
         {/* Body */}
         {item.body && (
           <div className="mt-10 space-y-6">
-            {item.body.map((block: BodyBlock, i: number) => {
-              if (typeof block !== "string") {
-                const Chart = chartComponents[block.figure];
-                return Chart ? (
-                  <ChartLightbox key={i}>
-                    <Chart />
-                  </ChartLightbox>
-                ) : null;
-              }
-              return (
-                <p
-                  key={i}
-                  className={`text-base leading-[1.8] text-earth-800 ${i === 0 ? "first-letter:float-left first-letter:mr-2 first-letter:font-heading first-letter:text-5xl first-letter:font-semibold first-letter:leading-[0.85] first-letter:text-earth-900" : ""}`}
-                >
-                  {block}
-                </p>
+            {(() => {
+              const firstStringIdx = item.body.findIndex(
+                (b) => typeof b === "string"
               );
-            })}
+              return item.body.map((block: BodyBlock, i: number) => {
+                if (typeof block !== "string") {
+                  if ("heading" in block) {
+                    return (
+                      <h2
+                        key={i}
+                        className="mt-10 font-heading text-2xl font-semibold text-earth-900 md:text-3xl"
+                      >
+                        {block.heading}
+                      </h2>
+                    );
+                  }
+                  const Chart = chartComponents[block.figure];
+                  return Chart ? (
+                    <ChartLightbox key={i}>
+                      <Chart />
+                    </ChartLightbox>
+                  ) : null;
+                }
+                return (
+                  <p
+                    key={i}
+                    className={`text-base leading-[1.8] text-earth-800 ${i === firstStringIdx ? "first-letter:float-left first-letter:mr-2 first-letter:font-heading first-letter:text-5xl first-letter:font-semibold first-letter:leading-[0.85] first-letter:text-earth-900" : ""}`}
+                  >
+                    {block}
+                  </p>
+                );
+              });
+            })()}
           </div>
         )}
 
@@ -176,13 +236,15 @@ export default async function ArticlePage({ params }: Props) {
                     </p>
                   </div>
                   <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded bg-earth-200">
-                    <Image
-                      src={li.image}
-                      alt=""
-                      fill
-                      sizes="80px"
-                      className="object-cover"
-                    />
+                    {li.image && (
+                      <Image
+                        src={li.image}
+                        alt=""
+                        fill
+                        sizes="80px"
+                        className="object-cover"
+                      />
+                    )}
                   </div>
                 </Link>
               ))}

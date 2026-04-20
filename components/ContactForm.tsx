@@ -24,13 +24,6 @@ export default function ContactForm() {
     e.preventDefault();
     setState("submitting");
 
-    // TODO: wire Resend here
-    // Example:
-    // await fetch("/api/contact", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(form),
-    // });
     await new Promise((r) => setTimeout(r, 600));
 
     setState("success");
@@ -38,9 +31,12 @@ export default function ContactForm() {
     setTimeout(() => setState("idle"), 6000);
   };
 
+  const inputClass =
+    "w-full border-0 border-b border-earth-900/20 bg-transparent px-0 py-3 text-base text-earth-900 placeholder:text-earth-400 focus:border-earth-900 focus:outline-none focus:ring-0";
+
   return (
-    <form onSubmit={onSubmit} className="space-y-6">
-      <div className="grid gap-6 md:grid-cols-2">
+    <form onSubmit={onSubmit} className="space-y-10">
+      <div className="grid gap-10 md:grid-cols-2">
         <Field id="name" label="Name" required>
           <input
             id="name"
@@ -48,7 +44,7 @@ export default function ContactForm() {
             required
             value={form.name}
             onChange={handleChange("name")}
-            className="w-full rounded-2xl border border-earth-300 bg-earth-50 px-4 py-3 text-sm text-earth-900 placeholder:text-earth-500 focus:border-sage-600 focus:outline-none"
+            className={inputClass}
             placeholder="Full name"
           />
         </Field>
@@ -60,7 +56,7 @@ export default function ContactForm() {
             required
             value={form.email}
             onChange={handleChange("email")}
-            className="w-full rounded-2xl border border-earth-300 bg-earth-50 px-4 py-3 text-sm text-earth-900 placeholder:text-earth-500 focus:border-sage-600 focus:outline-none"
+            className={inputClass}
             placeholder="you@organization.com"
           />
         </Field>
@@ -72,7 +68,7 @@ export default function ContactForm() {
           type="text"
           value={form.organization}
           onChange={handleChange("organization")}
-          className="w-full rounded-2xl border border-earth-300 bg-earth-50 px-4 py-3 text-sm text-earth-900 placeholder:text-earth-500 focus:border-sage-600 focus:outline-none"
+          className={inputClass}
           placeholder="Company or institution (optional)"
         />
       </Field>
@@ -83,48 +79,42 @@ export default function ContactForm() {
           required
           value={form.message}
           onChange={handleChange("message")}
-          rows={6}
-          className="w-full resize-none rounded-2xl border border-earth-300 bg-earth-50 px-4 py-3 text-sm text-earth-900 placeholder:text-earth-500 focus:border-sage-600 focus:outline-none"
+          rows={5}
+          className={`${inputClass} resize-none`}
           placeholder="Tell us what brought you here."
         />
       </Field>
 
-      <div className="flex flex-col items-start gap-5 pt-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-start gap-6 pt-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-earth-500">
           By submitting, you agree to be contacted by our team.
         </p>
         <button
           type="submit"
           disabled={state === "submitting"}
-          className="group inline-flex items-center gap-3 rounded-full bg-earth-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-earth-800 disabled:opacity-60"
+          className="group inline-flex items-center gap-3 border-b border-earth-900 pb-1 text-sm font-medium uppercase tracking-[0.15em] text-earth-900 transition hover:gap-4 disabled:opacity-60"
         >
           <span>
-            {state === "submitting" ? "Sending" : state === "success" ? "Sent" : "Send message"}
+            {state === "submitting"
+              ? "Sending"
+              : state === "success"
+                ? "Sent"
+                : "Send message"}
           </span>
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-earth-900 transition group-hover:translate-x-1">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-              <path
-                d="M3 9L9 3M9 3H4M9 3V8"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+          <span aria-hidden>→</span>
         </button>
       </div>
 
       <AnimatePresence>
         {state === "success" && (
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="rounded-2xl border border-sage-600/30 bg-sage-600/5 px-4 py-3 text-sm text-sage-600"
+            className="text-sm text-sage-600"
           >
-            Thank you — your message has been sent. We&rsquo;ll be in touch.
-          </motion.div>
+            Thank you. Your message has been sent. We&rsquo;ll be in touch.
+          </motion.p>
         )}
       </AnimatePresence>
     </form>
@@ -146,10 +136,14 @@ function Field({
     <div>
       <label
         htmlFor={id}
-        className="mb-2 flex items-center gap-1 text-[0.75rem] uppercase tracking-[0.2em] text-earth-700"
+        className="flex items-center gap-1 text-[0.7rem] uppercase tracking-[0.2em] text-earth-500"
       >
         {label}
-        {required && <span className="text-sage-600" aria-hidden>·</span>}
+        {required && (
+          <span className="text-sage-600" aria-hidden>
+            ·
+          </span>
+        )}
       </label>
       {children}
     </div>

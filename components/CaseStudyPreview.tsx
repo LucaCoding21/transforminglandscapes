@@ -117,7 +117,7 @@ export default function CaseStudyPreview() {
           {caseStudies.map((study) => (
             <Link
               key={study.slug}
-              href={`/library#${study.slug}`}
+              href={`/library/${study.slug}`}
               className="w-[82vw] shrink-0 snap-start"
             >
               <div className="relative aspect-[5/4] overflow-hidden">
@@ -204,7 +204,7 @@ export default function CaseStudyPreview() {
             }}
             className="group relative flex w-[44%] shrink-0 flex-col lg:w-[32%]"
           >
-            <Link href={`/library#${study.slug}`} className="block">
+            <Link href={`/library/${study.slug}`} className="block">
               <div className="relative aspect-[4/3] overflow-hidden bg-earth-200">
                 <Image
                   src={study.image}

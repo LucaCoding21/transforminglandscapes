@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LibraryGrid from "@/components/LibraryGrid";
 
 export const metadata: Metadata = {
-  title: "Library — Transforming Landscapes",
+  title: "Library | Transforming Landscapes",
   description:
     "Case studies, leadership interviews, economic analysis, and resources on the future of real estate in British Columbia.",
 };

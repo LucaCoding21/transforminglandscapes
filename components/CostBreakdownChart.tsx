@@ -7,19 +7,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const categories = [
-  { label: "Land Cost", low: 44, mid: 39, high: 33 },
-  { label: "Hard Costs", low: 28, mid: 29, high: 35 },
-  { label: "Developer's Profit", low: 14, mid: 14, high: 14 },
-  { label: "Soft Costs", low: 7, mid: 7, high: 8 },
-  { label: "Financing Costs", low: 5, mid: 7, high: 6 },
-  { label: "Purchase Tax", low: 2, mid: 4, high: 3 },
+  { label: "Land Cost", low: 43, mid: 38, high: 33 },
+  { label: "Hard Costs", low: 25, mid: 30, high: 35 },
+  { label: "Developers Profit", low: 15, mid: 15, high: 15 },
+  { label: "Soft Costs", low: 6, mid: 7, high: 7 },
+  { label: "Financing Costs", low: 7, mid: 6, high: 6 },
+  { label: "Property Purchase Tax", low: 3, mid: 3, high: 3 },
   { label: "Property Taxes", low: 1, mid: 1, high: 1 },
 ];
 
 const densities = [
-  { key: "low" as const, label: "Low", color: "#c4a882" },
-  { key: "mid" as const, label: "Mid", color: "#8b7355" },
   { key: "high" as const, label: "High", color: "#4a3f2f" },
+  { key: "mid" as const, label: "Mid", color: "#8b7355" },
+  { key: "low" as const, label: "Low", color: "#c4a882" },
 ];
 
 const MAX = 50;
@@ -67,13 +67,17 @@ export default function CostBreakdownChart() {
       <h4 className="mt-1 font-heading text-base text-earth-900 sm:text-lg">
         Creation Cost Components of New Housing Development
       </h4>
+      <p className="mt-0.5 text-[11px] text-earth-500 sm:text-[12px]">
+        Breakdown by Density Format
+      </p>
 
       {/* Legend */}
-      <div className="mt-3 mb-4 flex items-center gap-4 text-[10px] text-earth-500">
+      <div className="mt-3 mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-earth-500">
+        <span className="font-medium text-earth-700">Density Format</span>
         {densities.map((d) => (
-          <span key={d.key} className="flex items-center gap-1">
-            <span className="inline-block h-1.5 w-1.5 rounded-sm" style={{ backgroundColor: d.color }} />
-            {d.label} density
+          <span key={d.key} className="flex items-center gap-1.5">
+            <span className="inline-block h-2.5 w-4 rounded-[2px]" style={{ backgroundColor: d.color }} />
+            {d.label}
           </span>
         ))}
       </div>
@@ -81,7 +85,7 @@ export default function CostBreakdownChart() {
       {/* Rows */}
       <div className="space-y-2.5">
         {categories.map((cat) => (
-          <div key={cat.label} className="grid grid-cols-[110px_1fr] items-center gap-3 sm:grid-cols-[130px_1fr]">
+          <div key={cat.label} className="grid grid-cols-[130px_1fr] items-center gap-3 sm:grid-cols-[160px_1fr]">
             <span className="text-[11px] text-earth-600 sm:text-[12px]">{cat.label}</span>
             <div className="flex flex-col gap-[3px]">
               {densities.map((d) => {
@@ -107,8 +111,11 @@ export default function CostBreakdownChart() {
         ))}
       </div>
 
-      <p className="mt-4 text-[10px] text-earth-300">
-        Source: GVR Economics &middot; Estimates representative, based on a typical pro forma
+      <p className="mt-4 text-[10px] leading-relaxed text-earth-400">
+        Note: Development cost charges are not included. These estimates are representative, based on a typical pro forma.
+      </p>
+      <p className="mt-1 text-right text-[10px] text-earth-400">
+        Source: GVR Economics
       </p>
     </div>
   );

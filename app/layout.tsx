@@ -20,13 +20,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Transforming Landscapes — REIBC",
+  title: "Transforming Landscapes | REIBC",
   description:
     "A research platform on the future, challenges, and opportunities of First Nations-led real estate development in British Columbia. Produced by the Real Estate Institute of British Columbia and Greater Vancouver REALTORS®.",
   openGraph: {
     title: "Transforming Landscapes",
     description:
-      "Research on the future of real estate in British Columbia — produced by REIBC and Greater Vancouver REALTORS®.",
+      "Research on the future of real estate in British Columbia. Produced by REIBC and Greater Vancouver REALTORS®.",
     type: "website",
   },
 };

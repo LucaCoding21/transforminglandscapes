@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "@/components/TransitionLink";
-import SectionLabel from "@/components/ui/SectionLabel";
 
 export const metadata: Metadata = {
-  title: "Executive Summary — Transforming Landscapes",
+  title: "Executive Summary | Transforming Landscapes",
   description:
     "The full executive summary of Transforming Landscapes: Advancing Understanding and Collaboration with Indigenous Partners in BC Real Estate.",
 };
@@ -21,11 +20,8 @@ export default function ExecutiveSummaryPage() {
             <span>Back</span>
           </Link>
 
-          <SectionLabel className="mb-6 mt-10">Executive Summary</SectionLabel>
-
-          <h1 className="font-heading text-display-lg leading-[1.05] text-earth-900">
-            Transforming Landscapes: Advancing Understanding and Collaboration
-            with Indigenous Partners in BC Real Estate.
+          <h1 className="mt-10 font-heading text-display-lg leading-[1.05] text-earth-900">
+            Transforming Landscapes: Executive Summary
           </h1>
 
           <div className="mt-12 space-y-6 text-base leading-relaxed text-earth-800/90 md:text-lg">

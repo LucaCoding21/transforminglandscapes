@@ -175,16 +175,18 @@ export default function LibraryGrid() {
                     </p>
                   </div>
                   <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded bg-earth-200">
-                    <Image
-                      src={item.image}
-                      alt=""
-                      fill
-                      priority={i < 4}
-                      sizes="96px"
-                      placeholder="blur"
-                      blurDataURL={item.blurDataURL}
-                      className="object-cover"
-                    />
+                    {item.image && item.blurDataURL && (
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        priority={i < 4}
+                        sizes="96px"
+                        placeholder="blur"
+                        blurDataURL={item.blurDataURL}
+                        className="object-cover"
+                      />
+                    )}
                   </div>
                 </div>
               </Link>
@@ -202,16 +204,24 @@ export default function LibraryGrid() {
             >
               <Link href={`/library/${item.slug}`} className="block">
                 <div className="relative aspect-[5/3] overflow-hidden bg-earth-200">
-                  <Image
-                    src={item.image}
-                    alt=""
-                    fill
-                    priority={i < 4}
-                    sizes="(max-width: 1024px) 50vw, 540px"
-                    placeholder="blur"
-                    blurDataURL={item.blurDataURL}
-                    className="object-cover transition duration-700 group-hover:scale-105"
-                  />
+                  {item.image && item.blurDataURL ? (
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      priority={i < 4}
+                      sizes="(max-width: 1024px) 50vw, 540px"
+                      placeholder="blur"
+                      blurDataURL={item.blurDataURL}
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-earth-200 to-earth-300 p-8 text-center">
+                      <p className="font-heading text-sm uppercase tracking-[0.16em] text-earth-700">
+                        {item.type}
+                      </p>
+                    </div>
+                  )}
                 </div>
                 <div className="flex flex-col justify-between p-6">
                   <div>
