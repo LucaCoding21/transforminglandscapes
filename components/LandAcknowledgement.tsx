@@ -43,9 +43,9 @@ export default function LandAcknowledgement() {
             <div className="mt-8 grid grid-cols-1 gap-6 text-[0.82rem] leading-[1.65] text-earth-50/90 md:grid-cols-2 md:gap-8">
               <div className="space-y-4">
                 <p>
-                  The Real Estate Institute of BC and Greater Vancouver
-                  REALTORS&reg; headquarters are located in Vancouver, BC, the
-                  traditional, ancestral, and unceded shared territory of the
+                  The Real Estate Institute of BC&rsquo;s headquarters are
+                  located in downtown Vancouver, BC, the traditional,
+                  ancestral, and unceded shared territory of the
                   xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), and
                   səlilwətaɬ (Tsleil-Waututh) peoples. This place is called
                   K&rsquo;emk&rsquo;emeláy (place of many maple trees) by the
@@ -74,7 +74,6 @@ export default function LandAcknowledgement() {
                   (Cowichan); Stz&rsquo;uminus; Snuneymuxw; Snaw-naw-as;
                   Lyackson; Penelakut; Halalt; Qualicum; K&rsquo;ómoks; the
                   Kwakwaka&rsquo;wakw nations; and the Nuu-chah-nulth nations.
-                  Métis.
                 </p>
               </div>
               <div className="space-y-4">
