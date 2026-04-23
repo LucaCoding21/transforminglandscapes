@@ -3,44 +3,26 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import TransitionLink from "./TransitionLink";
+import { pillars } from "@/lib/pillars";
 
-type Pillar = {
-  number: string;
-  label: string;
-  description: string;
-  image: string;
-};
-
-const pillars: Pillar[] = [
-  {
-    number: "01",
-    label: "Indigenous Land & Development",
-    description:
-      "This section highlights existing resources that map and explain Indigenous territories and Indigenous-owned business designations. We encourage you to explore these materials for deeper context and understanding, and you\u2019ll find links throughout this report to help guide your learning.",
-    image: "/images/orca-indigenous-land.webp",
-  },
-  {
-    number: "02",
-    label: "Governance Models",
-    description:
-      "We explore how traditional models and models from other parts of the world are implemented and the differences, challenges, and opportunities they present.",
-    image: "/images/microsoft-copilot-pEVjp7yIc2A-unsplash.webp",
-  },
-  {
-    number: "03",
-    label: "The Data",
-    description:
-      "Economic and market data is important in understanding impact, establishing policy and integrating communities in both the built environment and from a perspective of sustainability.",
-    image: "/images/kaleidico-3V8xo5Gbusk-unsplash.webp",
-  },
-  {
-    number: "04",
-    label: "The Future",
-    description:
-      "What challenges, opportunities and areas of innovation do we consider in the near- and distant future? What can we learn from the past, from tradition and culture?",
-    image: "/images/dylan-gillis-KdeqA3aTnBY-unsplash (1).webp",
-  },
-];
+function ArrowIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={`inline-block h-[1.1em] w-[1.1em] align-baseline ${className}`}
+    >
+      <path d="M7 17 17 7" />
+      <path d="M8 7h9v9" />
+    </svg>
+  );
+}
 
 function ParallaxImage({ src, title }: { src: string; title: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -160,8 +142,33 @@ export default function ResearchScope() {
 
               if (isLast) {
                 return (
+                  <TransitionLink key={pillar.number} href={pillar.href} className="block">
+                    <motion.article
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-10%" }}
+                      transition={{
+                        duration: 0.8,
+                        delay: 0.1,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="flex flex-col items-center text-center py-16"
+                    >
+                      <h3 className="font-heading text-[1.75rem] font-medium leading-[1.1] text-earth-900">
+                        {pillar.label}
+                        <ArrowIcon className="ml-2 translate-y-[0.1em]" />
+                      </h3>
+                      <p className="mt-4 max-w-sm text-sm leading-relaxed text-earth-600">
+                        {pillar.description}
+                      </p>
+                    </motion.article>
+                  </TransitionLink>
+                );
+              }
+
+              return (
+                <TransitionLink key={pillar.number} href={pillar.href} className="block">
                   <motion.article
-                    key={pillar.number}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-10%" }}
@@ -170,54 +177,33 @@ export default function ResearchScope() {
                       delay: 0.1,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="flex flex-col items-center text-center py-16"
+                    className="flex flex-col"
                   >
-                    <h3 className="font-heading text-[1.75rem] font-medium leading-[1.1] text-earth-900">
+                    <h3
+                      className={`font-heading text-[1.75rem] font-medium leading-[1.1] text-earth-900 ${isEven ? "text-left pr-12" : "text-right pl-12"}`}
+                    >
                       {pillar.label}
+                      <ArrowIcon className="ml-2 translate-y-[0.1em]" />
                     </h3>
-                    <p className="mt-4 max-w-sm text-sm leading-relaxed text-earth-600">
+                    <motion.div
+                      initial={{ opacity: 0, x: isEven ? -60 : 60 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-10%" }}
+                      transition={{
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className={`mt-6 ${isEven ? "-ml-6 -mr-2" : "-mr-6 -ml-2"}`}
+                    >
+                      <ParallaxImage src={pillar.image} title="" />
+                    </motion.div>
+                    <p
+                      className={`mt-6 text-sm leading-relaxed text-earth-600 ${isEven ? "text-left" : "ml-auto text-right"}`}
+                    >
                       {pillar.description}
                     </p>
                   </motion.article>
-                );
-              }
-
-              return (
-                <motion.article
-                  key={pillar.number}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.1,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="flex flex-col"
-                >
-                  <h3
-                    className={`font-heading text-[1.75rem] font-medium leading-[1.1] text-earth-900 ${isEven ? "text-left pr-12" : "text-right pl-12"}`}
-                  >
-                    {pillar.label}
-                  </h3>
-                  <motion.div
-                    initial={{ opacity: 0, x: isEven ? -60 : 60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{
-                      duration: 0.9,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className={`mt-6 ${isEven ? "-ml-6 -mr-2" : "-mr-6 -ml-2"}`}
-                  >
-                    <ParallaxImage src={pillar.image} title="" />
-                  </motion.div>
-                  <p
-                    className={`mt-6 text-sm leading-relaxed text-earth-600 ${isEven ? "text-left" : "ml-auto text-right"}`}
-                  >
-                    {pillar.description}
-                  </p>
-                </motion.article>
+                </TransitionLink>
               );
             })}
           </div>
@@ -245,9 +231,10 @@ export default function ResearchScope() {
 
         <div className="absolute inset-0 grid grid-cols-4">
           {pillars.map((pillar, i) => (
-            <article
+            <TransitionLink
               key={pillar.number}
-              className="group relative h-full cursor-pointer border-r border-earth-900/10 last:border-r-0"
+              href={pillar.href}
+              className="group relative block h-full cursor-pointer border-r border-earth-900/10 last:border-r-0"
             >
               <div className="pointer-events-none absolute inset-0 z-30 overflow-hidden">
                 <div className="absolute inset-0 -translate-x-full transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0">
@@ -275,6 +262,7 @@ export default function ResearchScope() {
                 >
                   <div className="font-heading text-2xl font-medium text-earth-900 transition-colors duration-500 group-hover:text-white">
                     {pillar.label}
+                    <ArrowIcon className="ml-2 translate-y-[0.15em] -translate-x-1 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100" />
                   </div>
                   <p
                     style={{ willChange: "max-height" }}
@@ -284,7 +272,7 @@ export default function ResearchScope() {
                   </p>
                 </motion.div>
               </div>
-            </article>
+            </TransitionLink>
           ))}
         </div>
       </section>

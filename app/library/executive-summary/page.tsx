@@ -11,7 +11,7 @@ export default function ExecutiveSummaryPage() {
   return (
     <main className="pt-24 md:pt-32 lg:pt-40">
       <section className="mx-auto max-w-content px-6 pb-24 md:px-10 md:pb-32">
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl">
           <Link
             href="/#summary"
             className="group inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-earth-700 transition hover:text-earth-900"
@@ -21,9 +21,23 @@ export default function ExecutiveSummaryPage() {
           </Link>
 
           <h1 className="mt-10 font-heading text-display-lg leading-[1.05] text-earth-900">
-            Transforming Landscapes: Executive Summary
+            Executive Summary
           </h1>
+        </div>
 
+        <figure className="mx-auto mt-12 max-w-5xl">
+          <div className="group relative aspect-video overflow-hidden rounded-2xl bg-earth-900 shadow-2xl shadow-earth-900/25 ring-1 ring-earth-900/10">
+            <video
+              src="/images/demo.mp4"
+              controls
+              preload="metadata"
+              playsInline
+              className="h-full w-full bg-earth-900 object-cover"
+            />
+          </div>
+        </figure>
+
+        <div className="mx-auto max-w-3xl">
           <div className="mt-12 space-y-6 text-base leading-relaxed text-earth-800/90 md:text-lg">
             <p className="drop-cap">
               This report, <em>Transforming Landscapes: Advancing Understanding

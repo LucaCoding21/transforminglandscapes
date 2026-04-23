@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 
 type Filter = "All" | LibraryItem["type"];
 
-const filters: Filter[] = ["All", "Case Study", "Interview", "Resource"];
+const filters: Filter[] = ["All", "Case Study", "Interview"];
 
 const counts: Record<Filter, number> = libraryItems.reduce(
   (acc, item) => {

@@ -3,6 +3,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import dynamic from "next/dynamic";
 
 const ExecSummary = dynamic(() => import("@/components/ExecSummary"));
+const ExecSummaryVideo = dynamic(() => import("@/components/ExecSummaryVideo"));
 const ResearchScope = dynamic(() => import("@/components/ResearchScope"));
 const CaseStudyPreview = dynamic(() => import("@/components/CaseStudyPreview"));
 const LandAcknowledgement = dynamic(
@@ -14,6 +15,7 @@ export default function HomePage() {
     <main className="relative">
       <Hero />
       <ExecSummary />
+      <ExecSummaryVideo />
       <SectionDivider />
       <ResearchScope />
       <CaseStudyPreview />

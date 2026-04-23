@@ -12,6 +12,7 @@ const exploreLinks = [
   { href: "/#summary", label: "Executive Summary" },
   { href: "/#scope", label: "Research Scope" },
   { href: "/library", label: "Library" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 

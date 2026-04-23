@@ -65,7 +65,10 @@ export default function LandAcknowledgement() {
                   area where REIBC now has the privilege to serve:
                 </p>
                 <p>
-                  On Vancouver Island and neighbouring islands, the traditional
+                  <strong className="font-bold text-white">
+                    On Vancouver Island and neighbouring islands,
+                  </strong>{" "}
+                  the traditional
                   and unceded territory of the Xwsepsum and Songhees Nations of
                   the lək̓ʷəŋən families and ancestors, Scia&rsquo;new,
                   T&rsquo;Sou-ke. The MÁLEXEȽ (Malahat), BOḰEĆEN (Pauquachin),
@@ -78,31 +81,46 @@ export default function LandAcknowledgement() {
               </div>
               <div className="space-y-4">
                 <p>
-                  In the Lower Mainland, the traditional and unceded territory
+                  <strong className="font-bold text-white">
+                    In the Lower Mainland,
+                  </strong>{" "}
+                  the traditional and unceded territory
                   of the xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh Úxwumixw
                   (Squamish), səlilwətaɬ (Tsleil-Waututh), QayQayt First
                   Nation, Kwantlen, q̓íc̓əy̓ (Katzie), Semiahmoo, Tsawwassen
                   First Nations, kʷikʷəƛ̓əm (Kwikwetlem), and Stó:lō Nation.
                 </p>
                 <p>
-                  In the Cariboo, Chilcotin, and Coast region, the traditional
+                  <strong className="font-bold text-white">
+                    In the Cariboo, Chilcotin, and Coast region,
+                  </strong>{" "}
+                  the traditional
                   and unceded territory of the Tsilhqot&rsquo;in, the Northern
                   Secwepemc including the T&rsquo;exelcemc and
                   Tsq&rsquo;escenemc nations, St&apos;át&apos;imc, Nuxalk,
                   Gitga&rsquo;at, Wuikinuxv, and Heiltsuk.
                 </p>
                 <p>
-                  In the Thompson-Okanagan region, the traditional and unceded
+                  <strong className="font-bold text-white">
+                    In the Thompson-Okanagan region,
+                  </strong>{" "}
+                  the traditional and unceded
                   territory of the Nlaka&rsquo;pamux Peoples, Syilx Peoples,
                   and Secwepemc Nations.
                 </p>
                 <p>
-                  In the Kootenay region, the traditional and unceded territory
+                  <strong className="font-bold text-white">
+                    In the Kootenay region,
+                  </strong>{" "}
+                  the traditional and unceded territory
                   of the Ktunaxa nation, Secwepemc nations, Syilx, and Sinixt
                   Peoples.
                 </p>
                 <p>
-                  In Northern B.C., the traditional and unceded territory of
+                  <strong className="font-bold text-white">
+                    In Northern B.C.,
+                  </strong>{" "}
+                  the traditional and unceded territory of
                   the Lheidli T&rsquo;enneh, Haida, Tsimshian, Nisga&rsquo;a,
                   Haisla, Gitxsan, Wet&rsquo;suwet&rsquo;en, Tahltan peoples,
                   and on Treaty 8 territory, lands of the Sicannie, Slavey,
