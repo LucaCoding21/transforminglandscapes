@@ -61,18 +61,6 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <figure className="relative mt-12 aspect-[16/10] w-full overflow-hidden rounded-lg bg-earth-200">
-            <Image
-              src="/images/board-photo-about.webp"
-              alt="REIBC and GVR board members"
-              fill
-              sizes="(max-width: 1280px) 100vw, 768px"
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAADQAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgADQAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAv/aAAwDAQACEQMRAD8A/NPwvcaBossKWF6sEl6/k3lu2dsicFQFP8Wc4OQO1fVfiW++H5+EVp4rtbVbeCwu7vTUujs3XF7GPOKuow+EXjI7149o3wk0eCHUbm4uWuri6hcRySIN0DDJDrgjLcj8q5PQ/hv5F2l3Pqcl1BiRmgkTKksrIDw3BAx0HOK82tkuHqPmmnf18rfP5+XZHrQzLERglTa/r+un6mhdfD/wf4yu5ta0i8n1UOVWe5uFCF5tiltiqcBACAo5PHNRf8KV0b/nmP1/xqfQPhpo0lpKZbm5ULIVVYpTGoAVc8c8k5P41u/8Kw0H/n6vf/Ag/wCFZxyuUUoxnov66NL7i5YyMneUNT//2Q=="
-              className="object-cover"
-            />
-          </figure>
-
           <div className="mt-16 flex items-center gap-4">
             <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-earth-100 md:h-12 md:w-12">
               <Image

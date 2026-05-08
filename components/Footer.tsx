@@ -207,6 +207,11 @@ export default function Footer() {
               <a href="https://gvrealtors.ca" target="_blank" rel="noreferrer">
                 <img src="/images/gvr-logo.png" alt="Greater Vancouver Realtors" className="h-[68px] w-auto opacity-70 transition hover:opacity-100" />
               </a>
+              <img
+                src="/images/TransformingLandscapes_Black_Stacked_web.png"
+                alt="Transforming Landscapes"
+                className="-my-3 h-[92px] w-auto opacity-70"
+              />
             </div>
             <div className="flex flex-col gap-1 text-[0.7rem] uppercase tracking-[0.04em] text-earth-900/40 md:text-right">
               <p>&copy; 2026 REIBC &amp; Greater Vancouver REALTORS&reg;</p>
