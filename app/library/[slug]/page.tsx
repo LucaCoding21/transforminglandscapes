@@ -133,7 +133,19 @@ export default async function ArticlePage({ params }: Props) {
                 Read the full case study
                 {item.externalSource ? ` at ${item.externalSource}` : ""}
               </span>
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">↗</span>
+              <svg
+                aria-hidden
+                viewBox="0 0 10 10"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="inline-block h-4 w-4 transition-transform group-hover:translate-x-1"
+              >
+                <path d="M2.5 7.5L7.5 2.5" />
+                <path d="M3 2.5H7.5V7" />
+              </svg>
             </a>
           </div>
         )}
@@ -250,7 +262,19 @@ export default async function ArticlePage({ params }: Props) {
                 Read the full case study
                 {item.externalSource ? ` at ${item.externalSource}` : ""}
               </span>
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">↗</span>
+              <svg
+                aria-hidden
+                viewBox="0 0 10 10"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="inline-block h-4 w-4 transition-transform group-hover:translate-x-1"
+              >
+                <path d="M2.5 7.5L7.5 2.5" />
+                <path d="M3 2.5H7.5V7" />
+              </svg>
             </a>
           </div>
         )}
