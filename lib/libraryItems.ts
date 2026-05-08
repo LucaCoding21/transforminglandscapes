@@ -19,6 +19,8 @@ export type LibraryItem = {
   body?: BodyBlock[];
   youtubeId?: string;
   pdfUrl?: string;
+  externalUrl?: string;
+  externalSource?: string;
 };
 
 export const libraryItems: LibraryItem[] = [
@@ -107,10 +109,10 @@ export const libraryItems: LibraryItem[] = [
     ],
   },
   {
-    slug: "andrew-hungerford-interview",
-    title: "In Conversation with Andrew Hungerford",
+    slug: "seven-generation-vision-economic-development",
+    title: "A Seven-Generation Vision for Economic Development",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua on the evolving landscape of long-horizon real estate in British Columbia.",
+      "Ryan Daum of Tsawwassen First Nation discusses the Nation’s long-term approach to economic development, emphasizing community-centred partnerships, sustainability, and planning that benefits future generations.",
     type: "Interview",
     image: "/images/scott-graham-andrew.webp",
     blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAADQAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgADQAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAv/aAAwDAQACEQMRAD8A2Pg3p2t+ENY0yTRNKGsRXFt5EEDsftImWUb3UH5SNhYYOScZGAK+5L3WPEWq2xtb3wzPZeTHuklvI1FtFhSSXKsWIU9QBzX5hJ411PR5dCgsFCPNDf30kjfMxNlaO6xjIwFZsbvYY6E17V+zp8R9X8X2vijR/FEEGowRwW8w3xqp3SFlbO0DOQBXaoSnHmVjx8X7KNfktf8ApbfIb4o0rwxYavJB4i1V7u+YB3ntYUCS7+d7bhkt29gAO1c/9n+Hn/P9ef8AfuL/AAr6M0n4A6V43sk1nTddv/D8KlovstuyyRAqSSy+YCy5z93OB2rR/wCGUYf+h41X/viH/wCJpe3xC0uvxPSdTAJ2kpX+R//Z",
@@ -118,20 +120,16 @@ export const libraryItems: LibraryItem[] = [
     author: "Greater Vancouver REALTORS",
     authorAvatar: "/images/gvrlogo.jpeg",
     date: "April 2026",
-    youtubeId: "Hjn1ZtMfGcI",
+    youtubeId: "lgxkAKgFnmc",
     body: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
-      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.",
+      "Ryan Daum of Tsawwassen First Nation discusses the Nation’s long-term approach to economic development, emphasizing community-centred partnerships, sustainability, and planning that benefits future generations.",
     ],
   },
   {
     slug: "komal-shaikh-interview",
-    title: "Interview with Komal Shaikh",
+    title: "Sustainable Growth Through a Seven-Generation Lens",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. A wide-ranging discussion on governance, development, and the shifting foundations of the real estate industry in British Columbia.",
+      "Komal Shaikh of Tsawwassen First Nation explains the Nation’s seven-generation approach to growth, focusing on sustainable development, cultural stewardship, and long-term prosperity connected to the land and water.",
     type: "Interview",
     image: "/images/patrick-perkins-komal.webp",
     blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAADQAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgADQAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAv/aAAwDAQACEQMRAD8A+0/A6+CPB/w/m8Qaf4VTwvM95cxTTW8aRW9ysFy8EbtsOMlQpzjI5Fet2Mk2hvcWFyFs9t55DCFgNquzOXA6EGQfNxn5ya8R0P4erYfCJ9Ev9XutT0jWb3UTPaz7AFe7uJpJCjxqrqCS2Bk4z14rvpVW70kXM+4zpcIqybjuCqucZ98AH2oxNCcvhemv33FLEU1NKa3S167J6fP8LnrE10JpWlhcuGxnDqMEADBz3wM1H50v+1/38SvgLxnqurWni7VlF9OIpJlkjjjfy1jDRpleAc5bcxPvjtXNf8JBqn/P7df9/wA/4VyTwl5N2Oyjm01BLme39dD/2Q==",
@@ -139,20 +137,16 @@ export const libraryItems: LibraryItem[] = [
     author: "Greater Vancouver REALTORS",
     authorAvatar: "/images/gvrlogo.jpeg",
     date: "April 2026",
-    youtubeId: "BbZQT2A85o8",
+    youtubeId: "YZJIZ8b0ofA",
     body: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
-      "Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
-      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.",
+      "Komal Shaikh of Tsawwassen First Nation explains the Nation’s seven-generation approach to growth, focusing on sustainable development, cultural stewardship, and long-term prosperity connected to the land and water.",
     ],
   },
   {
-    slug: "irea-mcdonald-rose-interview",
-    title: "In Conversation with Byron McDonald & Emma Rose, Indigenous Real Estate Association",
+    slug: "understanding-historical-context-first-nations-partnerships",
+    title: "Understanding Historical Context in First Nations Partnerships",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. A conversation with Byron McDonald and Emma Rose of the Indigenous Real Estate Association on the path forward.",
+      "Byron McDonald of the Indigenous Real Estate Association of Canada highlights the importance of understanding the unique historical context of each First Nation when approaching Indigenous partnerships and development opportunities.",
     type: "Interview",
     image: "/images/guy_dugas-mount-burgess-4882987.webp",
     blurDataURL: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAADQAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgADQAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAv/aAAwDAQACEQMRAD8AzPir+01+0drHh4+E77wlb+EFZVka/wBHtDcXaeW2WjDyuygMR8xxnHGa8A0X9uv9pP4f388vh/Ubi4thgRw6nFAVwoC/OERTkgEnDDk9az/Hvx88cXU+u2W6KKzs7x4DGgZWYMRg7wQRsAwoOffNeff8Jzc6VfPbapZQaxuiH+vGADhTnA9c150c9qyksPGd790eRmaeHXOt+x77af8ABVf9qvT4Ravp+iX5XH72WCQOTgZzslA689O9Wv8Ah7J+1T/0AvD/AP35m/8Aj1fIFp440+eHd/wi+mcEgZiJOB6kEZq1/wAJlp3/AELGl/8Aflv/AIqvcWFqW+NfceC87rfyfif/2Q==",
@@ -160,13 +154,57 @@ export const libraryItems: LibraryItem[] = [
     author: "Greater Vancouver REALTORS",
     authorAvatar: "/images/gvrlogo.jpeg",
     date: "April 2026",
-    youtubeId: "p28FqYdGh50",
+    youtubeId: "LkzfYPq8gxg",
     body: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
-      "Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
+      "Byron McDonald of the Indigenous Real Estate Association of Canada highlights the importance of understanding the unique historical context of each First Nation when approaching Indigenous partnerships and development opportunities.",
+    ],
+  },
+  {
+    slug: "building-trust-long-term-indigenous-partnerships",
+    title: "Building Trust Through Long-Term Indigenous Partnerships",
+    description:
+      "Tim Coldwell of Énska Advisors discusses the time, trust, and relationship-building required for successful partnerships with First Nations, emphasizing that meaningful economic reconciliation is demonstrated through genuine Indigenous equity participation in development projects.",
+    type: "Interview",
+    image: "/images/stock-carrillo.webp",
+    readingTime: "Video Interview",
+    author: "Greater Vancouver REALTORS",
+    authorAvatar: "/images/gvrlogo.jpeg",
+    date: "April 2026",
+    youtubeId: "vMqlg7Gm_mQ",
+    body: [
+      "Tim Coldwell of Énska Advisors discusses the time, trust, and relationship-building required for successful partnerships with First Nations, emphasizing that meaningful economic reconciliation is demonstrated through genuine Indigenous equity participation in development projects.",
+    ],
+  },
+  {
+    slug: "building-relationships-first-nations-municipalities",
+    title: "Building Relationships Between First Nations and Municipalities",
+    description:
+      "Urban planner Richard White reflects on the importance of building lasting, mutually beneficial working relationships between First Nations and municipalities, rooted in respect, collaboration, and shared needs.",
+    type: "Interview",
+    image: "/images/stock-emilivna.webp",
+    readingTime: "Video Interview",
+    author: "Greater Vancouver REALTORS",
+    authorAvatar: "/images/gvrlogo.jpeg",
+    date: "April 2026",
+    youtubeId: "GrBHY_JYJN4",
+    body: [
+      "Urban planner Richard White reflects on the importance of building lasting, mutually beneficial working relationships between First Nations and municipalities, rooted in respect, collaboration, and shared needs.",
+    ],
+  },
+  {
+    slug: "understanding-indigenous-values-in-development",
+    title: "Understanding Indigenous Values in Development",
+    description:
+      "Emma Rose of the Indigenous Real Estate Association of Canada discusses the importance of developers educating themselves about the Nations they work with, understanding community values, and building meaningful relationships through research and engagement.",
+    type: "Interview",
+    image: "/images/stock-kerkvliet.webp",
+    readingTime: "Video Interview",
+    author: "Greater Vancouver REALTORS",
+    authorAvatar: "/images/gvrlogo.jpeg",
+    date: "April 2026",
+    youtubeId: "XAezk7Uuk-c",
+    body: [
+      "Emma Rose of the Indigenous Real Estate Association of Canada discusses the importance of developers educating themselves about the Nations they work with, understanding community values, and building meaningful relationships through research and engagement.",
     ],
   },
   {
@@ -179,7 +217,7 @@ export const libraryItems: LibraryItem[] = [
     image: "/images/veronica-dudarev-jericho.webp",
     blurDataURL:
       "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAADQAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgADQAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQAAv/aAAwDAQACEQMRAD8A/RPRPiLod1KbePVrV5R285QeOvWvTtN8W2V6BHayR3JwG/durHB79elfj5pfw70bTfiVL4b1dE1iOexguUaZWjEeDJEQFjdSSRGMsT1J4r0vwFq2l6deyXHh7RoNOmthMC/mTSl1QD5Tufgc8Y6H1r3Y4uq0uY8qWDpttWufqp/a3/TA/wCfxo/tb/p3P+fxr8uZ/jv4riZfLtrYK4DYPm8Z7cOKh/4X54u/597b/wAi/wDxyuhU6j15jH2FH/n2vwP/2Q==",
-    readingTime: "150-page thesis (PDF)",
+    readingTime: "3 hr read",
     author: "Alexine Maria Mendoza Sanchez",
     date: "October 2020",
     pdfUrl: "/documents/unpacking-inspire-jericho.pdf",
@@ -189,6 +227,76 @@ export const libraryItems: LibraryItem[] = [
       { heading: "Abstract" },
       "This thesis explores the urban planning process surrounding the 90-acre redevelopment of Jericho Lands, a former site of Jericho Detachment/Garrison in Vancouver, BC. This is one of the more valuable pieces of land in the province. I investigate how the Musqueam, Squamish, and Tsleil-Waututh (MST) First Nations, various neighborhood groups, and the different levels of the government interact in this planning process. To unpack this, I employ mixed methodologies including review of government and secondary documents, interviews from key informants, and participant observation in open-to-public events of Jericho Lands. This inquiry comes at a time when the historically marginalized Lower Mainland First Nations become owners and developers of luxury real estate land in one of the world\u2019s most expensive cities. Together with Canada Lands Company (CLC), a non-agent Crown corporation, the cooperation with the three First Nations, and the City of Vancouver establishes a complex growth coalition that supports the development of Jericho Lands. In here, I find that reconciliation narratives are used as a framework in the policy process to advance the redevelopment. Consequently, the planning process of Jericho Lands as a large-scale development reveals the prevalence of growth-based initiatives alongside conflicting and overlapping interests with other issues and stakeholders in the city. Amidst these interactions and convergent subjectivities, the involvement of MST Development Corporation as the real estate arm of the First Nations represents their participation in the growth machine framework of Harvey Molotch (1979) and later reintroduced with John Logan (1987). Since this study only covers Phase One of Jericho Lands Policy Planning Program, I conclude with questions to consider in further studies of such a complex site.",
       "Alexine Maria Mendoza Sanchez. Master of Arts thesis, Department of Geography, The University of British Columbia (Vancouver), October 2020.",
+    ],
+  },
+  {
+    slug: "makola-urban-aboriginal-community-prince-george",
+    title: "Urban Aboriginal Community, Prince George",
+    description:
+      "A 6.9-acre, multi-phased Indigenous community in Prince George with 176 housing units and 40 childcare spaces, developed in collaboration with the Aboriginal Housing Society of Prince George.",
+    type: "Case Study",
+    image: "/images/1919-17th%20ave.jpg",
+    readingTime: "1 min read",
+    author: "M'akola Development Services",
+    authorAvatar: "/images/makola_development_services__logo.jpeg",
+    date: "2026",
+    externalUrl:
+      "https://makoladevelopment.com/portfolio-item/1919-17th-ave-urban-aboriginal-community/",
+    externalSource: "M'akola Development Services",
+    body: [
+      { heading: "Project at a glance" },
+      "Location: Prince George, BC. Client: Aboriginal Housing Society of Prince George. Project team: DYS Architecture, IDL Projects. Site: 6.9 acres. Total: 176 housing units and 40 childcare spaces. Status: complete (final phase expected summer 2026).",
+      { heading: "About the project" },
+      "M’akola Development Services (MDS) is working with the Aboriginal Housing Society of Prince George (AHSPG) to develop a multi-phased, comprehensively planned 6.9-acre property located in Prince George, BC.",
+      "This site will be designed for a diversity of people, uses and buildings, centered around a large gathering space that is universally accessible, provides safe play areas for children, and promotes interaction between tenants. Once realized, the project is anticipated to include approximately 150 residential units, a childcare facility, a digital resource centre/Indigenous library, and commercial and service spaces. It will be a culturally safe place for Indigenous people living in Prince George, many of whom have moved to Prince George from across the north in order to pursue education or work opportunities.",
+    ],
+  },
+  {
+    slug: "makola-hokeemelh-kloshe-lum-vancouver",
+    title: "Ho'-kee-melh Kloshe Lum, Vancouver",
+    description:
+      "An Indigenous-led mixed-use development on East Hastings with 80 shelter beds, 25 supportive units, 143 rental homes, and a multi-level day centre. The name means “To Gather, Good Spirits” in Chinook Jargon.",
+    type: "Case Study",
+    image: "/images/east%20hastings%20mixed%20use.jpg",
+    readingTime: "2 min read",
+    author: "M'akola Development Services",
+    authorAvatar: "/images/makola_development_services__logo.jpeg",
+    date: "2026",
+    externalUrl:
+      "https://makoladevelopment.com/portfolio-item/1015-east-hastings-street-mixed-use-project/",
+    externalSource: "M'akola Development Services",
+    body: [
+      { heading: "Project at a glance" },
+      "Location: 1015 East Hastings Street, Vancouver, BC. Client: Vancouver Aboriginal Friendship Centre Society. Project team: Low Hammond Rowe Architects, WCPG Construction. Project cost: $145 million. Completion: March 2026.",
+      "The building includes 80 shelter beds, 25 supportive units (studios and one-bedrooms), 143 rental homes (87 affordable, 56 market-rate), and 2 social enterprise commercial units.",
+      { heading: "About the project" },
+      "Located at East Hastings Street, this new development is named Ho’-kee-melh Kloshe Lum, meaning “To Gather, Good Spirits” in the Chinook Jargon. The development prioritizes Indigenous residents and incorporates design elements to foster culture and community.",
+      "M’akola Development Services (MDS) worked as the development consultant for BC Housing and the Vancouver Aboriginal Friendship Centre Society to build a range of housing options for people of all ages struggling to find a place to call home. It includes 80 safe shelter beds for people and families experiencing homelessness, 25 studios and one-bedrooms for people who are ready to move from the shelter to more independent living, 87 affordable rental homes for people and families with lower incomes (one, two and three-bedroom units), 56 market rental homes to help pay for the cost of the more affordable units, and 2 social enterprise space operated by the Vancouver Aboriginal Friendship Centre Society. The building also includes courtyard access, a rooftop multi-purpose and landscaped area, and a multi-level day centre with a range of services available, such as a dedicated cultural gathering space, lounge areas, a gym, an art studio and counselling spaces.",
+    ],
+  },
+  {
+    slug: "makola-station-avenue-langford",
+    title: "729 & 731 Station Avenue, Langford",
+    description:
+      "A two-phase, mixed-use affordable housing development created to serve urban Indigenous families, elders/seniors, and singles in need of stable, affordable and high-quality housing.",
+    type: "Case Study",
+    image: "/images/729-731.webp",
+    readingTime: "2 min read",
+    author: "M'akola Development Services",
+    authorAvatar: "/images/makola_development_services__logo.jpeg",
+    date: "2021",
+    externalUrl:
+      "https://makoladevelopment.com/portfolio-item/729-731-station-ave-affordable-housing-project/",
+    externalSource: "M'akola Development Services",
+    body: [
+      { heading: "Project at a glance" },
+      "Location: Langford, BC (Vancouver Island). Client: M'akola Housing Society. Project team: Low Hammond Rowe Architects, Scansa Construction. Budget: $43 million. Total: 100 housing units across 2 buildings, plus approximately 10,500 sq. ft. of commercial space.",
+      { heading: "About the project" },
+      "M’akola Development Services (MDS) partnered with M’akola Housing Society (MHS) for the design and construction of the mixed use (commercial and residential) Station Avenue project in Langford, BC.",
+      "The development is a two-phased affordable housing project designed to support urban Indigenous families, elders/seniors, and singles in need of stable, affordable and high-quality housing in the Westshore area. Phase One of the project was funded by BC Housing’s Provincial Investment in Affordable Housing: Aboriginal Housing Initiative (PIAH).",
+      "Phase One, completed in March 2020, includes the construction of a six-storey, wood frame building consisting of 60 units of self-contained rental units in studio, one-bedroom, two-bedroom, and three-bedroom layouts. Approximately, 6,500 sq. ft. of commercial space is owned and operated by Hulitan Family and Community Services Society (HFCSS). HFCSS provides social and emotional support through programs and services to Indigenous children, Indigenous youth, and Indigenous families. In addition, approximately, 4,000 sq. ft. of commercial space on the ground floor will be used as MDS office space to further advance affordable housing in the Province.",
+      "Phase Two, completed in the fall of 2021, involved the construction of a six-storey development with 40 units of affordable housing in a second building at the rear of the site. This project was approved under the 2018 Indigenous Housing Funding call and received full support from BC Housing.",
+      "The M’akola Development Services team was responsible for the feasibility analysis, business case development, site planning, and project management through construction, to one year warranty review stages.",
     ],
   },
 ];

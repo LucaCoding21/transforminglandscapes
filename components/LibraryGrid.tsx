@@ -104,15 +104,19 @@ export default function LibraryGrid() {
                     </p>
                   </div>
                   <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded bg-earth-200">
-                    {item.image && item.blurDataURL && (
+                    {item.image && (
                       <Image
                         src={item.image}
                         alt=""
                         fill
                         priority={i < 4}
                         sizes="96px"
-                        placeholder="blur"
-                        blurDataURL={item.blurDataURL}
+                        {...(item.blurDataURL
+                          ? {
+                              placeholder: "blur" as const,
+                              blurDataURL: item.blurDataURL,
+                            }
+                          : {})}
                         className="object-cover"
                       />
                     )}
@@ -133,15 +137,19 @@ export default function LibraryGrid() {
             >
               <Link href={`/library/${item.slug}`} className="block">
                 <div className="relative aspect-[5/3] overflow-hidden bg-earth-200">
-                  {item.image && item.blurDataURL ? (
+                  {item.image ? (
                     <Image
                       src={item.image}
                       alt=""
                       fill
                       priority={i < 4}
                       sizes="(max-width: 1024px) 50vw, 540px"
-                      placeholder="blur"
-                      blurDataURL={item.blurDataURL}
+                      {...(item.blurDataURL
+                        ? {
+                            placeholder: "blur" as const,
+                            blurDataURL: item.blurDataURL,
+                          }
+                        : {})}
                       className="object-cover transition duration-700 group-hover:scale-105"
                     />
                   ) : (

@@ -211,6 +211,33 @@ export default function Footer() {
             <div className="flex flex-col gap-1 text-[0.7rem] uppercase tracking-[0.04em] text-earth-900/40 md:text-right">
               <p>&copy; 2026 REIBC &amp; Greater Vancouver REALTORS&reg;</p>
               <p>A research platform on First Nations-led real estate development in BC</p>
+              <p className="normal-case">
+                built with care by{" "}
+                <a
+                  href="https://cloverfield.studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="cloverfield"
+                  className="group inline-block font-semibold text-sage-600 underline decoration-sage-600/40 underline-offset-2 transition-colors hover:text-earth-900 hover:decoration-earth-900"
+                >
+                  {"cloverfield".split("").map((char, i) => (
+                    <span
+                      key={i}
+                      aria-hidden
+                      className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1"
+                      style={{ transitionDelay: `${i * 30}ms` }}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                  <span
+                    aria-hidden
+                    className="ml-0.5 inline-block no-underline transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  >
+                    ↗
+                  </span>
+                </a>
+              </p>
             </div>
           </div>
         </div>

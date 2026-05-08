@@ -42,7 +42,7 @@ export default async function ArticlePage({ params }: Props) {
     <main>
       {/* Hero image — sticky behind content */}
       <div className="sticky top-0 z-0 h-[35vh] min-h-[280px] w-full overflow-hidden bg-earth-200 md:h-[50vh] md:min-h-[400px]">
-        {item.image && item.blurDataURL ? (
+        {item.image ? (
           <>
             <Image
               src={item.image}
@@ -50,8 +50,9 @@ export default async function ArticlePage({ params }: Props) {
               fill
               priority
               sizes="100vw"
-              placeholder="blur"
-              blurDataURL={item.blurDataURL}
+              {...(item.blurDataURL
+                ? { placeholder: "blur" as const, blurDataURL: item.blurDataURL }
+                : {})}
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent" />
@@ -118,6 +119,24 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Divider */}
         <hr className="mt-8 border-earth-200" />
+
+        {/* External case study link */}
+        {item.externalUrl && (
+          <div className="mt-10">
+            <a
+              href={item.externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 rounded-full bg-earth-900 px-6 py-3 text-sm font-medium text-earth-50 transition hover:bg-sage-600"
+            >
+              <span>
+                Read the full case study
+                {item.externalSource ? ` at ${item.externalSource}` : ""}
+              </span>
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">↗</span>
+            </a>
+          </div>
+        )}
 
         {/* PDF download */}
         {item.pdfUrl && (
@@ -210,6 +229,29 @@ export default async function ArticlePage({ params }: Props) {
                 ) : null;
               });
             })()}
+          </div>
+        )}
+
+        {/* External case study link — repeated at bottom for readers who finish the teaser */}
+        {item.externalUrl && (
+          <div className="mt-12 rounded-2xl border border-earth-200 bg-white p-6 md:p-8">
+            <p className="text-sm leading-relaxed text-earth-700">
+              This is a brief overview. The full case study, with additional
+              photos, project details, and partner information, lives on{" "}
+              {item.externalSource ?? "the project's"} website.
+            </p>
+            <a
+              href={item.externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-5 inline-flex items-center gap-3 rounded-full bg-earth-900 px-6 py-3 text-sm font-medium text-earth-50 transition hover:bg-sage-600"
+            >
+              <span>
+                Read the full case study
+                {item.externalSource ? ` at ${item.externalSource}` : ""}
+              </span>
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">↗</span>
+            </a>
           </div>
         )}
 

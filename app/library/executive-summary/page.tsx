@@ -27,12 +27,13 @@ export default function ExecutiveSummaryPage() {
 
         <figure className="mx-auto mt-12 max-w-5xl">
           <div className="group relative aspect-video overflow-hidden rounded-2xl bg-earth-900 shadow-2xl shadow-earth-900/25 ring-1 ring-earth-900/10">
-            <video
-              src="/images/demo.mp4"
-              controls
-              preload="metadata"
-              playsInline
-              className="h-full w-full bg-earth-900 object-cover"
+            <iframe
+              src="https://www.youtube.com/embed/JvX1XHIxMHo"
+              title="Transforming Landscapes Executive Summary"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              className="h-full w-full"
             />
           </div>
         </figure>

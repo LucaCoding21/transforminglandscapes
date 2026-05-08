@@ -66,7 +66,7 @@ export default function ExecSummaryVideo() {
         >
         {/* Background video */}
         <video
-          src="/images/demo.mp4"
+          src="/images/Transforming_Landscapes_hero.mp4"
           autoPlay
           loop
           muted

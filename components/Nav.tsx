@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "@/components/TransitionLink";
 import ContactCTA from "@/components/ContactCTA";
 import { useEffect, useRef, useState } from "react";
@@ -47,15 +48,19 @@ export default function Nav() {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 md:pt-6"
     >
-      <nav className="flex w-full max-w-content items-center justify-between gap-4 rounded-2xl bg-white px-5 py-3 shadow-lg shadow-earth-900/5 md:px-5 md:py-3">
+      <nav className="flex w-full max-w-content items-center justify-between gap-4 rounded-2xl bg-white px-5 py-2 shadow-lg shadow-earth-900/5 md:px-5 md:py-2">
         <Link
           href="/"
-          className="flex items-center rounded-full px-4 py-2 text-earth-900 transition hover:bg-earth-100"
+          className="flex items-center rounded-full px-2 text-earth-900 transition hover:opacity-70"
         >
-          <span className="flex flex-col font-heading text-[0.7rem] font-semibold uppercase leading-[1.05] tracking-[0.18em]">
-            <span>Transforming</span>
-            <span>Landscapes</span>
-          </span>
+          <Image
+            src="/images/TransformingLandscapes_Black_Horizontal.svg"
+            alt="Transforming Landscapes"
+            width={732}
+            height={236}
+            priority
+            className="-my-1 h-14 w-auto md:h-16"
+          />
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
