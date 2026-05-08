@@ -230,12 +230,19 @@ export default function Footer() {
                       {char}
                     </span>
                   ))}
-                  <span
+                  <svg
                     aria-hidden
-                    className="ml-0.5 inline-block no-underline transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="ml-1 inline-block h-[0.8em] w-[0.8em] no-underline transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   >
-                    ↗
-                  </span>
+                    <path d="M2.5 7.5L7.5 2.5" />
+                    <path d="M3 2.5H7.5V7" />
+                  </svg>
                 </a>
               </p>
             </div>
