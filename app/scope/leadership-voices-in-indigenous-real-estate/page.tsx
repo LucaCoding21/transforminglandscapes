@@ -11,9 +11,12 @@ export const metadata: Metadata = {
 };
 
 const videoSlugs = [
-  "andrew-hungerford-interview",
+  "seven-generation-vision-economic-development",
+  "building-relationships-first-nations-municipalities",
   "komal-shaikh-interview",
-  "irea-mcdonald-rose-interview",
+  "understanding-indigenous-values-in-development",
+  "understanding-historical-context-first-nations-partnerships",
+  "building-trust-long-term-indigenous-partnerships",
 ];
 
 export default function LeadershipVoicesPage() {
@@ -117,7 +120,7 @@ export default function LeadershipVoicesPage() {
                       className="group inline-flex items-center gap-1 self-start whitespace-nowrap text-[0.7rem] font-medium uppercase tracking-[0.08em] text-earth-900 transition hover:text-sage-600 sm:self-auto"
                     >
                       <span className="border-b border-earth-900/40 pb-0.5 transition group-hover:border-sage-600">
-                        Full interview
+                        View page
                       </span>
                       <span
                         aria-hidden
@@ -128,23 +131,8 @@ export default function LeadershipVoicesPage() {
                     </Link>
                   </div>
                   <div className="mt-5">
-                    <p className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-earth-500">
-                      Placeholder &middot; Summary pending
-                    </p>
-                    <p className="mt-3 text-base leading-relaxed text-earth-800/90 md:text-lg">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      exercitation ullamco laboris nisi ut aliquip ex ea
-                      commodo consequat. Duis aute irure dolor in
-                      reprehenderit in voluptate velit esse cillum dolore eu
-                      fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                      non proident, sunt in culpa qui officia deserunt mollit
-                      anim id est laborum. Sed ut perspiciatis unde omnis iste
-                      natus error sit voluptatem accusantium doloremque
-                      laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                      inventore veritatis et quasi architecto beatae vitae
-                      dicta sunt.
+                    <p className="text-base leading-relaxed text-earth-800/90 md:text-lg">
+                      {video.description}
                     </p>
                   </div>
                 </article>
