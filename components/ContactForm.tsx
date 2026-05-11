@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-type State = "idle" | "submitting" | "success";
+type State = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const [state, setState] = useState<State>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,12 +24,33 @@ export default function ContactForm() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setState("submitting");
+    setErrorMessage(null);
 
-    await new Promise((r) => setTimeout(r, 600));
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    setState("success");
-    setForm({ name: "", email: "", organization: "", message: "" });
-    setTimeout(() => setState("idle"), 6000);
+      if (!res.ok) {
+        const data = (await res.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        throw new Error(data?.error ?? "Something went wrong. Please try again.");
+      }
+
+      setState("success");
+      setForm({ name: "", email: "", organization: "", message: "" });
+      setTimeout(() => setState("idle"), 6000);
+    } catch (err) {
+      setState("error");
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again.",
+      );
+    }
   };
 
   const inputClass =
@@ -114,6 +136,16 @@ export default function ContactForm() {
             className="text-sm text-sage-600"
           >
             Thank you. Your message has been sent. We&rsquo;ll be in touch.
+          </motion.p>
+        )}
+        {state === "error" && errorMessage && (
+          <motion.p
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="text-sm text-red-600"
+          >
+            {errorMessage}
           </motion.p>
         )}
       </AnimatePresence>
