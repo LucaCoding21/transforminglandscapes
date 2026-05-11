@@ -128,16 +128,13 @@ export async function POST(request: Request) {
               </td>
             </tr>
             <tr>
-              <td style="padding: 24px 40px 32px; border-top: 1px solid #f0ebe3;">
+              <td style="padding: 20px 40px 28px; border-top: 1px solid #f0ebe3;">
                 <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 12px; line-height: 1.6; color: #8b7355;">
-                  Reply directly to this email to respond to ${escapeHtml(name)}.
+                  Sent from the contact form at transforminglandscapes.ca.
                 </p>
               </td>
             </tr>
           </table>
-          <p style="margin: 24px 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #8b7355;">
-            transforminglandscapes.ca
-          </p>
         </td>
       </tr>
     </table>
