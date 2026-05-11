@@ -19,7 +19,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://transforminglandscapes.ca";
+const SITE_URL = "https://www.transforminglandscapes.ca";
 const SITE_NAME = "Transforming Landscapes";
 const DESCRIPTION =
   "A research platform on the future, challenges, and opportunities of First Nations-led real estate development in British Columbia. Produced by the Real Estate Institute of British Columbia and Greater Vancouver REALTORS®.";
