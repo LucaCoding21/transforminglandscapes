@@ -27,7 +27,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | REIBC`,
+    default: `${SITE_NAME} | REIBC & GVR`,
     template: `%s | ${SITE_NAME}`,
   },
   description: DESCRIPTION,
