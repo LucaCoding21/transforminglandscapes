@@ -107,7 +107,7 @@ export default function LibraryGrid() {
                     {item.image && (
                       <Image
                         src={item.image}
-                        alt=""
+                        alt={item.title}
                         fill
                         priority={i < 4}
                         sizes="96px"
@@ -140,7 +140,7 @@ export default function LibraryGrid() {
                   {item.image ? (
                     <Image
                       src={item.image}
-                      alt=""
+                      alt={item.title}
                       fill
                       priority={i < 4}
                       sizes="(max-width: 1024px) 50vw, 540px"

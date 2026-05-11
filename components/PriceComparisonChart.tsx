@@ -92,6 +92,8 @@ export default function PriceComparisonChart() {
           viewBox={`0 0 ${CHART_W} ${CHART_H}`}
           className="mx-auto w-full max-w-[640px]"
           preserveAspectRatio="xMidYMid meet"
+          role="img"
+          aria-label="Cost comparison showing potential affordability savings when developing on leasehold versus freehold land."
         >
           {/* Y-axis title */}
           <text

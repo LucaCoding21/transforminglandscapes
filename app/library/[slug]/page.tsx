@@ -25,10 +25,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = libraryItems.find((i) => i.slug === slug);
   if (!item) return {};
+  const path = `/library/${item.slug}`;
+  const ogType = item.type === "Interview" ? "video.other" : "article";
   return {
-    title: `${item.title} | Transforming Landscapes`,
+    title: item.title,
     description: item.description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: ogType,
+      title: item.title,
+      description: item.description,
+      url: path,
+      ...(item.image ? { images: [{ url: item.image }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: item.title,
+      description: item.description,
+      ...(item.image ? { images: [item.image] } : {}),
+    },
   };
+}
+
+function parseArticleDate(date: string | undefined): string | undefined {
+  if (!date) return undefined;
+  const parsed = new Date(date);
+  if (!Number.isNaN(parsed.getTime())) return parsed.toISOString();
+  const match = date.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (match) {
+    const fallback = new Date(`${match[1]} 1, ${match[2]}`);
+    if (!Number.isNaN(fallback.getTime())) return fallback.toISOString();
+  }
+  return undefined;
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -38,8 +66,46 @@ export default async function ArticlePage({ params }: Props) {
   if (!item) notFound();
   const nextItem = libraryItems[(itemIndex + 1) % libraryItems.length];
 
+  const SITE_URL = "https://transforminglandscapes.ca";
+  const articleUrl = `${SITE_URL}/library/${item.slug}`;
+  const datePublished = parseArticleDate(item.date);
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": item.type === "Interview" ? "VideoObject" : "Article",
+    headline: item.title,
+    description: item.description,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    url: articleUrl,
+    ...(item.image ? { image: [`${SITE_URL}${item.image}`] } : {}),
+    ...(datePublished ? { datePublished, dateModified: datePublished } : {}),
+    ...(item.author
+      ? {
+          author: { "@type": "Organization", name: item.author },
+        }
+      : {}),
+    publisher: {
+      "@type": "Organization",
+      name: "Transforming Landscapes",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/TransformingLandscapes_Black_Horizontal.svg`,
+      },
+    },
+    ...(item.type === "Interview" && item.youtubeId
+      ? {
+          embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
+          uploadDate: datePublished,
+        }
+      : {}),
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Hero image — sticky behind content */}
       <div className="sticky top-0 z-0 h-[35vh] min-h-[280px] w-full overflow-hidden bg-earth-200 md:h-[50vh] md:min-h-[400px]">
         {item.image ? (
@@ -71,7 +137,7 @@ export default async function ArticlePage({ params }: Props) {
             href="/library"
             className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-earth-300 transition hover:text-earth-500"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 4L7 12L15 20" /></svg>
+            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 4L7 12L15 20" /></svg>
             <span>Back to Library</span>
           </Link>
           <Link
@@ -79,7 +145,7 @@ export default async function ArticlePage({ params }: Props) {
             className="inline-flex min-w-0 items-center gap-2 text-sm font-medium text-earth-300 transition hover:text-earth-500"
           >
             <span className="truncate">Next: {nextItem.title}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M9 4L17 12L9 20" /></svg>
+            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M9 4L17 12L9 20" /></svg>
           </Link>
         </div>
 
@@ -285,7 +351,7 @@ export default async function ArticlePage({ params }: Props) {
             href="/library"
             className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-earth-300 transition hover:text-earth-500"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 4L7 12L15 20" /></svg>
+            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 4L7 12L15 20" /></svg>
             <span>Back to Library</span>
           </Link>
           <Link
@@ -293,7 +359,7 @@ export default async function ArticlePage({ params }: Props) {
             className="inline-flex min-w-0 items-center gap-2 text-sm font-medium text-earth-300 transition hover:text-earth-500"
           >
             <span className="truncate">Next: {nextItem.title}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M9 4L17 12L9 20" /></svg>
+            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M9 4L17 12L9 20" /></svg>
           </Link>
         </div>
 

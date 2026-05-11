@@ -194,6 +194,8 @@ export default function PriceTrendChart() {
           viewBox={`0 0 ${CHART_W} ${CHART_H}`}
           className="mx-auto w-full max-w-[720px]"
           preserveAspectRatio="xMidYMid meet"
+          role="img"
+          aria-label="Price trend over time comparing freehold and leasehold single-family home sale prices in the region."
         >
           <defs>
             <linearGradient id="freehold-fill" x1="0" y1="0" x2="0" y2="1">

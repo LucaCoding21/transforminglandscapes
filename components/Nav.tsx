@@ -51,7 +51,7 @@ export default function Nav() {
       <nav className="flex w-full max-w-content items-center justify-between gap-4 rounded-2xl bg-white px-5 py-2 shadow-lg shadow-earth-900/5 md:px-5 md:py-2">
         <Link
           href="/"
-          className="flex items-center rounded-full px-2 text-earth-900 transition hover:opacity-70"
+          className="flex items-center rounded-full text-earth-900 transition hover:opacity-70"
         >
           <Image
             src="/images/TransformingLandscapes_Black_Horizontal.svg"
