@@ -215,7 +215,17 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-1 text-[0.7rem] uppercase tracking-[0.04em] text-earth-900/40 md:text-right">
               <p>&copy; 2026 REIBC &amp; Greater Vancouver REALTORS&reg;</p>
-              <p>A research platform on First Nations-led real estate development in BC</p>
+              <p className="normal-case">
+                Logo design by{" "}
+                <a
+                  href="https://krstndesign.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-sage-600 underline decoration-sage-600/40 underline-offset-2 transition-colors hover:text-earth-900 hover:decoration-earth-900"
+                >
+                  krstndesign.com
+                </a>
+              </p>
               <p className="normal-case">
                 built with care by{" "}
                 <a
