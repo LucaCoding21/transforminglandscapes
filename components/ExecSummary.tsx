@@ -18,18 +18,8 @@ export default function ExecSummary() {
       <div className="mx-auto max-w-content px-6 md:px-10">
         <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="relative z-10 flex flex-col">
-            <h2 className="pb-16 font-heading text-[1.75rem] font-semibold uppercase leading-[0.95] text-earth-900 md:whitespace-nowrap md:pb-32 md:text-[4rem]">
-              <span className="block w-max overflow-hidden pb-[0.25em] -mb-[0.25em] md:pb-[0.12em] md:-mb-[0.12em]">
-                <motion.span
-                  className="block"
-                  initial={{ y: "110%" }}
-                  whileInView={{ y: "0%" }}
-                  viewport={{ once: true, amount: "some" }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  Executive Summary
-                </motion.span>
-              </span>
+            <h2 className="pb-16 font-heading text-[1.75rem] font-semibold uppercase leading-[0.95] text-earth-900 md:pb-32 md:text-[4rem]">
+              Executive Summary
             </h2>
 
             <div className="mt-6 max-w-md space-y-4 text-[0.8rem] leading-[1.55] text-earth-800/90">
