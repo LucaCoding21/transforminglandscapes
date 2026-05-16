@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Contact | Transforming Landscapes",
   description:
     "Get in touch with the Transforming Landscapes research team at REIBC and Greater Vancouver REALTORS®.",
+  alternates: {
+    canonical: "/contact",
+    languages: { "en-ca": "/contact" },
+  },
 };
 
 export default function ContactPage() {
@@ -39,6 +43,8 @@ export default function ContactPage() {
               <img
                 src="/images/reibc-logo.png"
                 alt="Real Estate Institute of British Columbia"
+                width={500}
+                height={180}
                 className="h-11 w-auto opacity-70 transition hover:opacity-100"
               />
             </a>
@@ -52,6 +58,8 @@ export default function ContactPage() {
               <img
                 src="/images/gvr-logo.png"
                 alt="Greater Vancouver REALTORS"
+                width={1201}
+                height={631}
                 className="h-[72px] w-auto opacity-70 transition hover:opacity-100"
               />
             </a>

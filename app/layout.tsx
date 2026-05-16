@@ -22,30 +22,33 @@ const inter = Inter({
 const SITE_URL = "https://www.transforminglandscapes.ca";
 const SITE_NAME = "Transforming Landscapes";
 const DESCRIPTION =
-  "A research platform on the future, challenges, and opportunities of First Nations-led real estate development in British Columbia. Produced by the Real Estate Institute of British Columbia and Greater Vancouver REALTORS®.";
+  "Research on First Nations-led real estate development in BC. A platform by REIBC and Greater Vancouver REALTORS®.";
+const HOME_TITLE =
+  "Transforming Landscapes — First Nations-Led Real Estate Development in BC";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | REIBC & GVR`,
+    default: HOME_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: DESCRIPTION,
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { "en-ca": "/" },
+  },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: SITE_NAME,
-    description:
-      "Research on the future of real estate in British Columbia. Produced by REIBC and Greater Vancouver REALTORS®.",
+    title: HOME_TITLE,
+    description: DESCRIPTION,
     url: SITE_URL,
     locale: "en_CA",
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
-    description:
-      "Research on the future of real estate in British Columbia. Produced by REIBC and Greater Vancouver REALTORS®.",
+    title: HOME_TITLE,
+    description: DESCRIPTION,
   },
   robots: {
     index: true,

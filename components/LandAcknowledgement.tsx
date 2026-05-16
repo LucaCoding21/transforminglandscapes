@@ -11,7 +11,7 @@ export default function LandAcknowledgement() {
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
               src="/images/source123-acknowledgement.webp"
-              alt=""
+              alt="Forested landscape on the traditional territories of First Nations in British Columbia"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"

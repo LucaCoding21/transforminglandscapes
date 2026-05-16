@@ -30,7 +30,7 @@ export default function OtherScopePillars({
             <div className="relative aspect-[5/3] overflow-hidden bg-earth-200">
               <Image
                 src={pillar.image}
-                alt=""
+                alt={pillar.label}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 340px"
                 className="object-cover transition duration-700 group-hover:scale-105"

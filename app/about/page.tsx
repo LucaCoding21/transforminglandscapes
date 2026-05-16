@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "About | Transforming Landscapes",
   description:
     "The Real Estate Institute of British Columbia (REIBC) and Greater Vancouver REALTORS (GVR) partnered to prepare this report.",
+  alternates: {
+    canonical: "/about",
+    languages: { "en-ca": "/about" },
+  },
 };
 
 export default function AboutPage() {

@@ -7,6 +7,7 @@ import CostBreakdownChart from "@/components/CostBreakdownChart";
 import PriceTrendChart from "@/components/PriceTrendChart";
 import PriceComparisonChart from "@/components/PriceComparisonChart";
 import ChartLightbox from "@/components/ChartLightbox";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 
 const chartComponents: Record<string, React.ComponentType> = {
@@ -30,7 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: item.title,
     description: item.description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      languages: { "en-ca": path },
+    },
     openGraph: {
       type: ogType,
       title: item.title,
@@ -66,39 +70,53 @@ export default async function ArticlePage({ params }: Props) {
   if (!item) notFound();
   const nextItem = libraryItems[(itemIndex + 1) % libraryItems.length];
 
-  const SITE_URL = "https://transforminglandscapes.ca";
+  const SITE_URL = "https://www.transforminglandscapes.ca";
   const articleUrl = `${SITE_URL}/library/${item.slug}`;
   const datePublished = parseArticleDate(item.date);
+  const absoluteImage = item.image ? `${SITE_URL}${item.image}` : undefined;
+  const isOrganizationAuthor = (name: string) =>
+    /(institute|realtors|services|society|corporation|association|company|group|council|inc\.?|ltd\.?)/i.test(
+      name,
+    );
+  const authorNode = item.author
+    ? {
+        "@type": isOrganizationAuthor(item.author) ? "Organization" : "Person",
+        name: item.author,
+      }
+    : undefined;
+  const publisherNode = {
+    "@type": "Organization",
+    name: "Transforming Landscapes",
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/images/TransformingLandscapes_Black_Horizontal.svg`,
+    },
+  };
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": item.type === "Interview" ? "VideoObject" : "Article",
+    "@type": "Article",
     headline: item.title,
     description: item.description,
-    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    mainEntityOfPage: articleUrl,
     url: articleUrl,
-    ...(item.image ? { image: [`${SITE_URL}${item.image}`] } : {}),
+    ...(absoluteImage ? { image: absoluteImage } : {}),
     ...(datePublished ? { datePublished, dateModified: datePublished } : {}),
-    ...(item.author
-      ? {
-          author: { "@type": "Organization", name: item.author },
-        }
-      : {}),
-    publisher: {
-      "@type": "Organization",
-      name: "Transforming Landscapes",
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/images/TransformingLandscapes_Black_Horizontal.svg`,
-      },
-    },
-    ...(item.type === "Interview" && item.youtubeId
-      ? {
-          embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
-          uploadDate: datePublished,
-        }
-      : {}),
+    ...(authorNode ? { author: authorNode } : {}),
+    publisher: publisherNode,
   };
+  const videoJsonLd =
+    item.type === "Interview" && item.youtubeId
+      ? {
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: item.title,
+          description: item.description,
+          ...(absoluteImage ? { thumbnailUrl: absoluteImage } : {}),
+          ...(datePublished ? { uploadDate: datePublished } : {}),
+          embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
+          publisher: publisherNode,
+        }
+      : null;
 
   return (
     <main>
@@ -106,6 +124,12 @@ export default async function ArticlePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      {videoJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+        />
+      )}
       {/* Hero image — sticky behind content */}
       <div className="sticky top-0 z-0 h-[35vh] min-h-[280px] w-full overflow-hidden bg-earth-200 md:h-[50vh] md:min-h-[400px]">
         {item.image ? (
@@ -131,8 +155,17 @@ export default async function ArticlePage({ params }: Props) {
       {/* Article content — scrolls over the hero */}
       <div className="relative z-10 -mt-16 rounded-t-[2rem] bg-earth-50 pt-12">
       <article className="mx-auto max-w-4xl px-6 md:px-10">
+        {/* Breadcrumbs */}
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Library", href: "/library" },
+            { name: item.title },
+          ]}
+        />
+
         {/* Navigation */}
-        <div className="flex items-center justify-between gap-4">
+        <div className="mt-6 flex items-center justify-between gap-4">
           <Link
             href="/library"
             className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-earth-300 transition hover:text-earth-500"

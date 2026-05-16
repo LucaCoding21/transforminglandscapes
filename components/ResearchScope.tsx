@@ -24,7 +24,15 @@ function ArrowIcon({ className = "" }: { className?: string }) {
   );
 }
 
-function ParallaxImage({ src, title }: { src: string; title: string }) {
+function ParallaxImage({
+  src,
+  title,
+  alt,
+}: {
+  src: string;
+  title: string;
+  alt: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -35,7 +43,7 @@ function ParallaxImage({ src, title }: { src: string; title: string }) {
   return (
     <div ref={ref} className="relative aspect-[4/3] overflow-hidden">
       <motion.div className="absolute -inset-[20%]" style={{ y }}>
-        <Image src={src} alt="" fill sizes="100vw" className="object-cover" />
+        <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
       </motion.div>
       {title && (
         <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 via-black/40 to-transparent px-5 pb-5 pt-24">
@@ -119,21 +127,24 @@ export default function ResearchScope() {
 
   return (
     <div id="scope">
+      <h2 className="sr-only">Research Scope</h2>
+
       {/* Mobile layout */}
       <section className="bg-earth-50 py-20 text-earth-900 md:hidden">
         <div className="mx-auto max-w-content px-6">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden
             className="font-heading font-medium uppercase leading-[0.9] text-earth-900"
             style={{ fontSize: "2.5rem" }}
           >
             Research
             <br />
             Scope
-          </motion.h2>
+          </motion.div>
 
           <div className="mt-16 flex flex-col gap-20">
             {pillars.map((pillar, i) => {
@@ -195,7 +206,7 @@ export default function ResearchScope() {
                       }}
                       className={`mt-6 ${isEven ? "-ml-6 -mr-2" : "-mr-6 -ml-2"}`}
                     >
-                      <ParallaxImage src={pillar.image} title="" />
+                      <ParallaxImage src={pillar.image} title="" alt={pillar.label} />
                     </motion.div>
                     <p
                       className={`mt-6 text-sm leading-relaxed text-earth-600 ${isEven ? "text-left" : "ml-auto text-right"}`}
@@ -215,18 +226,19 @@ export default function ResearchScope() {
         className="relative hidden h-[100svh] min-h-[720px] w-full overflow-hidden bg-earth-50 text-earth-900 md:block"
       >
         <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-end pr-[15vw]">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden
             className="text-right font-heading font-medium uppercase leading-[0.9] text-earth-900"
             style={{ fontSize: "5rem" }}
           >
             Research
             <br />
             Scope
-          </motion.h2>
+          </motion.div>
         </div>
 
         <div className="absolute inset-0 grid grid-cols-4">
@@ -240,7 +252,7 @@ export default function ResearchScope() {
                 <div className="absolute inset-0 -translate-x-full transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0">
                   <Image
                     src={pillar.image}
-                    alt=""
+                    alt={pillar.label}
                     fill
                     sizes="25vw"
                     className="object-cover"

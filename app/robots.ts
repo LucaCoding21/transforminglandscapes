@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://transforminglandscapes.ca";
+const SITE_URL = "https://www.transforminglandscapes.ca";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +8,5 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/", disallow: ["/api/"] },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }

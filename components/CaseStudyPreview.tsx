@@ -123,7 +123,7 @@ export default function CaseStudyPreview() {
               <div className="relative aspect-[5/4] overflow-hidden">
                 <Image
                   src={study.image}
-                  alt=""
+                  alt={study.title}
                   fill
                   sizes="80vw"
                   className="object-cover"
@@ -208,7 +208,7 @@ export default function CaseStudyPreview() {
               <div className="relative aspect-[4/3] overflow-hidden bg-earth-200">
                 <Image
                   src={study.image}
-                  alt=""
+                  alt={study.title}
                   fill
                   sizes="33vw"
                   className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.1]"
@@ -243,6 +243,8 @@ export default function CaseStudyPreview() {
             src="/images/topper-light.svg"
             alt=""
             aria-hidden
+            width={2160}
+            height={1350}
             style={{ y: lightY }}
             className="absolute inset-x-0 bottom-0 block w-full max-w-none select-none"
           />
@@ -252,6 +254,8 @@ export default function CaseStudyPreview() {
             src="/images/topper-dark.svg"
             alt=""
             aria-hidden
+            width={2160}
+            height={1350}
             className="relative block w-full max-w-none select-none"
           />
         </div>

@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import Link from "@/components/TransitionLink";
 import OtherScopePillars from "@/components/OtherScopePillars";
 import InlineQuote from "@/components/InlineQuote";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { libraryItems } from "@/lib/libraryItems";
 
 export const metadata: Metadata = {
   title: "Leadership Voices in Indigenous Real Estate | Transforming Landscapes",
   description:
     "We grow and improve our practices by engaging in open conversations, listening deeply, and sharing diverse perspectives.",
+  alternates: {
+    canonical: "/scope/leadership-voices-in-indigenous-real-estate",
+    languages: { "en-ca": "/scope/leadership-voices-in-indigenous-real-estate" },
+  },
 };
 
 const videoSlugs = [
@@ -28,15 +33,13 @@ export default function LeadershipVoicesPage() {
     <main className="pt-24 md:pt-32 lg:pt-40">
       <section className="mx-auto max-w-content px-6 pb-24 md:px-10 md:pb-32">
         <div className="max-w-3xl">
-          <Link
-            href="/#scope"
-            className="group inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-earth-700 transition hover:text-earth-900"
-          >
-            <span aria-hidden className="transition group-hover:-translate-x-1">
-              ←
-            </span>
-            <span>Back</span>
-          </Link>
+          <Breadcrumbs
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Research Scope", href: "/#scope" },
+              { name: "Leadership Voices in Indigenous Real Estate" },
+            ]}
+          />
 
           <h1 className="mt-10 font-heading text-display-lg leading-[1.05] text-earth-900">
             Leadership Voices in Indigenous Real Estate

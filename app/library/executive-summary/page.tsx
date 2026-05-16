@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Executive Summary | Transforming Landscapes",
   description:
     "The full executive summary of Transforming Landscapes: Advancing Understanding and Collaboration with Indigenous Partners in BC Real Estate.",
+  alternates: {
+    canonical: "/library/executive-summary",
+    languages: { "en-ca": "/library/executive-summary" },
+  },
 };
 
 export default function ExecutiveSummaryPage() {

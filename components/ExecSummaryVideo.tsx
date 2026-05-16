@@ -109,7 +109,7 @@ export default function ExecSummaryVideo() {
               <div className="relative h-8 w-8 overflow-hidden rounded-full bg-white/90 ring-1 ring-white/40 md:h-9 md:w-9">
                 <Image
                   src="/images/reibclogo.jpeg"
-                  alt=""
+                  alt="REIBC"
                   fill
                   sizes="36px"
                   className="object-cover"
@@ -118,7 +118,7 @@ export default function ExecSummaryVideo() {
               <div className="relative h-8 w-8 overflow-hidden rounded-full bg-white/90 ring-1 ring-white/40 md:h-9 md:w-9">
                 <Image
                   src="/images/gvrlogo.jpeg"
-                  alt=""
+                  alt="Greater Vancouver REALTORS"
                   fill
                   sizes="36px"
                   className="object-cover"
@@ -126,9 +126,10 @@ export default function ExecSummaryVideo() {
               </div>
             </div>
 
-            {/* Big title — top left area */}
+            {/* Big title — top left area (visual CTA, not a section heading) */}
             <div className="absolute left-6 top-24 right-28 md:left-10 md:top-28 md:right-40 lg:right-56">
-              <h2
+              <div
+                aria-hidden
                 className="font-heading font-semibold leading-[0.95] tracking-tight text-white"
                 style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)" }}
               >
@@ -136,7 +137,7 @@ export default function ExecSummaryVideo() {
                 <span className="block -translate-y-1 pl-6 italic md:pl-10">
                   Summary
                 </span>
-              </h2>
+              </div>
             </div>
 
             {/* Date stack — top right */}

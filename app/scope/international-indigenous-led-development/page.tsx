@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import Link from "@/components/TransitionLink";
 import OtherScopePillars from "@/components/OtherScopePillars";
 import InlineQuote from "@/components/InlineQuote";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title:
     "Collaborative Approaches and Emerging Models: International Indigenous-Led Development | Transforming Landscapes",
   description:
     "Around the world, there are powerful examples of Indigenous-led and collaborative real estate and land development projects that honour culture, history, and community.",
+  alternates: {
+    canonical: "/scope/international-indigenous-led-development",
+    languages: { "en-ca": "/scope/international-indigenous-led-development" },
+  },
 };
 
 export default function InternationalIndigenousLedDevelopmentPage() {
@@ -15,15 +20,13 @@ export default function InternationalIndigenousLedDevelopmentPage() {
     <main className="pt-24 md:pt-32 lg:pt-40">
       <section className="mx-auto max-w-content px-6 pb-24 md:px-10 md:pb-32">
         <div className="max-w-5xl">
-          <Link
-            href="/#scope"
-            className="group inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-earth-700 transition hover:text-earth-900"
-          >
-            <span aria-hidden className="transition group-hover:-translate-x-1">
-              ←
-            </span>
-            <span>Back</span>
-          </Link>
+          <Breadcrumbs
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Research Scope", href: "/#scope" },
+              { name: "Collaborative Approaches and Emerging Models" },
+            ]}
+          />
 
           <h1 className="mt-10 font-heading text-4xl font-medium leading-[1.05] tracking-tight text-earth-900 md:text-5xl lg:text-6xl">
             Collaborative Approaches and Emerging Models: International

@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Library | Transforming Landscapes",
   description:
     "Case studies, leadership interviews, and resources on the future of real estate in British Columbia.",
+  alternates: {
+    canonical: "/library",
+    languages: { "en-ca": "/library" },
+  },
 };
 
 export default function LibraryPage() {

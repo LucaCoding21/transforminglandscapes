@@ -196,20 +196,32 @@ export default function Footer() {
           </ul>
         </div>
 
-        <h1 className="sr-only">Transforming Landscapes</h1>
-
         <div className="mt-8 border-t border-earth-900/15 pt-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-8">
               <a href="https://www.reibc.org/" target="_blank" rel="noreferrer">
-                <img src="/images/reibc-logo.png" alt="Real Estate Institute of British Columbia" className="h-10 w-auto opacity-70 transition hover:opacity-100" />
+                <img
+                  src="/images/reibc-logo.png"
+                  alt="Real Estate Institute of British Columbia"
+                  width={500}
+                  height={180}
+                  className="h-10 w-auto opacity-70 transition hover:opacity-100"
+                />
               </a>
               <a href="https://gvrealtors.ca" target="_blank" rel="noreferrer">
-                <img src="/images/gvr-logo.png" alt="Greater Vancouver Realtors" className="h-[68px] w-auto opacity-70 transition hover:opacity-100" />
+                <img
+                  src="/images/gvr-logo.png"
+                  alt="Greater Vancouver Realtors"
+                  width={1201}
+                  height={631}
+                  className="h-[68px] w-auto opacity-70 transition hover:opacity-100"
+                />
               </a>
               <img
                 src="/images/TransformingLandscapes_Black_Stacked_web.png"
                 alt="Transforming Landscapes"
+                width={1058}
+                height={1000}
                 className="-my-3 h-[92px] w-auto opacity-70"
               />
             </div>

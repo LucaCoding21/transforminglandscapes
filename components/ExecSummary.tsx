@@ -79,7 +79,7 @@ export default function ExecSummary() {
             <motion.div className="absolute inset-0 scale-[1.3]" style={{ y: imgY }}>
               <Image
                 src="/images/88d981ca690449c6259d98c72767878a.webp"
-                alt=""
+                alt="British Columbia coastal landscape"
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 50vw, 100vw"

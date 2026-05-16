@@ -118,6 +118,9 @@ export default function Hero() {
                   </motion.span>
                 </span>
               ))}
+              <span className="sr-only">
+                : First Nations-Led Real Estate Development in BC
+              </span>
             </h1>
           </div>
 
