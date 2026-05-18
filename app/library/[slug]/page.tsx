@@ -69,6 +69,13 @@ export default async function ArticlePage({ params }: Props) {
   const item = libraryItems[itemIndex];
   if (!item) notFound();
   const nextItem = libraryItems[(itemIndex + 1) % libraryItems.length];
+  const truncateTitle = (s: string, max = 28) => {
+    if (s.length <= max) return s;
+    const cut = s.slice(0, max);
+    const lastSpace = cut.lastIndexOf(" ");
+    return `${(lastSpace > 10 ? cut.slice(0, lastSpace) : cut).trimEnd()}…`;
+  };
+  const nextShortTitle = truncateTitle(nextItem.title);
 
   const SITE_URL = "https://www.transforminglandscapes.ca";
   const articleUrl = `${SITE_URL}/library/${item.slug}`;
@@ -155,30 +162,24 @@ export default async function ArticlePage({ params }: Props) {
       {/* Article content — scrolls over the hero */}
       <div className="relative z-10 -mt-16 rounded-t-[2rem] bg-earth-50 pt-12">
       <article className="mx-auto max-w-4xl px-6 md:px-10">
-        {/* Breadcrumbs */}
-        <Breadcrumbs
-          items={[
-            { name: "Home", href: "/" },
-            { name: "Library", href: "/library" },
-            { name: item.title },
-          ]}
-        />
-
-        {/* Navigation */}
-        <div className="mt-6 flex items-center justify-between gap-4">
-          <Link
-            href="/library"
-            className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-earth-300 transition hover:text-earth-500"
-          >
-            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 4L7 12L15 20" /></svg>
-            <span>Back to Library</span>
-          </Link>
+        {/* Breadcrumbs + next article on one line */}
+        <div className="flex items-center justify-between gap-4">
+          <div className="min-w-0 flex-1">
+            <Breadcrumbs
+              tone="muted"
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Library", href: "/library" },
+                { name: item.title },
+              ]}
+            />
+          </div>
           <Link
             href={`/library/${nextItem.slug}`}
-            className="inline-flex min-w-0 items-center gap-2 text-sm font-medium text-earth-300 transition hover:text-earth-500"
+            className="group inline-flex shrink-0 items-center gap-1.5 text-sm text-earth-300 transition hover:text-earth-500"
           >
-            <span className="truncate">Next: {nextItem.title}</span>
-            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M9 4L17 12L9 20" /></svg>
+            <span>Next: &lsquo;{nextShortTitle}&rsquo;</span>
+            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 transition-transform group-hover:translate-x-0.5"><path d="M9 4L17 12L9 20" /></svg>
           </Link>
         </div>
 
