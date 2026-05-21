@@ -235,7 +235,7 @@ export const libraryItems: LibraryItem[] = [
     description:
       "A 6.9-acre, multi-phased Indigenous community in Prince George with 176 housing units and 40 childcare spaces, developed in collaboration with the Aboriginal Housing Society of Prince George.",
     type: "Case Study",
-    image: "/images/1919-17th%20ave.jpg",
+    image: "/images/1919-17th-ave.jpg",
     readingTime: "1 min read",
     author: "M'akola Development Services",
     authorAvatar: "/images/makola_development_services__logo.jpeg",
@@ -257,7 +257,7 @@ export const libraryItems: LibraryItem[] = [
     description:
       "An Indigenous-led mixed-use development on East Hastings with 80 shelter beds, 25 supportive units, 143 rental homes, and a multi-level day centre. The name means “To Gather, Good Spirits” in Chinook Jargon.",
     type: "Case Study",
-    image: "/images/east%20hastings%20mixed%20use.jpg",
+    image: "/images/east-hastings-mixed-use.jpg",
     readingTime: "2 min read",
     author: "M'akola Development Services",
     authorAvatar: "/images/makola_development_services__logo.jpeg",
