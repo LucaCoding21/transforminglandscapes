@@ -44,8 +44,8 @@ export default function LandAcknowledgement() {
               <div className="space-y-4">
                 <p>
                   The Real Estate Institute of BC&rsquo;s headquarters are
-                  located in downtown Vancouver, BC, the traditional,
-                  ancestral, and unceded shared territory of the
+                  located in downtown Vancouver, BC, the traditional and
+                  ancestral shared territory of the
                   xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), and
                   səlilwətaɬ (Tsleil-Waututh) peoples. This place is called
                   K&rsquo;emk&rsquo;emeláy (place of many maple trees) by the
@@ -59,17 +59,17 @@ export default function LandAcknowledgement() {
                   of integrity, diversity, transparency, and community.
                 </p>
                 <p>
-                  In keeping with our values, as uninvited guests on this land,
-                  we would like to acknowledge the Indigenous Peoples who have
-                  stewarded territories across BC since time immemorial, an
-                  area where REIBC now has the privilege to serve:
+                  In keeping with our values, we would like to acknowledge the
+                  Indigenous Peoples who have stewarded territories across BC
+                  since time immemorial, an area where REIBC now has the
+                  privilege to serve:
                 </p>
                 <p>
                   <strong className="font-bold text-white">
                     On Vancouver Island and neighbouring islands,
                   </strong>{" "}
                   the traditional
-                  and unceded territory of the Xwsepsum and Songhees Nations of
+                  and ancestral territory of the Xwsepsum and Songhees Nations of
                   the lək̓ʷəŋən families and ancestors, Scia&rsquo;new,
                   T&rsquo;Sou-ke. The MÁLEXEȽ (Malahat), BOḰEĆEN (Pauquachin),
                   SȾÁ¸UTW̱ (Tsawout), W̱JOȽEȽP (Tsartlip), and W̱SÍḴEM (Tseycum)
@@ -84,7 +84,7 @@ export default function LandAcknowledgement() {
                   <strong className="font-bold text-white">
                     In the Lower Mainland,
                   </strong>{" "}
-                  the traditional and unceded territory
+                  the traditional and ancestral territory
                   of the xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh Úxwumixw
                   (Squamish), səlilwətaɬ (Tsleil-Waututh), QayQayt First
                   Nation, Kwantlen, q̓íc̓əy̓ (Katzie), Semiahmoo, Tsawwassen
@@ -95,7 +95,7 @@ export default function LandAcknowledgement() {
                     In the Cariboo, Chilcotin, and Coast region,
                   </strong>{" "}
                   the traditional
-                  and unceded territory of the Tsilhqot&rsquo;in, the Northern
+                  and ancestral territory of the Tsilhqot&rsquo;in, the Northern
                   Secwepemc including the T&rsquo;exelcemc and
                   Tsq&rsquo;escenemc nations, St&apos;át&apos;imc, Nuxalk,
                   Gitga&rsquo;at, Wuikinuxv, and Heiltsuk.
@@ -104,7 +104,7 @@ export default function LandAcknowledgement() {
                   <strong className="font-bold text-white">
                     In the Thompson-Okanagan region,
                   </strong>{" "}
-                  the traditional and unceded
+                  the traditional and ancestral
                   territory of the Nlaka&rsquo;pamux Peoples, Syilx Peoples,
                   and Secwepemc Nations.
                 </p>
@@ -112,7 +112,7 @@ export default function LandAcknowledgement() {
                   <strong className="font-bold text-white">
                     In the Kootenay region,
                   </strong>{" "}
-                  the traditional and unceded territory
+                  the traditional and ancestral territory
                   of the Ktunaxa nation, Secwepemc nations, Syilx, and Sinixt
                   Peoples.
                 </p>
@@ -120,7 +120,7 @@ export default function LandAcknowledgement() {
                   <strong className="font-bold text-white">
                     In Northern B.C.,
                   </strong>{" "}
-                  the traditional and unceded territory of
+                  the traditional and ancestral territory of
                   the Lheidli T&rsquo;enneh, Haida, Tsimshian, Nisga&rsquo;a,
                   Haisla, Gitxsan, Wet&rsquo;suwet&rsquo;en, Tahltan peoples,
                   and on Treaty 8 territory, lands of the Sicannie, Slavey,
@@ -130,6 +130,23 @@ export default function LandAcknowledgement() {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 border-t border-earth-50/20 pt-10 md:mt-16 md:pt-12"
+        >
+          <p className="max-w-3xl text-[0.95rem] leading-[1.7] text-earth-50/90 md:text-base">
+            Thank you to the partners, stakeholders, contributors and
+            interviewees who generously shared their time, energy and insight
+            to help bring this report to life. Their contributions and shared
+            stories honour Indigenous voices while offering the industry
+            greater insight and practical guidance to build relationships
+            rooted in trust and shared values.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

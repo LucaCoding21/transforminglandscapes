@@ -3,8 +3,9 @@
 import Image from "next/image";
 import HeroInfoCard from "@/components/HeroInfoCard";
 import MorphIcon from "@/components/MorphIcon";
+import PartnershipBanner from "@/components/PartnershipBanner";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 type CardDef = {
   label: string;
@@ -67,8 +68,14 @@ const infoCards: CardDef[] = [
 const headlineLines = ["Transforming", "Landscapes"];
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+const heroIntro =
+  "To create this report, we engaged with Indigenous and First Nations groups to better understand their perspectives, goals, and priorities related to Indigenous-led development today.";
+const heroMore =
+  "The project is intended to deepen understanding among the members we represent and support more informed, respectful, and collaborative relationships moving forward.";
+
 export default function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const safety = setTimeout(() => setImageLoaded(true), 2500);
@@ -92,9 +99,21 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-earth-900/85 via-earth-900/30 to-earth-900/45" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-earth-900/55 via-earth-900/10 to-earth-900/55" />
 
+      <PartnershipBanner />
+
       <div className="relative z-10 mx-auto flex h-full max-w-content flex-col px-6 pb-44 pt-28 md:px-10 md:pb-14 md:pt-32">
         <div className="relative flex h-full flex-1 flex-col justify-center md:justify-end">
           <div className="lg:mb-[6vh] lg:-translate-x-20">
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+              className="-mb-3 text-[0.65rem] font-medium uppercase leading-[1.55] tracking-[0.18em] text-white/85 md:-mb-3 md:text-[0.72rem]"
+            >
+              This research was led in partnership by Greater Vancouver Realtors
+              <br />
+              and the Real Estate Institute of British Columbia.
+            </motion.p>
             <h1
               style={{
                 fontSize: "clamp(4rem, 12vw, 10rem)",
@@ -106,7 +125,7 @@ export default function Hero() {
               {headlineLines.map((line, i) => (
                 <span
                   key={line}
-                  className="block w-max overflow-hidden pb-[0.2em] -mb-[0.2em] md:pb-[0.12em] md:-mb-[0.12em]"
+                  className="block w-max overflow-hidden pb-[0.2em] pr-[0.08em] -mb-[0.2em] -mr-[0.08em] md:pb-[0.12em] md:-mb-[0.12em]"
                 >
                   <motion.span
                     className="block"
@@ -124,7 +143,7 @@ export default function Hero() {
             </h1>
           </div>
 
-          <div className="mt-6 max-w-sm md:max-w-none lg:absolute lg:bottom-32 lg:right-0 lg:mt-0 lg:max-w-md lg:translate-x-32">
+          <div className="mt-6 max-w-sm md:max-w-none lg:absolute lg:bottom-28 lg:right-0 lg:mt-0 lg:max-w-md lg:translate-x-32">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -134,16 +153,52 @@ export default function Hero() {
               The Future, Challenges &amp; Opportunities
             </motion.p>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 1, delay: 0.47, ease: EASE }}
-              className="mt-5 text-base leading-relaxed text-white/85 md:text-base"
+              className="mt-5"
             >
-              Understanding First Nations-led real estate development in British
-              Columbia, the territories and relationships grounding it, and the
-              leaders defining what comes next.
-            </motion.p>
+              <p className="text-base leading-relaxed text-white/85">
+                {heroIntro}
+              </p>
+              <AnimatePresence initial={false}>
+                {expanded && (
+                  <motion.p
+                    key="more"
+                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                    animate={{ opacity: 1, height: "auto", marginTop: "0.75rem" }}
+                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                    transition={{ duration: 0.45, ease: EASE }}
+                    className="overflow-hidden text-base leading-relaxed text-white/85"
+                  >
+                    {heroMore}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+              <button
+                type="button"
+                onClick={() => setExpanded((v) => !v)}
+                aria-expanded={expanded}
+                className="mt-4 inline-flex items-center gap-1.5 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-white/85 transition hover:text-white"
+              >
+                <span>{expanded ? "Read less" : "Read more"}</span>
+                <svg
+                  className={`h-3 w-3 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M3 4.5L6 7.5L9 4.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </motion.div>
           </div>
         </div>
       </div>
