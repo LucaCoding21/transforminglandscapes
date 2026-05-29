@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Figtree, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -24,7 +25,7 @@ const SITE_NAME = "Transforming Landscapes";
 const DESCRIPTION =
   "Research on First Nations-led real estate development in BC. A platform by REIBC and Greater Vancouver REALTORS®.";
 const HOME_TITLE =
-  "Transforming Landscapes — First Nations-Led Real Estate Development in BC";
+  "Transforming Landscapes: First Nations-Led Real Estate Development in BC";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -88,6 +89,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${figtree.variable} ${inter.variable}`}>
       <body className="bg-earth-50 text-earth-900">
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SXMC2HRB7D"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SXMC2HRB7D');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

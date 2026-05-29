@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Transforming Landscapes — Research on First Nations-led real estate development in British Columbia";
+export const alt = "Transforming Landscapes: Research on First Nations-led real estate development in British Columbia";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

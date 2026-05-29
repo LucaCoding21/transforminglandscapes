@@ -3,7 +3,6 @@
 import Image from "next/image";
 import HeroInfoCard from "@/components/HeroInfoCard";
 import MorphIcon from "@/components/MorphIcon";
-import PartnershipBanner from "@/components/PartnershipBanner";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -99,21 +98,36 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-earth-900/85 via-earth-900/30 to-earth-900/45" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-earth-900/55 via-earth-900/10 to-earth-900/55" />
 
-      <PartnershipBanner />
-
       <div className="relative z-10 mx-auto flex h-full max-w-content flex-col px-6 pb-44 pt-28 md:px-10 md:pb-14 md:pt-32">
-        <div className="relative flex h-full flex-1 flex-col justify-center md:justify-end">
+        <div className="relative flex h-full flex-1 flex-col justify-end">
           <div className="lg:mb-[6vh] lg:-translate-x-20">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-              className="-mb-3 text-[0.65rem] font-medium uppercase leading-[1.55] tracking-[0.18em] text-white/85 md:-mb-3 md:text-[0.72rem]"
+              transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+              className="mb-5 flex flex-col gap-3 pl-3 sm:hidden"
             >
-              This research was led in partnership by Greater Vancouver Realtors
-              <br />
-              and the Real Estate Institute of British Columbia.
-            </motion.p>
+              <div className="flex w-max items-center gap-3">
+                <Image
+                  src="/images/reibclogo.jpeg"
+                  alt="Real Estate Institute of British Columbia"
+                  width={200}
+                  height={200}
+                  className="h-9 w-auto"
+                />
+                <Image
+                  src="/images/gvrlogo.jpeg"
+                  alt="Greater Vancouver Realtors"
+                  width={200}
+                  height={200}
+                  className="h-9 w-auto"
+                />
+              </div>
+              <p className="text-[0.65rem] font-medium uppercase leading-[1.55] tracking-[0.18em] text-white/85">
+                This research was led in partnership by Greater Vancouver
+                Realtors and the Real Estate Institute of British Columbia.
+              </p>
+            </motion.div>
             <h1
               style={{
                 fontSize: "clamp(4rem, 12vw, 10rem)",
@@ -141,6 +155,35 @@ export default function Hero() {
                 : First Nations-Led Real Estate Development in BC
               </span>
             </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+              className="mt-4 hidden flex-col gap-4 pl-3 sm:flex sm:flex-row sm:items-center md:mt-5 md:pl-4"
+            >
+              <div className="hidden w-max items-center gap-3 sm:flex">
+                <Image
+                  src="/images/reibclogo.jpeg"
+                  alt="Real Estate Institute of British Columbia"
+                  width={200}
+                  height={200}
+                  className="h-9 w-auto md:h-10"
+                />
+                <Image
+                  src="/images/gvrlogo.jpeg"
+                  alt="Greater Vancouver Realtors"
+                  width={200}
+                  height={200}
+                  className="h-9 w-auto md:h-10"
+                />
+              </div>
+              <p className="text-[0.65rem] font-medium uppercase leading-[1.55] tracking-[0.18em] text-white/85 md:text-[0.72rem]">
+                This research was led in partnership by Greater Vancouver
+                Realtors
+                <br />
+                and the Real Estate Institute of British Columbia.
+              </p>
+            </motion.div>
           </div>
 
           <div className="mt-6 max-w-sm md:max-w-none lg:absolute lg:bottom-28 lg:right-0 lg:mt-0 lg:max-w-md lg:translate-x-32">
@@ -148,7 +191,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 1, delay: 0.35, ease: EASE }}
-              className="font-heading text-xl font-semibold leading-[1.15] tracking-tight text-white md:text-2xl lg:text-[1.75rem]"
+              className="pb-1 font-heading text-xl font-semibold leading-[1.15] tracking-tight text-white md:pb-6 md:text-2xl lg:text-[1.75rem]"
             >
               The Future, Challenges &amp; Opportunities
             </motion.p>
