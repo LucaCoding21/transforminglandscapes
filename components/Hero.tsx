@@ -98,39 +98,6 @@ export default function Hero() {
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-content flex-col px-6 pb-44 pt-28 md:h-full md:min-h-0 md:px-10 md:pb-14 md:pt-32">
         <div className="relative flex h-full flex-1 flex-col">
           <div className="mt-auto lg:mb-[6vh] lg:-translate-x-20">
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-              className="mb-6 sm:hidden"
-            >
-              <div className="inline-flex max-w-[17rem] items-center gap-2.5 rounded-xl bg-black/30 px-2.5 py-2 backdrop-blur-md">
-                <div className="flex shrink-0 items-center gap-1.5">
-                  <Image
-                    src="/images/reibclogo.jpeg"
-                    alt="Real Estate Institute of British Columbia"
-                    width={200}
-                    height={200}
-                    className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
-                  />
-                  <Image
-                    src="/images/gvrlogo.jpeg"
-                    alt="Greater Vancouver Realtors"
-                    width={200}
-                    height={200}
-                    className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
-                  />
-                </div>
-                <div>
-                  <p className="text-[0.5rem] font-semibold uppercase tracking-[0.16em] text-white/70">
-                    In partnership with
-                  </p>
-                  <p className="text-[0.7rem] font-medium leading-snug text-white">
-                    Greater Vancouver Realtors &amp; Real Estate Institute of BC
-                  </p>
-                </div>
-              </div>
-            </motion.div>
             <h1
               style={{
                 fontSize: "clamp(4rem, 12vw, 10rem)",
@@ -162,35 +129,30 @@ export default function Hero() {
               initial={{ opacity: 0, y: 8 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-              className="mt-5 hidden pl-1 sm:block"
+              className="mt-4 hidden flex-col gap-4 pl-3 sm:flex sm:flex-row sm:items-center md:mt-5 md:pl-4"
             >
-              <div className="inline-flex items-center gap-2.5 rounded-xl bg-black/30 px-3 py-2 backdrop-blur-md">
-                <div className="flex shrink-0 items-center gap-1.5">
-                  <Image
-                    src="/images/reibclogo.jpeg"
-                    alt="Real Estate Institute of British Columbia"
-                    width={200}
-                    height={200}
-                    className="h-7 w-7 rounded-md object-cover ring-1 ring-white/15"
-                  />
-                  <Image
-                    src="/images/gvrlogo.jpeg"
-                    alt="Greater Vancouver Realtors"
-                    width={200}
-                    height={200}
-                    className="h-7 w-7 rounded-md object-cover ring-1 ring-white/15"
-                  />
-                </div>
-                <div>
-                  <p className="text-[0.52rem] font-semibold uppercase tracking-[0.16em] text-white/70">
-                    In partnership with
-                  </p>
-                  <p className="text-[0.8rem] font-medium leading-snug text-white">
-                    Greater Vancouver Realtors &amp; the Real Estate Institute of
-                    British Columbia
-                  </p>
-                </div>
+              <div className="hidden w-max items-center gap-3 sm:flex">
+                <Image
+                  src="/images/reibclogo.jpeg"
+                  alt="Real Estate Institute of British Columbia"
+                  width={200}
+                  height={200}
+                  className="h-9 w-auto md:h-10"
+                />
+                <Image
+                  src="/images/gvrlogo.jpeg"
+                  alt="Greater Vancouver Realtors"
+                  width={200}
+                  height={200}
+                  className="h-9 w-auto md:h-10"
+                />
               </div>
+              <p className="text-[0.65rem] font-medium uppercase leading-[1.55] tracking-[0.18em] text-white/85 md:text-[0.72rem]">
+                This research was led in partnership by Greater Vancouver
+                Realtors
+                <br />
+                and the Real Estate Institute of British Columbia.
+              </p>
             </motion.div>
           </div>
 
@@ -217,6 +179,40 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+        transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
+        className="absolute inset-x-6 bottom-8 z-10 sm:hidden"
+      >
+        <div className="inline-flex max-w-[17rem] items-center gap-2.5 rounded-xl bg-black/30 px-2.5 py-2 backdrop-blur-md">
+          <div className="flex shrink-0 items-center gap-1.5">
+            <Image
+              src="/images/reibclogo.jpeg"
+              alt="Real Estate Institute of British Columbia"
+              width={200}
+              height={200}
+              className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
+            />
+            <Image
+              src="/images/gvrlogo.jpeg"
+              alt="Greater Vancouver Realtors"
+              width={200}
+              height={200}
+              className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
+            />
+          </div>
+          <div>
+            <p className="text-[0.5rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+              In partnership with
+            </p>
+            <p className="text-[0.7rem] font-medium leading-snug text-white">
+              Greater Vancouver Realtors &amp; Real Estate Institute of BC
+            </p>
+          </div>
+        </div>
+      </motion.div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-24 z-10 hidden md:bottom-8 md:block lg:bottom-24">
         <div className="pointer-events-auto mx-auto flex max-w-content justify-center px-6 md:justify-end md:px-10 lg:translate-x-32">
