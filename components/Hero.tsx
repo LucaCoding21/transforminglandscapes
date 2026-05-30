@@ -4,7 +4,7 @@ import Image from "next/image";
 import HeroInfoCard from "@/components/HeroInfoCard";
 import MorphIcon from "@/components/MorphIcon";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 type CardDef = {
   label: string;
@@ -68,13 +68,10 @@ const headlineLines = ["Transforming", "Landscapes"];
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const heroIntro =
-  "To create this report, we engaged with Indigenous and First Nations groups to better understand their perspectives, goals, and priorities related to Indigenous-led development today.";
-const heroMore =
-  "The project is intended to deepen understanding among the members we represent and support more informed, respectful, and collaborative relationships moving forward.";
+  "We engaged with Indigenous and First Nations groups to better understand perspectives and priorities on Indigenous-led development. The project is intended to deepen understanding and support respectful, and collaborative relationships moving forward.";
 
 export default function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const safety = setTimeout(() => setImageLoaded(true), 2500);
@@ -105,28 +102,34 @@ export default function Hero() {
               initial={{ opacity: 0, y: 8 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-              className="mb-5 flex flex-col gap-3 pl-3 sm:hidden"
+              className="mb-6 sm:hidden"
             >
-              <div className="flex w-max items-center gap-3">
-                <Image
-                  src="/images/reibclogo.jpeg"
-                  alt="Real Estate Institute of British Columbia"
-                  width={200}
-                  height={200}
-                  className="h-9 w-auto"
-                />
-                <Image
-                  src="/images/gvrlogo.jpeg"
-                  alt="Greater Vancouver Realtors"
-                  width={200}
-                  height={200}
-                  className="h-9 w-auto"
-                />
+              <div className="inline-flex max-w-[17rem] items-center gap-2.5 rounded-xl bg-black/30 px-2.5 py-2 backdrop-blur-md">
+                <div className="flex shrink-0 items-center gap-1.5">
+                  <Image
+                    src="/images/reibclogo.jpeg"
+                    alt="Real Estate Institute of British Columbia"
+                    width={200}
+                    height={200}
+                    className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
+                  />
+                  <Image
+                    src="/images/gvrlogo.jpeg"
+                    alt="Greater Vancouver Realtors"
+                    width={200}
+                    height={200}
+                    className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
+                  />
+                </div>
+                <div>
+                  <p className="text-[0.5rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+                    In partnership with
+                  </p>
+                  <p className="text-[0.7rem] font-medium leading-snug text-white">
+                    Greater Vancouver Realtors &amp; Real Estate Institute of BC
+                  </p>
+                </div>
               </div>
-              <p className="text-[0.65rem] font-medium uppercase leading-[1.55] tracking-[0.18em] text-white/85">
-                This research was led in partnership by Greater Vancouver
-                Realtors and the Real Estate Institute of British Columbia.
-              </p>
             </motion.div>
             <h1
               style={{
@@ -159,30 +162,35 @@ export default function Hero() {
               initial={{ opacity: 0, y: 8 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-              className="mt-4 hidden flex-col gap-4 pl-3 sm:flex sm:flex-row sm:items-center md:mt-5 md:pl-4"
+              className="mt-5 hidden pl-1 sm:block"
             >
-              <div className="hidden w-max items-center gap-3 sm:flex">
-                <Image
-                  src="/images/reibclogo.jpeg"
-                  alt="Real Estate Institute of British Columbia"
-                  width={200}
-                  height={200}
-                  className="h-9 w-auto md:h-10"
-                />
-                <Image
-                  src="/images/gvrlogo.jpeg"
-                  alt="Greater Vancouver Realtors"
-                  width={200}
-                  height={200}
-                  className="h-9 w-auto md:h-10"
-                />
+              <div className="inline-flex items-center gap-2.5 rounded-xl bg-black/30 px-3 py-2 backdrop-blur-md">
+                <div className="flex shrink-0 items-center gap-1.5">
+                  <Image
+                    src="/images/reibclogo.jpeg"
+                    alt="Real Estate Institute of British Columbia"
+                    width={200}
+                    height={200}
+                    className="h-7 w-7 rounded-md object-cover ring-1 ring-white/15"
+                  />
+                  <Image
+                    src="/images/gvrlogo.jpeg"
+                    alt="Greater Vancouver Realtors"
+                    width={200}
+                    height={200}
+                    className="h-7 w-7 rounded-md object-cover ring-1 ring-white/15"
+                  />
+                </div>
+                <div>
+                  <p className="text-[0.52rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+                    In partnership with
+                  </p>
+                  <p className="text-[0.8rem] font-medium leading-snug text-white">
+                    Greater Vancouver Realtors &amp; the Real Estate Institute of
+                    British Columbia
+                  </p>
+                </div>
               </div>
-              <p className="text-[0.65rem] font-medium uppercase leading-[1.55] tracking-[0.18em] text-white/85 md:text-[0.72rem]">
-                This research was led in partnership by Greater Vancouver
-                Realtors
-                <br />
-                and the Real Estate Institute of British Columbia.
-              </p>
             </motion.div>
           </div>
 
@@ -205,42 +213,6 @@ export default function Hero() {
               <p className="text-base leading-relaxed text-white/85">
                 {heroIntro}
               </p>
-              <AnimatePresence initial={false}>
-                {expanded && (
-                  <motion.p
-                    key="more"
-                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                    animate={{ opacity: 1, height: "auto", marginTop: "0.75rem" }}
-                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                    transition={{ duration: 0.45, ease: EASE }}
-                    className="overflow-hidden text-base leading-relaxed text-white/85"
-                  >
-                    {heroMore}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-              <button
-                type="button"
-                onClick={() => setExpanded((v) => !v)}
-                aria-expanded={expanded}
-                className="mt-4 inline-flex items-center gap-1.5 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-white/85 transition hover:text-white"
-              >
-                <span>{expanded ? "Read less" : "Read more"}</span>
-                <svg
-                  className={`h-3 w-3 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  aria-hidden
-                >
-                  <path
-                    d="M3 4.5L6 7.5L9 4.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
             </motion.div>
           </div>
         </div>
