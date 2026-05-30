@@ -99,8 +99,8 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-earth-900/55 via-earth-900/10 to-earth-900/55" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-content flex-col px-6 pb-44 pt-28 md:px-10 md:pb-14 md:pt-32">
-        <div className="relative flex h-full flex-1 flex-col justify-end">
-          <div className="lg:mb-[6vh] lg:-translate-x-20">
+        <div className="relative flex h-full flex-1 flex-col">
+          <div className="mt-auto lg:mb-[6vh] lg:-translate-x-20">
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
