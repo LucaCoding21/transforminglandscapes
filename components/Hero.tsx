@@ -82,7 +82,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-[#15212a] text-white md:min-h-[720px]">
+    <section className="relative min-h-[100svh] w-full overflow-hidden bg-[#15212a] text-white md:h-[100svh] md:min-h-[720px]">
       <div className="absolute inset-0">
         <Image
           src="/images/make_this_landscape_202604151519.webp"
@@ -98,7 +98,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-earth-900/85 via-earth-900/30 to-earth-900/45" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-earth-900/55 via-earth-900/10 to-earth-900/55" />
 
-      <div className="relative z-10 mx-auto flex h-full max-w-content flex-col px-6 pb-44 pt-28 md:px-10 md:pb-14 md:pt-32">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-content flex-col px-6 pb-44 pt-28 md:h-full md:min-h-0 md:px-10 md:pb-14 md:pt-32">
         <div className="relative flex h-full flex-1 flex-col">
           <div className="mt-auto lg:mb-[6vh] lg:-translate-x-20">
             <motion.div
