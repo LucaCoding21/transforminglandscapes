@@ -246,7 +246,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-24 z-10 md:bottom-8 lg:bottom-24">
+      <div className="pointer-events-none absolute inset-x-0 bottom-24 z-10 hidden md:bottom-8 md:block lg:bottom-24">
         <div className="pointer-events-auto mx-auto flex max-w-content justify-center px-6 md:justify-end md:px-10 lg:translate-x-32">
           <ul className="grid w-full max-w-md grid-cols-2 gap-3 sm:gap-3 md:gap-2.5">
             {infoCards.map((card, i) => (
