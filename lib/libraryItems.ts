@@ -3,7 +3,8 @@ export type BodyBlock =
   | string
   | { figure: string }
   | { heading: string }
-  | { content: InlineText[] };
+  | { content: InlineText[] }
+  | { update: string };
 
 export type LibraryItem = {
   slug: string;
@@ -77,7 +78,10 @@ export const libraryItems: LibraryItem[] = [
     authorAvatar: "/images/reibclogo.jpeg",
     date: "April 2026",
     body: [
-      "Update: On May 28, 2026, the Supreme Court of Canada refused to hear an appeal in a New Brunswick Aboriginal title case involving private land. While the decision does not directly rule on the Cowichan case, federal and provincial officials say it may inform appeal arguments around Aboriginal title, private property rights, and compensation in British Columbia.",
+      {
+        update:
+          "On May 28, 2026, the Supreme Court of Canada refused to hear an appeal in a New Brunswick Aboriginal title case involving private land. While the decision does not directly rule on the Cowichan case, federal and provincial officials say it may inform appeal arguments around Aboriginal title, private property rights, and compensation in British Columbia.",
+      },
       "On August 7, 2025, the British Columbia Supreme Court issued its decision in Cowichan Tribes v. Canada (Attorney General), 2025 BCSC 1490, recognizing the Cowichan Nation\u2019s Aboriginal title to the historic village site of Tl\u2019uqtinus and affirming its constitutional right to fish in the south arm of the Fraser River for food.",
       "The case, which spanned more than 11 years, is one of the most complex and lengthy trials in Canadian history. The approximately 1,800 acres recognized in the decision overlap with privately owned lands held by third parties who were not part of the proceedings. While the Cowichan asserted Aboriginal title over these lands, they did not seek to invalidate existing private titles.",
       {

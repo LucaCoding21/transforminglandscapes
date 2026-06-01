@@ -302,6 +302,21 @@ export default async function ArticlePage({ params }: Props) {
                     </p>
                   );
                 }
+                if ("update" in block) {
+                  return (
+                    <aside
+                      key={i}
+                      className="rounded-lg border-l-2 border-sage-600 bg-earth-100 px-4 py-3"
+                    >
+                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-sage-600">
+                        Update
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-earth-700">
+                        {block.update}
+                      </p>
+                    </aside>
+                  );
+                }
                 if ("heading" in block) {
                   return (
                     <h2
