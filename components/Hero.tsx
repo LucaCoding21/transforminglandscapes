@@ -133,15 +133,15 @@ export default function Hero() {
             >
               <div className="hidden w-max items-center gap-3 sm:flex">
                 <Image
-                  src="/images/reibclogo.jpeg"
-                  alt="Real Estate Institute of British Columbia"
+                  src="/images/gvrlogo.jpeg"
+                  alt="Greater Vancouver Realtors"
                   width={200}
                   height={200}
                   className="h-9 w-auto md:h-10"
                 />
                 <Image
-                  src="/images/gvrlogo.jpeg"
-                  alt="Greater Vancouver Realtors"
+                  src="/images/reibclogo.jpeg"
+                  alt="Real Estate Institute of British Columbia"
                   width={200}
                   height={200}
                   className="h-9 w-auto md:h-10"
@@ -189,15 +189,15 @@ export default function Hero() {
         <div className="inline-flex max-w-[17rem] items-center gap-2.5 rounded-xl bg-black/30 px-2.5 py-2 backdrop-blur-md">
           <div className="flex shrink-0 items-center gap-1.5">
             <Image
-              src="/images/reibclogo.jpeg"
-              alt="Real Estate Institute of British Columbia"
+              src="/images/gvrlogo.jpeg"
+              alt="Greater Vancouver Realtors"
               width={200}
               height={200}
               className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
             />
             <Image
-              src="/images/gvrlogo.jpeg"
-              alt="Greater Vancouver Realtors"
+              src="/images/reibclogo.jpeg"
+              alt="Real Estate Institute of British Columbia"
               width={200}
               height={200}
               className="h-6 w-6 rounded-md object-cover ring-1 ring-white/15"
