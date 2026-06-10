@@ -112,7 +112,7 @@ export default async function ArticlePage({ params }: Props) {
     publisher: publisherNode,
   };
   const videoJsonLd =
-    item.type === "Interview" && item.youtubeId
+    item.type === "Interview" && (item.youtubeId || item.videoSrc)
       ? {
           "@context": "https://schema.org",
           "@type": "VideoObject",
@@ -120,7 +120,9 @@ export default async function ArticlePage({ params }: Props) {
           description: item.description,
           ...(absoluteImage ? { thumbnailUrl: absoluteImage } : {}),
           ...(datePublished ? { uploadDate: datePublished } : {}),
-          embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
+          ...(item.youtubeId
+            ? { embedUrl: `https://www.youtube.com/embed/${item.youtubeId}` }
+            : { contentUrl: `${SITE_URL}${item.videoSrc}` }),
           publisher: publisherNode,
         }
       : null;
@@ -278,6 +280,19 @@ export default async function ArticlePage({ params }: Props) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               loading="lazy"
+              className="h-full w-full"
+            />
+          </div>
+        )}
+
+        {/* Local video */}
+        {item.videoSrc && (
+          <div className="mt-10 aspect-video overflow-hidden rounded-lg bg-earth-900">
+            <video
+              src={item.videoSrc}
+              controls
+              playsInline
+              preload="metadata"
               className="h-full w-full"
             />
           </div>
